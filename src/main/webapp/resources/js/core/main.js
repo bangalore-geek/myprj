@@ -1,0 +1,1 @@
+var defysope = angular.module('defysope', ['ui.bootstrap']);
