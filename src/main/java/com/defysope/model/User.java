@@ -19,6 +19,11 @@ import javax.persistence.Table;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 3254858222800347249L;
+	public static final int OWNER = 1;
+	public static final int ADMIN = 2;
+	public static final int STUDENT = 3;
+	public static final int FREELANCER = 4;
+	public static final int CORPORATE = 5;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tbluser_cid_gen")
@@ -35,6 +40,16 @@ public class User implements Serializable {
 	private String briefcasePassword;
 
 	private boolean isSystemDisabled;
+
+	private int userType;
+
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "tbl_user_roles", joinColumns = { @JoinColumn(name = "userid", referencedColumnName = "cid") }, inverseJoinColumns = { @JoinColumn(name = "roleid", referencedColumnName = "cid") })

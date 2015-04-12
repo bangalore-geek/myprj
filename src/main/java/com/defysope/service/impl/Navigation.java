@@ -74,6 +74,7 @@ public class Navigation implements BeanPostProcessor,
 					navEntry.setTitle(menu.title());
 					navEntry.setOrder(menu.order());
 					navEntry.setUrl(menu.url());
+					navEntry.setVisible(menu.visible());
 					navigations.put(menu.accessCode(), navEntry);
 				}
 			}
@@ -113,6 +114,7 @@ public class Navigation implements BeanPostProcessor,
 		private String accessCode;
 		private int order;
 		private String url;
+		private boolean visible;
 
 		public int getOrder() {
 			return order;
@@ -144,6 +146,14 @@ public class Navigation implements BeanPostProcessor,
 
 		public void setUrl(String url) {
 			this.url = url;
+		}
+
+		public boolean isVisible() {
+			return visible;
+		}
+
+		public void setVisible(boolean visible) {
+			this.visible = visible;
 		}
 
 	}

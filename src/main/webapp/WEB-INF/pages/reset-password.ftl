@@ -18,23 +18,18 @@
 
     <!-- Demo page code -->
 
-    <style type="text/css">
-        #line-chart {
-            height:300px;
-            width:800px;
-            margin: 0px auto;
-            margin-top: 1em;
-        }
-        .brand { font-family: georgia, serif; }
-        .brand .first {
-            color: #ccc;
-            font-style: italic;
-        }
-        .brand .second {
-            color: #fff;
-            font-weight: bold;
-        }
-    </style>
+	<style type="text/css">
+	    .first {
+		    color: tomato;
+		    font-size: 2em;
+		    font-style: italic;
+		}
+	    .second {
+		    color: skyblue;
+		    font-size: 0.6em;
+		    font-weight: bold;
+		}
+	</style>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -57,11 +52,20 @@
   <body class=""> 
   <!--<![endif]-->
     
-    <div class="navbar">
-        <div class="navbar-inner">
-                <a class="brand" href="index.html"><span class="first">Bookmark</span> <span class="second">Manager</span></a>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button data-target="#bs-example-navbar-collapse-9" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand"><span class="first">Career</span> <span class="second">Point</span></a>
         </div>
-    </div>
+	</div><!-- /.container-fluid -->
+ </nav>
     
 	<div class="row-fluid">
 	    <div class="dialog">
@@ -69,10 +73,12 @@
 	            <p class="block-heading">Reset Password</p>
 	            <div class="block-body">
 	                <form class="form-signin" method="post">
-	                    <label>Email</label>
-	                    <input type="text" class="span12" name="email">
-	                    <button class="btn btn-primary pull-right" type="submit">Send Reset Link</button>
-	                    <div class="clearfix"></div>
+	                    <div class="form-group">
+	    					<label>Email</label>
+	    					<div>
+	    						<input type="text" class="form-control" name="userName" placeholder="Email">
+	      					</div>
+	  					</div>
 	                </form>
 	            </div>
 	        </div>

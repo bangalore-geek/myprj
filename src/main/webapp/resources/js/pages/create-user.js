@@ -1,4 +1,4 @@
-defysope.controller('BookmarkListCtrl', ['$scope', '$http',
+defysope.controller('UserListCtrl', ['$scope', '$http',
 				function($scope, $http) {
 
 					$scope.list = [{

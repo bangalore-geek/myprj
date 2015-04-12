@@ -21,15 +21,8 @@ public class LinkNavigation {
 	@Autowired
 	private Navigation navigation;
 
-	@Menu(title = "home", url = "/", accessCode = "ROLE_PG_HOME", order = 1, visible = false)
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	@Secured("ROLE_PG_HOME")
-	public ModelAndView homePage(HttpServletRequest request) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("menus", navigation.displayMenuList());
-		return new ModelAndView("home", model);
-	}
-
+	
+	/*
 	@Menu(title = "index", url = "/index", accessCode = "ROLE_PG_HOME", order = 2, visible = false)
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	@Secured("ROLE_PG_HOME")
@@ -65,6 +58,6 @@ public class LinkNavigation {
 	@Secured("ROLE_TEST")
 	public ModelAndView test() {
 		return new ModelAndView("test");
-	}
+	}*/
 
 }

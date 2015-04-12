@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign in-Bookmark Manager</title>
+    <title>Sign in-Career Point</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -20,13 +20,15 @@
 
 <style type="text/css">
     .first {
-        color: #ccc;
-        font-style: italic;
-    }
+	    color: tomato;
+	    font-size: 2em;
+	    font-style: italic;
+	}
     .second {
-        color: #fff;
-        font-weight: bold;
-    }
+	    color: skyblue;
+	    font-size: 0.6em;
+	    font-weight: bold;
+	}
 </style>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -60,18 +62,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand"><span class="first">Bookmark</span> <span class="second">Manager</span></a>
-            <ul class="nav navbar-nav navbar-right">
-	            <li class="dropdown">
-	                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Language<i class="caret"></i></a>
-	                <ul class="dropdown-menu" role="menu">
-	                    <li><a href="?lang=en">English</a></li>
-						<li><a href="?lang=de">German</a></li>
-						<li><a href="?lang=dv">Devehi</a></li>
-						<li><a href="?lang=de">Hindi</a></li>
-	                </ul>
-	            </li>
-	        </ul>
+          <a href="#" class="navbar-brand"><span class="first">Career</span> <span class="second">Point</span></a>
         </div>
 	</div><!-- /.container-fluid -->
  </nav>
