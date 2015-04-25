@@ -1,1 +1,1 @@
-var defysope = angular.module('defysope', ['ui.bootstrap']);
+var defysope = angular.module('defysope', ['ui.bootstrap','ngAnimate']);

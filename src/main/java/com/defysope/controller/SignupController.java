@@ -22,13 +22,13 @@ public class SignupController {
 	private PublicManager manager;
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public ModelAndView loginForm() {
+	public ModelAndView getSignUpForm() {
 		return new ModelAndView("signup-form");
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public @ResponseBody
-	Object saveArticle(@RequestBody User user) {
+	Object saveSignUpForm(@RequestBody User user) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		manager.saveObject(user);
 		UserInfo info = new UserInfo();

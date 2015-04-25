@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/theme.css">
     <link rel="stylesheet" href="${rc.getContextPath()}/resources/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/toastr.css">
 
     <script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js" type="text/javascript"></script>
     <script src="${rc.getContextPath()}/resources/js/plugin/bootbox.js" type="text/javascript"></script>
@@ -50,7 +51,7 @@
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
   <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--> 
-  <body class=""> 
+  <body ng-app="defysope"> 
   <!--<![endif]-->
     
  <nav class="navbar navbar-inverse">
@@ -68,45 +69,45 @@
 	</div><!-- /.container-fluid -->
  </nav>
     
-	<div class="row-fluid" id="mainDiv">
+	<div class="row-fluid" ng-controller="SignupCtrl">
 	    <div class="dialog">
 	        <div class="block">
 	            <p class="block-heading">Sign up</p>
 	            <div class="block-body">
-		            <form class="form-signin" method="post" action="j_spring_security_check">
+		            <form class="form-signup">
 	                	<div class="form-group">
 	    					<label><@spring.message "signup.label.username"/></label>
 	    					<div>
-	    						<input type="text" class="form-control" name="userName" placeholder="User name">
+	    						<input type="text" class="form-control" name="userName" placeholder="User name" ng-model="user.userName">
 	      					</div>
 	  					</div>
 	  					<div class="form-group">
 	    					<label><@spring.message "signup.label.password"/></label>
 	    					<div>
-	    						<input type="password" class="form-control" name="password" placeholder="Password">
+	    						<input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password">
 	      					</div>
 	  					</div>
 	  					<div class="form-group">
 	    					<label><@spring.message "signup.label.email"/></label>
 	    					<div>
-	    						<input type="email" class="form-control" name="email" placeholder="Email">
+	    						<input type="email" class="form-control" name="email" placeholder="Email" ng-model="user.email">
 	      					</div>
 	  					</div>
 	  					<div class="form-group">
 	    					<label><@spring.message "signup.label.type"/></label>
 	    					<div>
 	    						<label class="radio-inline">
-								  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Student
+								  <input type="radio" name="inlineRadioOptions" value="3"  ng-model="user.userType"> Student
 								</label>
 								<label class="radio-inline">
-								  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Freelancer
+								  <input type="radio" name="inlineRadioOptions" value="4"  ng-model="user.userType"> Freelancer
 								</label>
 								<label class="radio-inline">
-								  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Corporate
+								  <input type="radio" name="inlineRadioOptions" value="5"  ng-model="user.userType"> Corporate
 								</label>
 	      					</div>
 	  					</div>
-	                    <button class="btn btn-primary pull-right" type="submit"><@spring.message "signup.label.submit"/></button>
+	                    <button class="btn btn-primary pull-right" ng-click="createUser()"><@spring.message "signup.label.submit"/></button>
 	                    <div class="clearfix"></div>
 	                </form>
 	            </div>
@@ -116,37 +117,12 @@
 	    </div>
    </div>
 
+<script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/angular.min.js"></script>
 <script src="${rc.getContextPath()}/resources/js/core/bootstrap.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-			jQuery('button.submit').on('click', function() {
-				var obj = {
-							userName : jQuery('input[name="userName"]').val(),
-							password : jQuery('input[name="password"]').val(),
-							email : jQuery('input[name="email"]').val()
-						};
-				jQuery.ajax({
-						url : '/bookmark/signup',
-						type: "POST",
-    				    contentType : 'application/json',
-     					dataType : 'json',
-						processData : false,
-						data : JSON.stringify(obj) 
-					}).done(function(data) {
-						if (data.success) {
-							bootbox.alert('Account Created');
-						} else {
-							bootbox.alert('Account Not Created');
-						}
-		
-					});
-			})
-			
-		});
-	
-	
-</script>
+<script src="${rc.getContextPath()}/resources/js/pages/signup-form.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/angular-animate.min.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/toastr.js"></script>
 </body>
 </html>
 

@@ -35,13 +35,6 @@ public class NavController {
 		return new ModelAndView("home", model);
 	}
 
-	@Menu(title = "Create Student Profile", url = "/student-profile", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
-	@RequestMapping(value = "/student-profile", method = RequestMethod.GET)
-	@Secured("ROLE_DF_STUDENT_PROFILE")
-	public ModelAndView studentProfile(HttpServletRequest request) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		return new ModelAndView("home", model);
-	}
 	
 	@RequestMapping(value = "/load-nagivation", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
