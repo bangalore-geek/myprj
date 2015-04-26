@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.navigation.Menu;
-import com.defysope.service.BookmarkUtils;
+import com.defysope.service.ApplicationUtils;
 
 @Controller
 public class ManageUserController {
 	
 	@Autowired
-	private BookmarkUtils utils;
+	private ApplicationUtils utils;
 
 	@Menu(title = "Manage User", url = "/manage-user", accessCode = "ROLE_DF_MANAGE_USER", order = 1, visible = true)
 	@RequestMapping(value = "/manage-user", method = RequestMethod.GET)

@@ -119,6 +119,33 @@ create table tblbookmark(
  fileName varchar(500)
 )
 
+CREATE TABLE tblauditcategory
+(
+  cid serial NOT NULL,
+  code character varying(100),
+  description character varying(500),
+  CONSTRAINT tblauditcategory_pkey PRIMARY KEY (cid)
+)
+
+CREATE TABLE tblauditlog
+(
+  cid serial NOT NULL,
+  auditdate timestamp without time zone,
+  auditcategory integer,
+  userid integer,
+  additionalinfo character varying(5000),
+  remoteaddress character varying(100),
+  affecteduserid integer,
+  ismailed boolean DEFAULT false,
+  CONSTRAINT tblauditlog_pkey PRIMARY KEY (cid),
+  CONSTRAINT tblauditlog_auditcategory_fkey FOREIGN KEY (auditcategory)
+      REFERENCES tblauditcategory (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT tblauditlog_userid_fkey FOREIGN KEY (userid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
 
 
 insert into tbluser(username,password,email) values('deepak','sa','rathordeepak1985@yahoo.in')

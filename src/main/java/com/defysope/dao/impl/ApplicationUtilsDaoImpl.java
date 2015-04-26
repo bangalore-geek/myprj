@@ -16,14 +16,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
-import com.defysope.dao.BookmarkUtilsDao;
+import com.defysope.dao.ApplicationUtilsDao;
 import com.defysope.dao.Page;
 import com.defysope.dao.UserDAO;
+import com.defysope.model.AuditLogCategory;
 import com.defysope.model.Bookmark;
 import com.defysope.model.User;
 
 @Repository
-public class BookmarkUtilsDaoImpl implements BookmarkUtilsDao {
+public class ApplicationUtilsDaoImpl implements ApplicationUtilsDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -41,8 +42,7 @@ public class BookmarkUtilsDaoImpl implements BookmarkUtilsDao {
 		org.springframework.security.core.userdetails.User authuser = (authentication != null && authentication
 				.getPrincipal() instanceof org.springframework.security.core.userdetails.User) ? (org.springframework.security.core.userdetails.User) authentication
 				.getPrincipal() : null;
-		User user = userDAO.getUser(authuser.getUsername());
-		return user == null ? null : user;
+		return authuser == null ? null : userDAO.getUser(authuser.getUsername());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -69,6 +69,14 @@ public class BookmarkUtilsDaoImpl implements BookmarkUtilsDao {
 					}
 				});
 
+	}
+
+	@Override
+	public AuditLogCategory getAuditLogCategory(String categoryCode) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				AuditLogCategory.class);
+		criteria.add(Restrictions.eq("code", categoryCode));
+		return (AuditLogCategory) criteria.uniqueResult();
 	}
 
 }

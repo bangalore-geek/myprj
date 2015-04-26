@@ -24,6 +24,8 @@
 		<access-denied-handler error-page="/access-denied.html" />
 
 	</http>
+	
+	<!-- http://stackoverflow.com/questions/15217928/spring-security-authentication-and-authorization-using-database/18208419#18208419 -->
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="customUserDetailsService">

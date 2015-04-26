@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.defysope.service.BookmarkUtils;
+import com.defysope.service.ApplicationUtils;
 import com.defysope.service.impl.Navigation;
 
 @Controller
 public class SecurityNavigation {
 
 	@Autowired
-	private BookmarkUtils utils;
+	private ApplicationUtils utils;
 
 	@Autowired
 	private Navigation navigation;

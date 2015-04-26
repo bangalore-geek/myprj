@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.navigation.Menu;
-import com.defysope.service.BookmarkUtils;
+import com.defysope.service.ApplicationUtils;
 import com.defysope.service.impl.Navigation;
 
 
@@ -22,7 +22,7 @@ import com.defysope.service.impl.Navigation;
 public class TestController {
 	
 	@Autowired
-	private BookmarkUtils utils;
+	private ApplicationUtils utils;
 
 	@Autowired
 	private Navigation navigation;
