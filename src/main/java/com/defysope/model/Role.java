@@ -33,7 +33,7 @@ public class Role {
 
 	private boolean system;
 
-	private boolean description;
+	private String description;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "tbl_role_accessrights", joinColumns = { @JoinColumn(name = "roleid", referencedColumnName = "cid") }, inverseJoinColumns = { @JoinColumn(name = "featureid", referencedColumnName = "cid") })
@@ -79,11 +79,11 @@ public class Role {
 		this.system = system;
 	}
 
-	public boolean isDescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(boolean description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

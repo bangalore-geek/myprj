@@ -36,10 +36,11 @@ public class SignupController {
 	public @ResponseBody
 	Object saveSignUpForm(HttpServletRequest request, @RequestBody User user) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		user.setPassword(utils.encryptPassword(user.getPassword()));
 		manager.saveObject(user);
-		UserInfo info = new UserInfo();
+		/*UserInfo info = new UserInfo();
 		info.setUserId(user.getId());
-		manager.saveObject(info);
+		manager.saveObject(info);*/
 		if (user.getId() > 0) {
 			model.put("success", true);
 			utils.postAuditLog(request, "user_signup", "User with username :"

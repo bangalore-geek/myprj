@@ -18,5 +18,7 @@ public interface ApplicationUtils {
 	public List<Bookmark> getBookmarkList(Integer userId);
 
 	public Page getBookarkList(int page, int rows);
+	
+	public String encryptPassword(String password);
 
 }
