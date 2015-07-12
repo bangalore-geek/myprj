@@ -1,6 +1,7 @@
 package com.defysope.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tbluser_cid_gen")
 	@SequenceGenerator(name = "tbluser_cid_gen", sequenceName = "tbluser_cid_seq")
 	@Column(name = "cid")
-	private Integer id;
+	private int id;
 
 	private String userName;
 
@@ -43,6 +44,8 @@ public class User implements Serializable {
 
 	private int userType;
 
+	private Date modifiedDate;
+
 	public int getUserType() {
 		return userType;
 	}
@@ -55,11 +58,11 @@ public class User implements Serializable {
 	@JoinTable(name = "tbl_user_roles", joinColumns = { @JoinColumn(name = "userid", referencedColumnName = "cid") }, inverseJoinColumns = { @JoinColumn(name = "roleid", referencedColumnName = "cid") })
 	private Role role;
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -111,4 +114,11 @@ public class User implements Serializable {
 		this.briefcasePassword = briefcasePassword;
 	}
 
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
 }

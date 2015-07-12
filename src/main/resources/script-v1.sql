@@ -39,8 +39,7 @@ CREATE TABLE tbluserdetails
  CONSTRAINT tbluserdetails_pkey PRIMARY KEY (cid )
 )
 
-CREATE TABLE tblrole
-(
+CREATE TABLE tblrole(
   cid serial NOT NULL,
   name character varying(50),
   lastupdatedon timestamp without time zone,
@@ -146,6 +145,26 @@ CREATE TABLE tblauditlog
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 
+CREATE TABLE tblstudentdetails
+(
+  cid serial NOT NULL,
+  studentid integer,
+  gender character varying(50),
+  dob timestamp without time zone,
+  disability character varying(50),
+  currentlocation character varying(50),
+  prefferedlocation character varying(50),
+  noticeperiod integer,
+  experience integer,
+  industry character varying(50),
+  currentctc integer,
+  expectedctc integer,
+  modifieddate timestamp without time zone,
+  CONSTRAINT tblstudentdetails_pkey PRIMARY KEY (cid),
+  CONSTRAINT tblstudentdetails_studentid_fkey FOREIGN KEY (studentid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
 
 
 insert into tbluser(username,password,email) values('deepak','sa','rathordeepak1985@yahoo.in')
