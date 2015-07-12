@@ -34,10 +34,10 @@ defysope.controller('StudentDetailsCtrl', [
 				$http.get(_context + '/load-student-detail').success(
 						function(response) {
 							console.log(response);
-							$scope.studentDetails.profile.data = response.userDetail;
+							$scope.studentDetails.profile.data = response.profile;
 							
-							$scope.studentDetails.education.data = response.userEducationDetail;
-							$scope.studentDetails.workhistory.data = response.userWorkHistoryDetail;
+							$scope.studentDetails.education.data = response.education;
+							$scope.studentDetails.workhistory.data = response.workhistory;
 						});
 			};
 			$scope.viewStudentProfile();
@@ -62,5 +62,11 @@ defysope.controller('StudentDetailsCtrl', [
 						$scope.studentDetails.workhistory.data).then(function(response) {
 							$scope.studentDetails.workhistory.editable = false;
 				});
-			};			
+			};
+			$scope.open = function($event) {
+			    $event.preventDefault();
+			    $event.stopPropagation();
+
+			    $scope.opened = true;
+			  };
 		} ]);

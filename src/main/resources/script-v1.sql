@@ -20,6 +20,8 @@ CREATE TABLE tbluser
   briefcasePassword character varying(100),
   email character varying(100),
   issystemdisabled boolean DEFAULT false,
+  usertype integer,
+  modifieddate timestamp without time zone,
   CONSTRAINT tbluser_pkey PRIMARY KEY (cid ),
   CONSTRAINT tbluser_userName_key UNIQUE (userName )
 )
@@ -101,23 +103,6 @@ CREATE TABLE tbl_role_accessrights
   CONSTRAINT uq_tbl_role_accessrights_role_feature UNIQUE (roleid , featureid )
 )
 
-create table tblbookmark(
- cid serial primary key,
- title varchar(500),
- description varchar(5000),
- url varchar(5000),
- faviconUrl varchar(5000),
- postedDate timestamp without time zone,
- modifiedDate timestamp without time zone,
- userId integer references tbluser(cid),
- softDeleted boolean default false,
- allowPublic boolean default false,
- confidential boolean default false,
- parentId  integer,
- image bytea,
- fileName varchar(500)
-)
-
 CREATE TABLE tblauditcategory
 (
   cid serial NOT NULL,
@@ -150,6 +135,8 @@ CREATE TABLE tblstudentdetails
   cid serial NOT NULL,
   studentid integer,
   gender character varying(50),
+  firstName varchar(500),
+  lastName varchar(500),
   dob timestamp without time zone,
   disability character varying(50),
   currentlocation character varying(50),
@@ -162,6 +149,107 @@ CREATE TABLE tblstudentdetails
   modifieddate timestamp without time zone,
   CONSTRAINT tblstudentdetails_pkey PRIMARY KEY (cid),
   CONSTRAINT tblstudentdetails_studentid_fkey FOREIGN KEY (studentid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE tbladdress
+(
+  cid serial NOT NULL,
+  corporateid integer,
+  address1 character varying(200),
+  address2 character varying(200),
+  city character varying(200),
+  state character varying(200),
+  country character varying(200),
+  pin integer,
+  phone1 integer,
+  phone2 integer,
+  mobile1 integer,
+  mobile2 integer,
+  userid integer,
+  CONSTRAINT tbladdress_pkey PRIMARY KEY (cid),
+  CONSTRAINT tbladdress_userid_fkey FOREIGN KEY (userid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE tbleducation
+(
+  cid serial NOT NULL,
+  course character varying(200),
+  university character varying(200),
+  yearofpassing integer,
+  coursetype character varying(200),
+  grade integer,
+  percentage integer,
+  userid integer,
+  CONSTRAINT tbleducation_pkey PRIMARY KEY (cid),
+  CONSTRAINT tbleducation_userid_fkey FOREIGN KEY (userid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE tblskillset
+(
+  cid serial NOT NULL,
+  description character varying(200),
+  code character varying(200),
+  CONSTRAINT tblskillset_pkey PRIMARY KEY (cid)
+)
+
+CREATE TABLE tblskilldetails
+(
+  cid serial NOT NULL,
+  skillid integer,
+  userid integer,
+  CONSTRAINT tblskilldetails_pkey PRIMARY KEY (cid),
+  CONSTRAINT tblskilldetails_skillid_fkey FOREIGN KEY (skillid)
+      REFERENCES tblskillset (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT tblskilldetails_userid_fkey FOREIGN KEY (userid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE tblworkhistory
+(
+  cid serial NOT NULL,
+  userid integer,
+  companyname character varying(250),
+  designation character varying(250),
+  startdate timestamp without time zone,
+  enddate timestamp without time zone,
+  jobtype character varying(250),
+  CONSTRAINT workhistory_pkey PRIMARY KEY (cid),
+  CONSTRAINT workhistory_userid_fkey FOREIGN KEY (userid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE tbladdressdetails
+(
+  cid serial NOT NULL,
+  userid integer,
+  presentaddress character varying(250),
+  permanentaddress character varying(250),
+  contactaddress character varying(250),
+  CONSTRAINT tbladdressdetails_pkey PRIMARY KEY (cid),
+  CONSTRAINT tbladdressdetails_userid_fkey FOREIGN KEY (userid)
+      REFERENCES tbluser (cid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE tblothereducation
+(
+  cid serial NOT NULL,
+  userid integer,
+  course character varying(250),
+  yearcompleted timestamp without time zone,
+  grade integer,
+  percentage integer,
+  CONSTRAINT tblothereducation_pkey PRIMARY KEY (cid),
+  CONSTRAINT tblothereducation_userid_fkey FOREIGN KEY (userid)
       REFERENCES tbluser (cid) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )

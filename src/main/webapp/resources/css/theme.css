@@ -783,3 +783,52 @@ table.table.list tr:first-child td {
     font-size: .5em;
   }
 }
+
+
+.panel-container {
+    margin-right: 5px;
+    padding: 10px;
+}
+
+.panel-container .panel {
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+    padding: 5px 10px 30px;
+}
+
+.panel-container .panel-1 {
+    border-top: 4px solid #ec0606;
+}
+
+.panel-container .panel-4 {
+    border-top: 4px solid #e5d202;
+}
+
+.panel-container .panel-5 {
+    border-top: 4px solid #e58404;
+}
+
+.panel-container .panel-3 {
+    border-top: 4px solid #03b238;
+}
+
+.panel-container h3 {
+    color: #a8a8a8;
+    padding-bottom: 10px;
+} 
+
+.data-row label {
+    float: left;
+    margin-right: 10px;
+    text-align: right;
+    width: 160px;
+}
+.panel-container label {
+    color: #595959;
+}
+.data-row {
+    clear: both;
+    margin: 5px 0;
+    padding: 5px 0;
+}

@@ -63,10 +63,10 @@ public class StudentProfileController {
 		User user = utils.getLoggedInUser();
 		Map<String, Object> model = new HashMap<String, Object>();
 		
-		model.put("userDetail", userService.getStudentDetails(user.getId()));
-		model.put("userWorkHistoryDetail", userService.getWorkHistoryDetails(user.getId()));
+		model.put("profile", userService.getStudentDetails(user.getId()));
+		model.put("workhistory", userService.getWorkHistoryDetails(user.getId()));
 		model.put("userAddressDetail", userService.getAddressDetails(user.getId()));
-		model.put("userEducationDetail", userService.getEducationDetails(user.getId()));
+		model.put("education", userService.getEducationDetails(user.getId()));
 		
 		return model;
 	}

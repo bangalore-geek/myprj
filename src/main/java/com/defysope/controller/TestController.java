@@ -27,8 +27,8 @@ public class TestController {
 	@Autowired
 	private Navigation navigation;
 
-	@Menu(title = "Student Profile", url = "/student-profile", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
-	@RequestMapping(value = "/student-profile", method = RequestMethod.GET)
+	@Menu(title = "Student Profile", url = "/student-profiles", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
+	@RequestMapping(value = "/student-profiles", method = RequestMethod.GET)
 	@Secured("ROLE_DF_STUDENT_PROFILE")
 	public ModelAndView a(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
