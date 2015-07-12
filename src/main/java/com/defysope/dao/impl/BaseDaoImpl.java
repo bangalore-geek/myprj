@@ -8,10 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.DAO;
-import com.defysope.dao.PublicDao;
 
 @Repository
-public class PublicDaoImpl implements PublicDao {
+public class BaseDaoImpl implements DAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -53,6 +52,12 @@ public class PublicDaoImpl implements PublicDao {
 	@Override
 	public <T> List<T> getObjects(Class<T> clazz, String orderByField) {
 		return null;
+	}
+
+	@Override
+	public boolean validateColumnName(String column) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
