@@ -41,7 +41,6 @@ defysope.controller('StudentDetailsCtrl', [
 						});
 			};
 			$scope.viewStudentProfile();
-
 			
 			$scope.showGreeting = false;
 			
