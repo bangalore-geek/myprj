@@ -1,0 +1,40 @@
+<div id="chart"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var x = [['Java',20],['.Net',30],['Oracle',10],['PHP',55],['Solaris',18]]
+    
+    var plot = jQuery.jqplot('chart', [x], {
+		animate : true,
+		animateReplot : true,
+		grid : {
+			drawBorder : false,
+			shadow : false
+		},
+		seriesDefaults : {
+			renderer : jQuery.jqplot.PieRenderer,
+			rendererOptions : {
+				showDataLabels : true,
+				startAngle : 90,
+				padding : 10,
+dataLabels: 'value'
+			}
+		},
+		legend : {
+			border : 'none',
+			renderer : $.jqplot.EnhancedLegendRenderer,
+			show : true,
+			location : 's',
+			rendererOptions : {
+				numberRows : 1
+			},
+			placement : 'outside'
+		}
+	});
+    
+    $('#chart').bind('jqplotDataClick', function(ev, seriesIndex, pointIndex, data) {
+        alert(plot.series[seriesIndex].seriesColors[pointIndex]);
+    });
+});
+</script>

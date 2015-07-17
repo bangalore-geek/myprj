@@ -13,6 +13,8 @@
 <script src="${rc.getContextPath()}/resources/js/core/ui-bootstrap-tpls-0.12.1.min.js"></script>
 <script src="${rc.getContextPath()}/resources/js/core/angular-animate.min.js"></script>
 <script src="${rc.getContextPath()}/resources/js/plugin/toastr.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jquery.jqplot.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.pieRenderer.js"></script>
 
 	
 	

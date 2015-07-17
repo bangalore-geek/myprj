@@ -4,4 +4,5 @@
      <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/font-awesome.css">
      <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/theme.css">
      <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/toastr.css">
+     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/jquery.jqplot.css">
 	
