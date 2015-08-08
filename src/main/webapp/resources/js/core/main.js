@@ -10,6 +10,8 @@ defysope.directive('skwindow', function() {
 		transclude : true,
 		link : function(scope, element, attrs, dropdownCtrl, $http) {
 			scope.title = attrs.title;
+			scope.margin = attrs.margin;
+			scope.height = attrs.height;
 			scope.windowid = attrs.windowid;
 			scope.windowclass = attrs.windowclass;
 			scope.windowVisible = true;

@@ -30,10 +30,9 @@
 	</head>
 	
 	<body  ng-app="defysope">
-		<#include "top-bar.ftl" />
-		
+				
 		<#nested/>
-		<div class="content">
+		<div class="">
 </#macro>
 
 <#macro showFooter>

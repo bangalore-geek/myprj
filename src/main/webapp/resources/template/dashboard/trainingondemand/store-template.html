@@ -1,0 +1,40 @@
+<div id="chart4"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var x = [['SAP',15],['AutoCAD',30],['J2EE',10],['Oracle DBA',30],['Solaris',18]]
+    
+    var plot = jQuery.jqplot('chart4', [x], {
+		animate : true,
+		animateReplot : true,
+		grid : {
+			drawBorder : false,
+			shadow : false
+		},
+		seriesDefaults : {
+			renderer : jQuery.jqplot.PieRenderer,
+			rendererOptions : {
+				showDataLabels : true,
+				startAngle : 90,
+				padding : 10,
+dataLabels: 'value'
+			}
+		},
+		legend : {
+			border : 'none',
+			renderer : $.jqplot.EnhancedLegendRenderer,
+			show : true,
+			location : 's',
+			rendererOptions : {
+				numberRows : 1
+			},
+			placement : 'outside'
+		}
+	});
+    
+    $('#chart').bind('jqplotDataClick', function(ev, seriesIndex, pointIndex, data) {
+        alert(plot.series[seriesIndex].seriesColors[pointIndex]);
+    });
+});
+</script>

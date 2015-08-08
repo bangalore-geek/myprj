@@ -15,6 +15,9 @@
 <script src="${rc.getContextPath()}/resources/js/plugin/toastr.js"></script>
 <script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jquery.jqplot.js"></script>
 <script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.pieRenderer.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.categoryAxisRenderer.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.canvasAxisLabelRenderer.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/masonry.pkgd.js"></script>
 
 	
 	

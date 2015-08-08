@@ -16,6 +16,8 @@
 	<http pattern="/css/**" security="none" />
 	<http pattern="/images/**" security="none" />
 	<http pattern="/img/**" security="none" />
+	<http pattern="/site/**" security="none" />
+	<http pattern="/index.jsp" security="none" />
 
 	<http auto-config="true">
 
@@ -25,7 +27,7 @@
 		<access-denied-handler error-page="/access-denied.html" />
 
 	</http>
-
+	
 	<!-- http://stackoverflow.com/questions/15217928/spring-security-authentication-and-authorization-using-database/18208419#18208419 -->
 
 	<authentication-manager>

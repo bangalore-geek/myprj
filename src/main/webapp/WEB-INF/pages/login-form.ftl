@@ -9,11 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/theme.css">
-    <link rel="stylesheet" href="${rc.getContextPath()}/resources/css/font-awesome.css">
-
+     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/bootstrap-theme.min.css">
+     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/font-awesome.css">
+     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/theme.css">
+     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/toastr.css">
+     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/jquery.jqplot.css">
     <script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
@@ -104,7 +105,21 @@
     </div>
   </div>
 
-<script src="${rc.getContextPath()}/resources/js/core/bootstrap.js"></script>
+<script type="text/javascript">
+        var _contextPath = '${rc.getContextPath()}';
+</script>
+
+<script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/angular.min.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/bootstrap.min.js"></script>
+<script type="text/javascript" src="${rc.getContextPath()}/resources/js/plugin/bootbox.min.js"></script>
+<script type="text/javascript" src="${rc.getContextPath()}/resources/select2/select2.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/main.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/ui-bootstrap-tpls-0.12.1.min.js"></script>
+<script src="${rc.getContextPath()}/resources/js/core/angular-animate.min.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/toastr.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jquery.jqplot.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.pieRenderer.js"></script>
 </body>
 </html>
 
