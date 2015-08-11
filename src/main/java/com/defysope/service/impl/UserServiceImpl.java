@@ -1,14 +1,18 @@
 package com.defysope.service.impl;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.defysope.dao.UserDAO;
 import com.defysope.model.AddressDetails;
-import com.defysope.model.OtherEducation;
+import com.defysope.model.Education;
 import com.defysope.model.StudentDetails;
+import com.defysope.model.University;
 import com.defysope.model.User;
+import com.defysope.model.UserReferences;
 import com.defysope.model.WorkHistory;
 import com.defysope.service.UserService;
 
@@ -29,18 +33,27 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public OtherEducation getEducationDetails(int userId) {
+	public List<Education> getEducationDetails(int userId) {
 		return userDAO.getEducationDetails(userId);
 	}
 
 	@Override
-	public AddressDetails getAddressDetails(int userId) {
+	public List<AddressDetails> getAddressDetails(int userId) {
 		return userDAO.getAddressDetails(userId);
 	}
 
 	@Override
-	public WorkHistory getWorkHistoryDetails(int userId) {
+	public List<WorkHistory> getWorkHistoryDetails(int userId) {
 		return userDAO.getWorkHistoryDetails(userId);
 	}
 
+	@Override
+	public List<UserReferences> getReferencesDetails(int userId) {
+		return userDAO.getReferencesDetails(userId);
+	}
+
+	@Override
+	public List<University> getUniversity() {
+		return userDAO.getUniversity(); 
+	}
 }

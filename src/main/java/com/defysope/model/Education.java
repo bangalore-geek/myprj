@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,16 +20,58 @@ public class Education {
 	@Column(name = "cid")
 	private Integer id;
 	
-	@ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId", nullable = true)
 	private int userId;
-	
-	private String course;
+	private String institutions;
 	private String university;
-	private Integer yearOfPassing;
-	private String courseType;
+	private Date startdate;
+	private Date enddate;
+	private String certification;
+	private String majorIn;
 	private Integer grade;
 	private Integer percentage;
+	private String description;
+		
+	public String getInstitutions() {
+		return institutions;
+	}
+	public void setInstitutions(String institutions) {
+		this.institutions = institutions;
+	}
+	public Date getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+	public Date getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
+	}
+	public String getCertification() {
+		return certification;
+	}
+	public void setCertification(String certification) {
+		this.certification = certification;
+	}
+	public String getMajorIn() {
+		return majorIn;
+	}
+	public void setMajorIn(String majorIn) {
+		this.majorIn = majorIn;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	private String course;
+
+	private Integer yearOfPassing;
+	private String courseType;
+
 	private Date modifiedDate;
 	
 	// getter and setters

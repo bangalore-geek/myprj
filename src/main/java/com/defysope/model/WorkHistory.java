@@ -15,21 +15,21 @@ import javax.persistence.Table;
 public class WorkHistory {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "workhistory_cid_gen")
-	@SequenceGenerator(name = "workhistory_cid_gen", sequenceName = "workhistory_cid_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tblworkhistory_cid_gen")
+	@SequenceGenerator(name = "tblworkhistory_cid_gen", sequenceName = "tblworkhistory_cid_seq")
 	@Column(name = "cid")
 	private Integer id;
-	
-/*	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "tbluser", joinColumns = { @JoinColumn(name = "userId", referencedColumnName = "cid")})*/
-	
+		
 	@Column(name = "userid")
 	private int userId;
 	
 	private String companyName;
-	private String designation;
+	private String title;
+	private String location;
 	private Date startdate;
 	private Date enddate;
+	private String description;
+	private String designation;
 	private String jobType;
 	
 	// generate getter and setter
@@ -74,5 +74,23 @@ public class WorkHistory {
 	}
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

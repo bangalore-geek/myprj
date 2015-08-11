@@ -3,12 +3,9 @@ package com.defysope.model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,8 +22,19 @@ public class StudentDetails {
 	@Column(name = "studentId")
 	private int studentId;
 
-	private String gender;
+	private String firstname;
+	private String middlename;
+	private String lastname;
 	private Date dob;
+	private String gender;
+	private String maritalStatus;
+	private String passport;
+	private String pancard;
+	private String aadharcard;
+	private String extraCurricularActivities;
+	
+	
+	/* Not Displaying in UI */
 	private String disability;
 	private String currentLocation;
 	private String prefferedLocation;
@@ -140,5 +148,69 @@ public class StudentDetails {
 
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getMiddlename() {
+		return middlename;
+	}
+
+	public void setMiddlename(String middlename) {
+		this.middlename = middlename;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	public String getPassport() {
+		return passport;
+	}
+
+	public void setPassport(String passport) {
+		this.passport = passport;
+	}
+
+	public String getPancard() {
+		return pancard;
+	}
+
+	public void setPancard(String pancard) {
+		this.pancard = pancard;
+	}
+
+	public String getAadharcard() {
+		return aadharcard;
+	}
+
+	public void setAadharcard(String aadharcard) {
+		this.aadharcard = aadharcard;
+	}
+
+	public String getExtraCurricularActivities() {
+		return extraCurricularActivities;
+	}
+
+	public void setExtraCurricularActivities(String extraCurricularActivities) {
+		this.extraCurricularActivities = extraCurricularActivities;
 	}
 }

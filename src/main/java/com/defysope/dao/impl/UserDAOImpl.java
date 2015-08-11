@@ -13,9 +13,11 @@ import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.UserDAO;
 import com.defysope.model.AddressDetails;
-import com.defysope.model.OtherEducation;
+import com.defysope.model.Education;
 import com.defysope.model.StudentDetails;
+import com.defysope.model.University;
 import com.defysope.model.User;
+import com.defysope.model.UserReferences;
 import com.defysope.model.WorkHistory;
 
 @Repository
@@ -48,24 +50,37 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public OtherEducation getEducationDetails(int userId) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(OtherEducation.class);
+	public List<Education> getEducationDetails(int userId) {
+		System.out.println("Education >>>>>>>>");
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Education.class);
 		criteria.add(Restrictions.eq("userId", userId));
-		return (OtherEducation) criteria.uniqueResult();
+		return (List<Education>) criteria.list();
 	}
 
 	@Override
-	public AddressDetails getAddressDetails(int userId) {
+	public List<AddressDetails> getAddressDetails(int userId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AddressDetails.class);
 		criteria.add(Restrictions.eq("userId", userId));
-		return (AddressDetails) criteria.uniqueResult();
+		return (List<AddressDetails>) criteria.list();
 	}
 
 	@Override
-	public WorkHistory getWorkHistoryDetails(int userId) {
+	public List<WorkHistory> getWorkHistoryDetails(int userId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(WorkHistory.class);
 		criteria.add(Restrictions.eq("userId", userId));
-		return (WorkHistory) criteria.uniqueResult();
+		return (List<WorkHistory>) criteria.list();
 	}
 
+	@Override
+	public List<UserReferences> getReferencesDetails(int userId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserReferences.class);
+		criteria.add(Restrictions.eq("userId", userId));
+		return (List<UserReferences>) criteria.list();
+	}
+
+	@Override
+	public List<University> getUniversity() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(University.class);
+		return (List<University>) criteria.list();
+	}
 }

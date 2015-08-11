@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbladdress")
 public class Address {
-
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO, generator = "tbladdress_cid_gen")
 	@SequenceGenerator (name = "tbladdress_cid_gen", sequenceName = "tbladdress_cid_gen")
@@ -30,6 +29,7 @@ public class Address {
 	private Integer corporateId;
 	private String address1;
 	private String address2;
+	private String address3;
 	private String city;
 	private String state;
 	private String country;
@@ -39,6 +39,8 @@ public class Address {
 	private Integer mobile1;
 	private Integer mobile2;
 	private Date modifiedDate;
+	private String location;
+	private String description;
 
 	// getters and setters
 	public Integer getId() {
@@ -124,5 +126,23 @@ public class Address {
 	}
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+	public String getAddress3() {
+		return address3;
+	}
+	public void setAddress3(String address3) {
+		this.address3 = address3;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
