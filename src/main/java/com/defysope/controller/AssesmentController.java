@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
 import com.defysope.model.Education;
 import com.defysope.model.User;
+import com.defysope.model.WorkHistory;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
@@ -91,7 +93,6 @@ public class AssesmentController {
 	public Object loadCourseAssesement(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses());
-		System.out.println("size >> "+assesmentService.getAssesmentCourses().size());
 		return model;
 	}
 	
@@ -102,6 +103,17 @@ public class AssesmentController {
 		manager.saveObject(assesmentCourse);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", true);
+		return model;
+	}
+	
+	
+	@RequestMapping(value = "/delete-assesement-course/{id}", method = RequestMethod.DELETE)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object deleteAssesementCourse(HttpServletRequest request,  @PathVariable Integer id) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		manager.removeObject(AssesmentCourse.class, id);
+		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses());
 		return model;
 	}
 }

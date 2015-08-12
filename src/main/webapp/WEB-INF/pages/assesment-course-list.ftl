@@ -20,6 +20,19 @@
 									</div>
 									
 									<div class="form-group">
+										<label for="assesmentMasterId" class="col-sm-3 control-label">Assesement</label>
+										<div class="col-sm-5">
+											<select ng-model="editAssesmentCourses.assesmentMasterId">
+												<option ng-selected="{{operator.description == editAssesmentCourses.assesmentMasterId}}"
+														ng-repeat="operator in assesementList.data"
+														value="{{operator.id}}">
+												  {{operator.description}}
+												</option>
+											</select>
+										</div>
+									</div>	
+									
+									<div class="form-group">
 										<label for="courseDescription" class="col-sm-3 control-label">Course Description</label>
 										<div class="col-sm-5">
 											<textarea class="form-control" name="courseDescription" ng-model="editAssesmentCourses.courseDescription">{{editAssesmentCourses.courseDescription}} </textarea>
@@ -32,7 +45,7 @@
 										</div>
 									</div>								
 									<button ng-click="enableAddForm()" class="btn">Cancel</button>
-									<button ng-click="saveAssesement(editAssesmentCourses)" class="btn btn-primary">Save</button>
+									<button ng-click="saveAssesementCourse(editAssesmentCourses)" class="btn btn-primary">Save</button>
 								</form>
 							</div>
 							<div ng-show="!assesmentCourses.editableForm">
@@ -53,7 +66,8 @@
 												<td>{{assesement.courseDescription}}</td>
 												<td>{{assesement.coustomer}}</td>
 												<td>
-													<button ng-click="enableeditAssesementCourses(assesement)" title="edit" class="fa fa-pencil"></button>
+													<button ng-click="enableEditForm(assesement)" title="edit" class="fa fa-pencil"></button>
+													<button ng-click="deleteAssesementCourse(assesement.id,$index)" title="delete" class="fa fa-trash"></button>
 												</td>
 											</tr>
 										</tbody>

@@ -11,11 +11,6 @@ defysope.controller('AssesementCtrl', [
 					editableForm : false
 			};
 			
-			$scope.assesementCourseList = {
-					data : {},
-					editableForm : false
-			};
-			
 			$scope.viewAssesement = function() {
 				$http.get(_context + '/load-assesement').success(
 						function(response) {
@@ -50,14 +45,6 @@ defysope.controller('AssesementCtrl', [
 						function(response) {
 							console.log(response);
 							$scope.assesmentType.data = response.viewAssesmentTypeList;
-						});
-			};
-			
-			$scope.viewAssesement = function() {
-				$http.get(_context + '/load-course-assesement').success(
-						function(response) {
-							console.log(response);
-							$scope.assesementCourseList.data = response.viewCourseAssesmentList;
 						});
 			};
 			
