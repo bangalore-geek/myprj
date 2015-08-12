@@ -1,3 +1,35 @@
+-- assessment
+
+create table tblAssesmentType(
+  cid serial primary key,
+  description varchar(200),
+  code varchar(5)
+)
+
+create table tblAssesmentMaster(
+ cid serial primary key,
+ trainingNo varchar(100) unique,
+ description varchar(5000),
+ version varchar(50),
+ active boolean default true,
+ assesmentType varchar(100),
+ createdDate timestamp without time zone,
+ modifiedDate timestamp without time zone,
+ orgId integer,
+ createdBy integer
+)
+
+create table tblAssesmentCourse(
+   cid serial primary key,
+   courseNumber varchar(10) unique,
+   courseDescription varchar(500),
+   assesmentMasterId integer,
+   startDate timestamp without time zone,
+   endDate timestamp without time zone,
+   assesmentDate timestamp without time zone,
+   coustomer varchar(500)
+)
+
 -- profile page 
 ALTER TABLE tblstudentdetails add firstname character varying(200);
 ALTER TABLE tblstudentdetails add middlename character varying(200);
