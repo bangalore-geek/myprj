@@ -30,8 +30,8 @@ public class AssesmentServiceImpl implements AssesmentService {
 	}
 
 	@Override
-	public List<AssesmentCourse> getAssesmentCourses() {
-		return assesmentDAO.getAssesmentCourses();
+	public List<AssesmentCourse> getAssesmentCourses(int courseId) {
+		return assesmentDAO.getAssesmentCourses(courseId);
 	}
 
 }

@@ -8,6 +8,7 @@ create table tblAssesmentType(
 
 create table tblAssesmentMaster(
  cid serial primary key,
+ name varchar(100),
  trainingNo varchar(100) unique,
  description varchar(5000),
  version varchar(50),

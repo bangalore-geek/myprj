@@ -92,7 +92,7 @@ public class AssesmentController {
 	@ResponseBody
 	public Object loadCourseAssesement(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses());
+		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(0));
 		return model;
 	}
 	
@@ -113,7 +113,7 @@ public class AssesmentController {
 	public Object deleteAssesementCourse(HttpServletRequest request,  @PathVariable Integer id) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		manager.removeObject(AssesmentCourse.class, id);
-		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses());
+		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(0));
 		return model;
 	}
 }

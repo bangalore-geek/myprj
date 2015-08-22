@@ -16,7 +16,7 @@
 			More info: h5bp.com/b/378 -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-		<title></title>
+		<title>CorpYogi</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
@@ -30,9 +30,9 @@
 	</head>
 	
 	<body  ng-app="defysope">
-				
+		<#include "top-bar.ftl" />		
 		<#nested/>
-		<div class="">
+		<div class="content">
 </#macro>
 
 <#macro showFooter>

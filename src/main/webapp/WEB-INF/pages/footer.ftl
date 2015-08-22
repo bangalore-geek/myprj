@@ -18,6 +18,8 @@
 <script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.categoryAxisRenderer.js"></script>
 <script src="${rc.getContextPath()}/resources/js/plugin/jqplot/jqplot.canvasAxisLabelRenderer.js"></script>
 <script src="${rc.getContextPath()}/resources/js/plugin/masonry.pkgd.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/angular-wizard.js"></script>
+<script src="${rc.getContextPath()}/resources/js/plugin/lodash.min.js"></script>
 
 	
 	

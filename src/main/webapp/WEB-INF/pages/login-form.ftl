@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign in-Career Point</title>
+    <title>Sign in-CorpYOGI</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -63,7 +63,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand"><span class="first">Career</span> <span class="second">Point</span></a>
+          <a href="#" class="navbar-brand"><span class="first">Corp</span> <span class="second">YOGI</span></a>
         </div>
 	</div><!-- /.container-fluid -->
  </nav>

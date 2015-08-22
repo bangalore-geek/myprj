@@ -12,5 +12,5 @@ public interface AssesmentDAO {
 
 	public List<AssesmentType> getAssesmentType();
 
-	public List<AssesmentCourse> getAssesmentCourses();
+	public List<AssesmentCourse> getAssesmentCourses(int courseId);
 }

@@ -20,6 +20,7 @@ public class AssesmentCourse {
 	@Column(name = "cid")
 	private Integer id;
 	
+	private String name;
 	private String courseNumber;
 	private String courseDescription;
 	private int assesmentMasterId;
@@ -75,5 +76,11 @@ public class AssesmentCourse {
 	}
 	public void setCoustomer(String coustomer) {
 		this.coustomer = coustomer;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

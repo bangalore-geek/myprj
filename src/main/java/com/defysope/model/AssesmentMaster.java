@@ -22,6 +22,7 @@ public class AssesmentMaster {
 	@Column(name = "createdBy")
 	private int createdBy;
 
+	private String name;
 	private String trainingNo;
 	private String description;
 	private String version;
@@ -30,6 +31,7 @@ public class AssesmentMaster {
 	private Date createdDate;
 	private Date modifiedDate;
 	private int orgId;
+	private String status;
 	
 	public Integer getId() {
 		return id;
@@ -90,5 +92,17 @@ public class AssesmentMaster {
 	}
 	public void setOrgId(int orgId) {
 		this.orgId = orgId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
