@@ -95,7 +95,7 @@ color:#333;
 				<tr>
 					<td>Amit Tiwari</td>
 					<td>amit.tiwari1985@gmail.com</td>
-					<td><input type="checkbox" name="attendence"></td>
+					<td><input type="checkbox" name="attendence"></td> 
 					<td><input type="checkbox" name="attendence"></td>
 					<td><input type="checkbox" name="attendence"></td>
 					<td><input type="checkbox" name="attendence"></td>

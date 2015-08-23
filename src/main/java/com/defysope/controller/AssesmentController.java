@@ -28,7 +28,7 @@ import com.defysope.service.PublicManager;
 public class AssesmentController {
 	
 	@Autowired
-	private PublicManager manager; 
+	private PublicManager manager;
 	
 	@Autowired
 	private ApplicationUtils utils;
@@ -75,7 +75,10 @@ public class AssesmentController {
 		User user = utils.getLoggedInUser();
 		assesmentMaster.setOrgId(1);
 		manager.saveObject(assesmentMaster);
+		System.out.println("id >>>>>>>>>>>> "+assesmentMaster.getId());
+		
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("newCourseId", assesmentMaster.getId());
 		model.put("success", true);
 		return model;
 	}

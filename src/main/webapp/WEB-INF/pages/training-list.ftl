@@ -36,7 +36,7 @@
 				<accordion class="accordion" close-others="true">
 					<accordion-group  ng-repeat="group in training.content">
 						<accordion-heading>
-							<span>{{group.name}}</span>
+							<span>{{group.trainingName}}</span>
 							<div class="pull-right">
 								<i class="fa fa-pencil"></i>&nbsp&nbsp
 								<i class="fa fa-play"></i>

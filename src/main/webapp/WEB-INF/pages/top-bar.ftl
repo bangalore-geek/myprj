@@ -20,7 +20,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img src="${rc.getContextPath()}/resources/img/CorpYogiLogo.png" alt="Corp Yogi"></img>
+          <img src="${rc.getContextPath()}/resources/img/CorpYogiLogo.png" alt="Corp Yogi" style="cursor: pointer;"></img>
          </div>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
           <#if user.userName!='oraclestudent1'>
@@ -59,8 +59,8 @@
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?id=0">Manage Training</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/importer">Import from excel</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainingattendance">Training Attendance</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>
 			</ul>
 	</div>
 </#if>

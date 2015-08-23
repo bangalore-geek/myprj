@@ -167,15 +167,20 @@ defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
 
 	$scope.question = {};
 	$scope.yogesh = {};
+	$scope.disablegetQuestion = false;
 	
 	$scope.getQuestion = function($thisQuestion) {
-console.log("comed >>>>>>>>>>>>>>>>>>>");
+		
 		for (var i = 0; i < 5; i++) {
 			$scope.question = $scope.qb[i];
 		    if ($scope.question.flag) {
 		    	$scope.qb[i].flag = false;
 		    	question = $scope.question.que;
+		    	$scope.questionAttempetCount = $scope.questionAttempetCount + 1;
 		    	break;
+		    }
+		    if (i == 4) {
+		    	$scope.disablegetQuestion = true;	
 		    }
 		}
 		if ($thisQuestion) {

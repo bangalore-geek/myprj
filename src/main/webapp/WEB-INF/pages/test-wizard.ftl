@@ -25,13 +25,13 @@
         <div class="col-xs-6">
           <div class="pull-left">
           <label><strong>Course Name&nbsp;</strong></label>
-          <input type="text" name="course" placeholder="__________________________________________">
+          <input type="text" name="course" placeholder="">
           </div>
         </div>
         <div class="col-xs-6">
           <div class="">
           <label><strong>Instructor&nbsp;</strong></label>
-          <input type="text" name="instructor" placeholder="_________________________________________">
+          <input type="text" name="instructor" placeholder="">
           </div>
         </div>
       </div>
@@ -40,19 +40,19 @@
         <div class="col-xs-4">
           <div class="pull-left">
           <label><strong>Class Date&nbsp;</strong></label>
-          <input type="date" name="clsDt" placeholder="_________________________________________">
+          <input type="date" name="clsDt" placeholder="">
            </div>
         </div>
         <div class="col-xs-4">
           <div class="center-block">
           <label><strong>Class ID&nbsp;</strong></label>
-          <input type="number" name="clsId" placeholder="_________________________________________">
+          <input type="number" name="clsId" placeholder="">
           </div>
         </div>
         <div class="col-xs-4">
           <div class="">
           <label><strong>Location&nbsp;</strong></label>
-          <input type="text" name="loc" placeholder="_________________________________________">
+          <input type="text" name="loc" placeholder="">
            </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ maintained.........................................</p>
           <strong>Name*</strong>
         </div>
         <div class="col-xs-6">
-          <input type="text" name="instructor" placeholder="_________________________________________">
+          <input type="text" name="instructor" placeholder="">
         </div>
       </div>
       <div class="row">
@@ -266,7 +266,7 @@ maintained.........................................</p>
           <strong>Company*</strong>
         </div>
         <div class="col-xs-6">
-          <input type="text" name="instructor" placeholder="_________________________________________">
+          <input type="text" name="instructor" placeholder="">
         </div>
       </div>
       <div class="row">
@@ -274,7 +274,7 @@ maintained.........................................</p>
           <strong>E-Mail ID*</strong>
         </div>
         <div class="col-xs-6">
-          <input type="text" name="instructor" placeholder="_________________________________________">
+          <input type="text" name="instructor" placeholder="">
         </div>
       </div>
       <div class="row">
@@ -282,7 +282,7 @@ maintained.........................................</p>
           <strong>Address*</strong>
         </div>
         <div class="col-xs-6">
-          <input type="text" name="instructor" placeholder="_________________________________________">
+          <input type="text" name="instructor" placeholder="">
         </div>
       </div>
       <div class="row">
@@ -290,7 +290,7 @@ maintained.........................................</p>
           <strong>Phone Number*</strong>
         </div>
         <div class="col-xs-6">
-          <input type="text" name="instructor" placeholder="_________________________________________">
+          <input type="text" name="instructor" placeholder="">
         </div>
       </div>
       <br>
@@ -320,8 +320,6 @@ privacy policy.
 				<wz-step title="Trainee Assessment">
 					<div class="row" style="margin-top:50px;margin-left:115px;">
 						<h3>Question</h3>
-						
-						---------{{questionAttempetCount}}--------
 						<div>{{question.que}}</div>
 					</div>
 					<div class="row" style="margin-top:10px;margin-left:115px;">
@@ -331,15 +329,17 @@ privacy policy.
 						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op3"> {{question.op3}}</div>
 						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op4"> {{question.op4}}</div>
 						<div class="row" style="margin-top:10px;margin-left:115px;">
-							<input type="button"  class="btn btn-primary" ng-click="getQuestion(question)" value="Next Question" />
+							<input type="button"  class="btn btn-primary" ng-disabled="disablegetQuestion" ng-click="getQuestion(question)" value="Next Question" />
 							<input type="submit" wz-next value="Submit" class="btn btn-primary" />
 						</div>
 					</div>				
 				</wz-step>
 				<wz-step title="Submit">
-					<div class="row" style="margin-top:100px;margin-left:115px;">
-						Correctk Answer: {{correctkAnswerCount}}
-						Question Attend: {{questionAttempetCount}}
+					<div class="row" style="margin-top:50px;margin-left:115px;">
+						<h3>Summary</h3>
+					</div>
+					<div class="row" style="margin-left:115px;">
+						Correct Answer: {{correctkAnswerCount}}/{{questionAttempetCount}}
 					</div>
 				</wz-step>
 			</wizard>

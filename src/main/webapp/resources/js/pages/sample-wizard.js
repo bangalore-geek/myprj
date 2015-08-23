@@ -48,17 +48,20 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
 	};
 	$scope.viewAssesement();
 	
+	$scope.viewAssesement();
+	
 	$scope.saveAssesement = function($assesement) {
 		$http.post(_context + '/save-assesement',
 				$scope.editAssesement).then(function(response) {
 					$scope.editAssesement = response.data.viewAssesment;
+					$assesement.id = response.data.newCourseId;
+					$scope.assesementList.data.push($assesement);
 		});
 	};
 	$scope.saveAssesementCourse = function($assesementCourse) {
 		$http.post(_context + '/save-assesement-course',
 				$assesementCourse).then(function(response) {
 					$scope.editAssesmentCourses = response.data.viewAssesmentCourse;
-					
 		});
 	};
   

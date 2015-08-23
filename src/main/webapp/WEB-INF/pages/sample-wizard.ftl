@@ -73,6 +73,22 @@
 			<wz-step title="Add Training">
 			<div class="row" style="margin-top:40px;">
 				<form class="form-horizontal"  name="trainingFrm" novalidate>
+				
+					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentMasterId.$invalid && !trainingFrm.assesmentMasterId.$pristine }">
+						<label for="assesmentMasterId" class="col-sm-3 control-label">Course</label>
+						<div class="col-sm-2">
+							<select ng-model="editAssesement.assesmentMasterId" name="assesmentMasterId" class="form-control" required>
+								<option ng-repeat="operator in assesementList.data"
+										value="{{operator.id}}">
+								  {{operator.name}}
+								</option>
+							</select>
+							<p ng-show="courseFrm.assesmentType.$invalid && !courseFrm.assesmentType.$pristine" class="help-block">Course type is required.</p>
+						</div>
+					</div>
+						
+						
+						
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.courseNumber.$invalid && !trainingFrm.courseNumber.$pristine }">
 						<label for="courseNumber" class="col-sm-3 control-label">Training Number</label>
 						<div class="col-sm-5">
@@ -80,7 +96,6 @@
 							<p ng-show="trainingFrm.courseNumber.$invalid && !trainingFrm.courseNumber.$pristine" class="help-block">Training number is required.</p>
 						</div>
 					</div>
-					
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.name.$invalid && !trainingFrm.name.$pristine }">
 						<label for="courseNumber" class="col-sm-3 control-label">Training Name</label>
 						<div class="col-sm-5">
@@ -88,7 +103,6 @@
 							<p ng-show="trainingFrm.name.$invalid && !trainingFrm.name.$pristine" class="help-block">Training name is required.</p>
 						</div>
 					</div>
-					
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.trainername.$invalid && !trainingFrm.trainername.$pristine }">
 						<label for="courseNumber" class="col-sm-3 control-label">Traininer Name</label>
 						<div class="col-sm-5">
@@ -96,7 +110,6 @@
 							<p ng-show="trainingFrm.trainername.$invalid && !trainingFrm.trainername.$pristine" class="help-block">Traininer name is required.</p>
 						</div>
 					</div>
-					
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.coustomer.$invalid && !trainingFrm.coustomer.$pristine }">
 						<label for="courseNumber" class="col-sm-3 control-label">Coustomer Name</label>
 						<div class="col-sm-5">
@@ -104,7 +117,6 @@
 							<p ng-show="trainingFrm.coustomer.$invalid && !trainingFrm.coustomer.$pristine" class="help-block">Coustomer name is required.</p>
 						</div>
 					</div>
-
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.fromDate.$invalid && !trainingFrm.fromDate.$pristine }">
 						<label for="dob" class="col-sm-3 control-label">From Date</label>
 						<div class="col-sm-5">
@@ -149,7 +161,7 @@
 							<p class="input-group">
 								<input type="text" class="form-control" name="assesmentDate"
 									datepicker-popup="dd-MMM-yyyy"
-									ng-model="editAssesmentCourses.assesmentdate" is-open="assesmentopened"
+									ng-model="editAssesmentCourses.assesmentDate" is-open="assesmentopened"
 									datepicker-options="dateOptions"
 									close-text="Close" show-button-bar="false" required/> <span class="input-group-btn">
 									<button type="button" class="btn btn-default"
@@ -161,7 +173,7 @@
 							<p ng-show="trainingFrm.assesmentDate.$invalid && !trainingFrm.assesmentDate.$pristine" class="help-block">Training assesment date is required.</p>
 						</div>
 					</div>
-
+					
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
 						<label for="courseDescription" class="col-sm-3 control-label">Training Description</label>
 						<div class="col-sm-5">
@@ -169,14 +181,7 @@
 							<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
 						</div>
 					</div>
-
-					<div class="form-group">
-					  <label for="active" class="col-sm-3 control-label">Active</label>
-					  <div class="col-sm-5"">
-						  <input type="checkbox" name="active"  checked ng-model="editAssesmentCourses.active">
-					  </div>
-					</div>
-
+				
 				</form>
 				</div>
 				<div class = "text-center">
