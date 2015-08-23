@@ -41,7 +41,6 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AssesmentCourse.class);
 		if (courseId > 0 ) {
 			criteria.add(Restrictions.eq("assesmentMasterId", courseId));
-			
 		}
 		return (List<AssesmentCourse>) criteria.list();
 	}

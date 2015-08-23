@@ -13,4 +13,5 @@ public interface AssesmentService {
 	public List<AssesmentType> getAssesmentType();
 	
 	public List<AssesmentCourse> getAssesmentCourses(int courseId);
+	
 }

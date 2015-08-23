@@ -20,17 +20,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-           <a href="#" class="navbar-brand navbar-left"><span class="first">Corp</span> <span class="second">Yogi</span></a>
+          <img src="${rc.getContextPath()}/resources/img/CorpYogiLogo.png" alt="Corp Yogi"></img>
          </div>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-          <ul class="nav navbar-nav" style="margin-left:103px;">
-            <li><a href="#"><i class="fa fa-home"></i><span> Home</span></a></li>
-            <li><a href="#"><i class="fa fa-lightbulb-o"></i><span> Skill Store</span></a></li>
-            <li><a href="#">Kwick Evaluate</a></li>
-            <li><a href="#"><i class="fa fa-database"></i><span> QB Knox</span></a></li>
-            <li><a href="#">Freelancer</a></li>
-            <li><a href="#">Candidate</a></li>
-          </ul>
+          <#if user.userName!='oraclestudent1'>
+	          <ul class="nav navbar-nav" style="margin-left:103px;">
+	            <li><a href="#"><i class="fa fa-home"></i><span> Home</span></a></li>
+	            <li><a href="#"><i class="fa fa-lightbulb-o"></i><span> Skill Store</span></a></li>
+	            <li><a href="#">KwicValuate</a></li>
+	            <li><a href="#"><i class="fa fa-database"></i><span> QB Knox</span></a></li>
+	            <li><a href="#">Freelancer</a></li>
+	            <li><a href="#">Candidate</a></li>
+	          </ul>
+          </#if>
           
 
 		    <ul class="nav navbar-nav navbar-right">
@@ -49,13 +51,24 @@
 	</div><!-- /.container-fluid -->
  </nav>
  
-<div class="sidebar-nav">
-		<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
-		<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">
-		    	<li><a href="${rc.getContextPath()}/success-login">Dashboard</a></li>
-		    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
-		    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?id=0">Manage Training</a></li>
-		    	<li><a href="${rc.getContextPath()}/corpyogi/kv/importer">Import from excel</a></li>
-		    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>
-		</ul>
-</div>
+ <#if user.userName!='oraclestudent1'>
+	<div class="sidebar-nav">
+			<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
+			<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">
+			    	<li><a href="${rc.getContextPath()}/success-login">Dashboard</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?id=0">Manage Training</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/importer">Import from excel</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainingattendance">Training Attendance</a></li>
+			</ul>
+	</div>
+</#if>
+<#if user.userName=='oraclestudent1'>
+	<div class="sidebar-nav">
+			<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
+			<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/test">Start Test</a></li>
+			</ul>
+	</div>
+</#if>

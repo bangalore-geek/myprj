@@ -1,3 +1,5 @@
+ALTER TABLE tblassesmentcourse ADD  customner character varying(100);
+
 -- assessment
 
 create table tblAssesmentType(

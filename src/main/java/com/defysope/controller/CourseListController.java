@@ -51,8 +51,10 @@ public class CourseListController {
 	@RequestMapping(value = "/sample-wizard", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
 	public ModelAndView loadWizard(HttpServletRequest request) {
-
 		Map<String, Object> model = new HashMap<String, Object>();
+		
+		model.put("user", utils.getLoggedInUser());
+		model.put("menus", navigation.displayMenuList());
 		return new ModelAndView("sample-wizard", model);
 	}
 	

@@ -28,6 +28,8 @@ public class AssesmentCourse {
 	private Date enddate;
 	private Date assesmentDate;
 	private String coustomer;
+	private String trainingName;
+	private String traininerName;
 	
 	public Integer getId() {
 		return id;
@@ -83,4 +85,17 @@ public class AssesmentCourse {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getTrainingName() {
+		return trainingName;
+	}
+	public void setTrainingName(String trainingName) {
+		this.trainingName = trainingName;
+	}
+	public String getTraininerName() {
+		return traininerName;
+	}
+	public void setTraininerName(String traininerName) {
+		this.traininerName = traininerName;
+	}
+	
 }

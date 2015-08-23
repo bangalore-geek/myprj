@@ -48,7 +48,6 @@
 						<div>  Part No : {{group.trainingNo}} </div>
 						<div> Version : {{group.version}} </div>
 						<div> Course Type : {{group.assesmentType}} </div>
-						<div> orgId : {{group.orgId}} </div>
 						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/trainings?id={{group.id}}">Manage Training</a> </div>
 					</accordion-group>
 				</accordion>

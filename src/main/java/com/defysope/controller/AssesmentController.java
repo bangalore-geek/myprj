@@ -1,6 +1,7 @@
 package com.defysope.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
-import com.defysope.model.Education;
 import com.defysope.model.User;
-import com.defysope.model.WorkHistory;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
@@ -52,8 +51,11 @@ public class AssesmentController {
 	@ResponseBody
 	public Object loadAssesement(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("viewAssesmentList", assesmentService.getAssesmentMaster());
-		System.out.println("size >> "+assesmentService.getAssesmentMaster().size());
+		List<AssesmentMaster> assesmentCourses = assesmentService.getAssesmentMaster(); 
+		for (AssesmentMaster am : assesmentCourses) {
+			
+		}
+		model.put("viewAssesmentList",assesmentCourses );
 		return model;
 	}
 	

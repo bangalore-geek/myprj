@@ -3,6 +3,22 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
     return false;
   };
   
+	$scope.startdateopen = function($event) {
+	    $event.preventDefault();
+	    $event.stopPropagation();
+	    $scope.startdateopened = !$scope.startdateopened;
+	  };
+	  $scope.enddateopen = function($event) {
+		  $event.preventDefault();
+		  $event.stopPropagation();
+		  $scope.enddateopened = !$scope.enddateopened;
+	  };
+	  $scope.assesmentopen = function($event) {
+		  $event.preventDefault();
+		  $event.stopPropagation();
+		  $scope.assesmentopened = !$scope.assesmentopened;
+	  };
+  
   $scope.editAssesement = {};
   $scope.editAssesmentCourses = {};
   
@@ -12,11 +28,9 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
 		  courses : $scope.editAssesmentCourses
   };
   
-  
   $scope.assesmentType = {data : {}};
   $scope.assesementList = {data : {}};
-  
-  
+
 	$scope.viewAssesmentType = function() {
 		$http.get(_context + '/load-assesmentType').success(
 				function(response) {
@@ -34,10 +48,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
 	};
 	$scope.viewAssesement();
 	
-	
-	
-	
-	
 	$scope.saveAssesement = function($assesement) {
 		$http.post(_context + '/save-assesement',
 				$scope.editAssesement).then(function(response) {
@@ -46,12 +56,11 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
 	};
 	$scope.saveAssesementCourse = function($assesementCourse) {
 		$http.post(_context + '/save-assesement-course',
-				$scope.editAssesmentCourses).then(function(response) {
+				$assesementCourse).then(function(response) {
 					$scope.editAssesmentCourses = response.data.viewAssesmentCourse;
 					
 		});
 	};
-  
   
     $scope.st="";
     $scope.finished = function() {
