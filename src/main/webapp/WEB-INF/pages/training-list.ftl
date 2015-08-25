@@ -48,6 +48,7 @@
 						<div>  Assessment Date : {{group.assesmentDate | date:'dd-MMM-yyyy'}} </div>
 						<div>  Customer : {{group.coustomer}} </div>
 						<div>  Training Description : {{group.courseDescription}} </div>
+						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/assesment?id={{group.id}}">Manage Assessment</a> </div>
 					</accordion-group>
 				</accordion>
 			</div>

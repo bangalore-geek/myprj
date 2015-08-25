@@ -58,6 +58,7 @@
 			    	<li><a href="${rc.getContextPath()}/success-login">Dashboard</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?id=0">Manage Training</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/assesment">Manage Assessment</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/importer">Import from excel</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainingattendance">Training Attendance</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>

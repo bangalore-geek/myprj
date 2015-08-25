@@ -77,7 +77,7 @@
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentMasterId.$invalid && !trainingFrm.assesmentMasterId.$pristine }">
 						<label for="assesmentMasterId" class="col-sm-3 control-label">Course</label>
 						<div class="col-sm-2">
-							<select ng-model="editAssesement.assesmentMasterId" name="assesmentMasterId" class="form-control" required>
+							<select ng-model="editAssesmentCourses.assesmentMasterId" name="assesmentMasterId" class="form-control" required>
 								<option ng-repeat="operator in assesementList.data"
 										value="{{operator.id}}">
 								  {{operator.name}}
@@ -104,17 +104,17 @@
 						</div>
 					</div>
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.trainername.$invalid && !trainingFrm.trainername.$pristine }">
-						<label for="courseNumber" class="col-sm-3 control-label">Traininer Name</label>
+						<label for="courseNumber" class="col-sm-3 control-label">Trainer Name</label>
 						<div class="col-sm-5">
 							<input class="form-control" name="trainername" ng-model="editAssesmentCourses.traininerName" required/>
 							<p ng-show="trainingFrm.trainername.$invalid && !trainingFrm.trainername.$pristine" class="help-block">Traininer name is required.</p>
 						</div>
 					</div>
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.coustomer.$invalid && !trainingFrm.coustomer.$pristine }">
-						<label for="courseNumber" class="col-sm-3 control-label">Coustomer Name</label>
+						<label for="courseNumber" class="col-sm-3 control-label">Customer Name</label>
 						<div class="col-sm-5">
 							<input class="form-control" name="coustomer" ng-model="editAssesmentCourses.coustomer" required/>
-							<p ng-show="trainingFrm.coustomer.$invalid && !trainingFrm.coustomer.$pristine" class="help-block">Coustomer name is required.</p>
+							<p ng-show="trainingFrm.coustomer.$invalid && !trainingFrm.coustomer.$pristine" class="help-block">Customer Name is required.</p>
 						</div>
 					</div>
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.fromDate.$invalid && !trainingFrm.fromDate.$pristine }">
@@ -156,7 +156,7 @@
 					</div>
 					
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentDate.$invalid && !trainingFrm.assesmentDate.$pristine }">
-						<label for="dob" class="col-sm-3 control-label">Assesment Date</label>
+						<label for="dob" class="col-sm-3 control-label">Assessment Date</label>
 						<div class="col-sm-5">
 							<p class="input-group">
 								<input type="text" class="form-control" name="assesmentDate"
@@ -170,7 +170,7 @@
 									</button>
 								</span>
 							</p>
-							<p ng-show="trainingFrm.assesmentDate.$invalid && !trainingFrm.assesmentDate.$pristine" class="help-block">Training assesment date is required.</p>
+							<p ng-show="trainingFrm.assesmentDate.$invalid && !trainingFrm.assesmentDate.$pristine" class="help-block">Training assessment date is required.</p>
 						</div>
 					</div>
 					
@@ -191,13 +191,43 @@
 			<wz-step title="Upload TRAINEE">
 				<div class="row" style="margin-top:100px;margin-left:115px;">
 					<div class="row">
-						<form class="form-horizontal">
+						<div class="col-md-6">
+							<form class="form-horizontal">
+								<div class="form-group" ng-class="{ 'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
+									<label for="courseDescription" class="col-sm-3 control-label">Name</label>
+									<div class="col-sm-5">
+										<input class="form-control" name="name"/>
+										<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
+									</div>
+								</div>
+											
+								<div class="form-group" ng-class="{ 'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
+									<label for="courseDescription" class="col-sm-3 control-label">Email</label>
+									<div class="col-sm-5">
+										<input class="form-control" name="name"/>
+										<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
+									</div>
+								</div>
+
+								<div class="form-group" ng-class="{'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
+									<label for="courseDescription" class="col-sm-3 control-label">Mobile</label>
+									<div class="col-sm-5">
+										<input class="form-control" name="name"/>
+										<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-1"><b>OR<b>
+						</div>
+						<div class="col-md-5">
 							<div class="form-group">
 								<label for="exampleInputFile">File input</label>
 								<input type="file" id="exampleInputFile">
 							</div>
-						</form>
+						</div>
 					</div>
+					<input type="submit" wz-next="logStep()" value="Save & Add New" class="btn btn-primary"/>
 				</div>
 				<div class = "text-center">
 					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
@@ -210,7 +240,7 @@
 							<h2>Courses</h2>
 							<div>Name = {{assesments.assesment.name}}</div>
 							<div>Training No = {{assesments.assesment.trainingNo}}</div>
-							<div>Assesment Type = {{assesments.assesment.assesmentType}}</div>
+							<div>Assessment Type = {{assesments.assesment.assesmentType}}</div>
 							<div>Description = {{assesments.assesment.description}}</div>
 							<div>version = {{assesments.assesment.version}}</div>
 						</div>
@@ -218,11 +248,12 @@
 						<div>
 							<h2>Training</h2>
 							<div>Course Number = {{assesments.courses.courseNumber}}</div>
-							<div>Assesment = {{assesments.courses.assesmentMasterId}}</div>
+							<div>Assessment = {{assesments.courses.assesmentMasterId}}</div>
 							<div>Course Description = {{assesments.courses.courseDescription}}</div>
-							<div> coustomer = {{assesments.courses.coustomer}}</div>
+							<div>Customer = {{assesments.courses.coustomer}}</div>
 						</div>
 					</form>
+					<input type="submit" value="Finish" class="btn btn-primary" ng-click="ShowFinish()"/>
 				</div>
 			</wz-step>
 		</wizard>

@@ -70,6 +70,11 @@ color:#333;
 					<label>To date</label>
 					<input name="toDate"type="text" id="datepicker1"/>
 				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+						<button class="btn btn-primary">Add</button>
+					</div>
+				</div>
 			</form>
 		</div>
 		<div class="table-responsive">
@@ -120,10 +125,10 @@ color:#333;
 					<td><input type="checkbox" name="attendence"></td>
 				</tr>
 			</table>
+			</div>
 		</div>
-	</div>
-	<div class="col-md-1"></div>
+		<div class="col-md-1"></div>
 </div>
 <@macro.showFooter>
-<script type="text/javascript" src="${rc.getContextPath()}/resources/js/pages/training-attandance.js"></script>
+
 </@macro.showFooter>

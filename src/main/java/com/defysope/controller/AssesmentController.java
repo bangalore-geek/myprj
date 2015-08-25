@@ -105,6 +105,8 @@ public class AssesmentController {
 	@Secured("ROLE_DF_HOME_PAGE")
 	@ResponseBody
 	public Object updateAssesementCourses(HttpServletRequest request, @RequestBody AssesmentCourse assesmentCourse) {
+		
+		System.out.println("assesmentCourse >>>>>>>>"+assesmentCourse.getAssesmentMasterId());
 		manager.saveObject(assesmentCourse);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", true);

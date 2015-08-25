@@ -34,5 +34,15 @@ public class TrainingAttendanceController {
 		model.put("menus", navigation.displayMenuList());
 		return new ModelAndView("training-attendance", model);
 	}
+	
+	@Menu(title = "Training Attendance", url = "/corpyogi/kv/assesment", accessCode = "ROLE_DF_CREATE_ROLE", order = 1, visible = true)
+	@RequestMapping(value = "/corpyogi/kv/assesment", method = RequestMethod.GET)
+	@Secured("ROLE_DF_CREATE_ROLE")
+	public ModelAndView trainingAssesmentFtl(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("user", utils.getLoggedInUser());
+		model.put("menus", navigation.displayMenuList());
+		return new ModelAndView("training-assessment", model);
+	}
 
 }

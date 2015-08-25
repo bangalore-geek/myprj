@@ -31,6 +31,11 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
   $scope.assesmentType = {data : {}};
   $scope.assesementList = {data : {}};
 
+	$scope.ShowFinish = function() {
+		window.location = _context + "/success-login";
+	};
+	
+	
 	$scope.viewAssesmentType = function() {
 		$http.get(_context + '/load-assesmentType').success(
 				function(response) {
