@@ -54,7 +54,7 @@
  <#if user.userName!='oraclestudent1'>
 	<div class="sidebar-nav">
 			<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
-			<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">
+			<ul class="nav nav-list collapse in" id="dashboard-menu" style="height: 246px;" aria-expanded="true">
 			    	<li><a href="${rc.getContextPath()}/success-login">Dashboard</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?id=0">Manage Training</a></li>

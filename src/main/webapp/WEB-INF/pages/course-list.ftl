@@ -36,16 +36,17 @@
 						<accordion-heading>
 							<span>{{group.name}}</span>
 							<div class="pull-right">
-								<i class="fa fa-pencil"></i>&nbsp&nbsp
-								<span ng-if="group.active" ng-click="toggleActive(group)">
-									<i class="fa fa-play"></i>
-								</span>
-								<span ng-if="!group.active" ng-click="toggleActive(group)">
-									<i class="fa fa-pause"></i>
-								</span>
 							</div>
 						</accordion-heading>
-						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.id}}">Edit</a> </div>
+						<div class="pull-right"> 
+							<a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.id}}">Edit</a> 
+							<span ng-if="group.active" ng-click="toggleActive(group)">
+								<i class="fa fa-play"></i>
+							</span>
+							<span ng-if="!group.active" ng-click="toggleActive(group)">
+								<i class="fa fa-pause"></i>
+							</span>
+						</div>
 						<div>  Part No : {{group.trainingNo}} </div>
 						<div> Version : {{group.version}} </div>
 						<div> Course Type : {{group.assesmentType}} </div>

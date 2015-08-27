@@ -41,7 +41,7 @@
 								<i class="fa fa-play"></i>
 							</div>
 						</accordion-heading>
-						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?id={{group.id}}">Edit</a> </div>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.assesmentMasterId}}&editTrainingId={{group.id}}">Edit</a> </div>
 						<div>  Number : {{group.courseNumber}} </div>
 						<div>  Start Date : {{group.startdate | date:'dd-MMM-yyyy'}} </div>
 						<div>  End Date : {{group.enddate | date:'dd-MMM-yyyy'}} </div>
