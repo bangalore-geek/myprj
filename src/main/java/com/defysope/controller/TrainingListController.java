@@ -35,8 +35,7 @@ public class TrainingListController {
 	@Menu(title = "Course List", url = "/corpyogi/kv/trainings", accessCode = "ROLE_DF_CREATE_ROLE", order = 1, visible = true)
 	@RequestMapping(value = "/corpyogi/kv/trainings", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_ROLE")
-	public ModelAndView createRole(HttpServletRequest request,
-			@RequestParam Integer id) {
+	public ModelAndView createRole(HttpServletRequest request, @RequestParam Integer id) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("courseId", id);

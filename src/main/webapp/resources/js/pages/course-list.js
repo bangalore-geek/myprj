@@ -26,7 +26,8 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	
 	
 	$scope.assesmentWizard = function(){
-		window.location = _context + "/sample-wizard";
+		console.log("comed >>>>>>>>>>>>>");
+		window.location = _context + "/sample-wizard?editCourseId=0";
 	};
 	
 	$scope.viewAssesement = function() {

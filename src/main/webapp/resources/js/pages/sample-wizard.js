@@ -3,6 +3,20 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
     return false;
   };
   
+  $scope.trainingListForEditCourse = {};
+  $scope.loadEditCourse = function() {
+	$http.get(_context + '/load-edit-course').then(
+			function(response) {
+				console.log(response);
+				$scope.editCourseId = response.data.editCourseId;
+				console.log('$scope.editCourseId',$scope.editCourseId);
+				$scope.editAssesement = response.data.editCourse;
+				$scope.trainingListForEditCourse = response.data.viewCourseAssesmentList;
+			});
+  };
+  $scope.loadEditCourse();
+ 
+  
 	$scope.startdateopen = function($event) {
 	    $event.preventDefault();
 	    $event.stopPropagation();
@@ -34,7 +48,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http) {
 	$scope.ShowFinish = function() {
 		window.location = _context + "/success-login";
 	};
-	
 	
 	$scope.viewAssesmentType = function() {
 		$http.get(_context + '/load-assesmentType').success(

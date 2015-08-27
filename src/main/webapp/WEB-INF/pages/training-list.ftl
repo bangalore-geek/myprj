@@ -20,15 +20,14 @@
 			   </div>
 			   <div class="col-md-4">
 					<div class="pull-right" style="margin-right: 10px;">
-						<button ng-click="assesmentWizard()"  class="btn btn-primary">Add</button>
+						<button class="btn btn-primary">Add</button>
+						<a class="btn btn-primary"  href="${rc.getContextPath()}/sample-wizard?editCourseId=0&wizardStep=2">Add</a>
 					</div>	
 			   </div>
 			</div>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
-	
-	
 	<div class="row" >
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
@@ -42,6 +41,7 @@
 								<i class="fa fa-play"></i>
 							</div>
 						</accordion-heading>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?id={{group.id}}">Edit</a> </div>
 						<div>  Number : {{group.courseNumber}} </div>
 						<div>  Start Date : {{group.startdate | date:'dd-MMM-yyyy'}} </div>
 						<div>  End Date : {{group.enddate | date:'dd-MMM-yyyy'}} </div>
@@ -55,11 +55,7 @@
 		</div>
 		<div class="col-md-1"></div>
 	</div>
-	
-	
-
 </div>
-
 
 <@macro.showFooter>
 <script type="text/javascript" src="${rc.getContextPath()}/resources/js/pages/training-list.js"></script>

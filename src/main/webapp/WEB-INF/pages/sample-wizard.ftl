@@ -10,7 +10,7 @@
 			<wz-step title="Add Course">
 			
 				<div class="row" style="margin-top:40px;">
-					<form class="form-horizontal" name="courseFrm" novalidate>
+					<form class="form-horizontal" name="courseFrm" novalidate>{{editCourse}}
 						<div class="form-group" ng-class="{ 'has-error' : courseFrm.trainingNo.$invalid && !courseFrm.trainingNo.$pristine }">
 							<label for="trainingNo" class="col-sm-3 control-label">Course No</label>
 							<div class="col-sm-5">
@@ -73,7 +73,6 @@
 			<wz-step title="Add Training">
 			<div class="row" style="margin-top:40px;">
 				<form class="form-horizontal"  name="trainingFrm" novalidate>
-				
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentMasterId.$invalid && !trainingFrm.assesmentMasterId.$pristine }">
 						<label for="assesmentMasterId" class="col-sm-3 control-label">Course</label>
 						<div class="col-sm-2">
@@ -86,8 +85,6 @@
 							<p ng-show="courseFrm.assesmentType.$invalid && !courseFrm.assesmentType.$pristine" class="help-block">Course type is required.</p>
 						</div>
 					</div>
-						
-						
 						
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.courseNumber.$invalid && !trainingFrm.courseNumber.$pristine }">
 						<label for="courseNumber" class="col-sm-3 control-label">Training Number</label>
@@ -183,6 +180,29 @@
 					</div>
 				
 				</form>
+				
+				<div class="row" >
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div  style="padding:10px;" >
+							<accordion class="accordion" close-others="true">
+								<accordion-group  ng-repeat="group in trainingListForEditCourse">
+									<accordion-heading>
+										<span>{{group.trainingName}}</span>
+									</accordion-heading>
+									<div>  Number : {{group.courseNumber}} </div>
+									<div>  Start Date : {{group.startdate | date:'dd-MMM-yyyy'}} </div>
+									<div>  End Date : {{group.enddate | date:'dd-MMM-yyyy'}} </div>
+									<div>  Assessment Date : {{group.assesmentDate | date:'dd-MMM-yyyy'}} </div>
+									<div>  Customer : {{group.coustomer}} </div>
+									<div>  Training Description : {{group.courseDescription}} </div>
+								</accordion-group>
+							</accordion>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+				
 				</div>
 				<div class = "text-center">
 					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary"  ng-disabled="trainingFrm.$invalid" ng-click="saveAssesementCourse(editAssesmentCourses)" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
@@ -229,6 +249,7 @@
 					</div>
 					<input type="submit" wz-next="logStep()" value="Save & Add New" class="btn btn-primary"/>
 				</div>
+				
 				<div class = "text-center">
 					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
 				</div>

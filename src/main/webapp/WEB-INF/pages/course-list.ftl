@@ -20,7 +20,7 @@
 			   </div>
 			   <div class="col-md-4">
 					<div class="pull-right" style="margin-right: 10px;">
-						<button ng-click="assesmentWizard()"  class="btn btn-primary">Add</button>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId=0" class="btn btn-primary">Add</a> </div>
 					</div>	
 			   </div>
 			</div>
@@ -45,6 +45,7 @@
 								</span>
 							</div>
 						</accordion-heading>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.id}}">Edit</a> </div>
 						<div>  Part No : {{group.trainingNo}} </div>
 						<div> Version : {{group.version}} </div>
 						<div> Course Type : {{group.assesmentType}} </div>
