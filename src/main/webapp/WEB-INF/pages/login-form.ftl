@@ -63,7 +63,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand"><span class="first">Corp</span> <span class="second">YOGI</span></a>
+          <img style="cursor: pointer;" alt="Corp Yogi" src="/careerpoint/resources/img/CorpYogiLogo.png">
         </div>
 	</div><!-- /.container-fluid -->
  </nav>

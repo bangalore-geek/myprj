@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
+import com.defysope.model.Trainee;
 import com.defysope.model.User;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
@@ -75,10 +76,19 @@ public class AssesmentController {
 		User user = utils.getLoggedInUser();
 		assesmentMaster.setOrgId(1);
 		manager.saveObject(assesmentMaster);
-		System.out.println("id >>>>>>>>>>>> "+assesmentMaster.getId());
-		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("newCourseId", assesmentMaster.getId());
+		model.put("success", true);
+		return model;
+	}
+	
+	@RequestMapping(value = "/save-assesement-course", method = RequestMethod.POST)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object updateAssesementCourses(HttpServletRequest request, @RequestBody AssesmentCourse assesmentCourse) {
+		manager.saveObject(assesmentCourse);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("newAssesmentId", assesmentCourse.getId());
 		model.put("success", true);
 		return model;
 	}
@@ -101,17 +111,7 @@ public class AssesmentController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/save-assesement-course", method = RequestMethod.POST)
-	@Secured("ROLE_DF_HOME_PAGE")
-	@ResponseBody
-	public Object updateAssesementCourses(HttpServletRequest request, @RequestBody AssesmentCourse assesmentCourse) {
-		
-		System.out.println("assesmentCourse >>>>>>>>"+assesmentCourse.getAssesmentMasterId());
-		manager.saveObject(assesmentCourse);
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("success", true);
-		return model;
-	}
+
 	
 	
 	@RequestMapping(value = "/delete-assesement-course/{id}", method = RequestMethod.DELETE)

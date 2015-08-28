@@ -15,14 +15,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.defysope.model.AssesmentCourse;
+import com.defysope.model.AssesmentMaster;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
+import com.defysope.service.PublicManager;
 import com.defysope.service.impl.Navigation;
 
 @Controller
 public class TrainingListController {
 
+	@Autowired
+	private PublicManager manager; 
+	
 	@Autowired
 	private ApplicationUtils utils;
 
@@ -54,6 +60,22 @@ public class TrainingListController {
 		int courseId = (int) session.getAttribute("courseId");
 		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(courseId));
 		model.put("courseId", courseId);
+		return model;
+	}
+	
+	
+	@RequestMapping(value = "/load-edit-training", method = RequestMethod.GET)
+	@Secured("ROLE_DF_CREATE_ROLE")
+	@ResponseBody
+	public Object trainingEdit(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+		int editTrainingId = (int) session.getAttribute("editTrainingId");
+		model.put("editTrainingId", editTrainingId);
+		if (editTrainingId > 0) {
+			AssesmentCourse assesmentCourse = (AssesmentCourse) manager.getObjectOrNull(AssesmentCourse.class, editTrainingId);
+			model.put("editTraining", assesmentCourse);
+		}
 		return model;
 	}
 }

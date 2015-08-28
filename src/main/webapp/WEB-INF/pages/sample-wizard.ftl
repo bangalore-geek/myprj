@@ -6,11 +6,10 @@
     <h1 class="page-title">Course Add</h1>
 </div><br>
 	<div ng-app="wizDemoApp" ng-controller="WizardCtrl">
-		<wizard on-finish="finished()" current-step="st">
-			<wz-step title="Add Course">
-			
+		<wizard on-finish="finished()" current-step="curr">
+			<wz-step  title="Add Course">
 				<div class="row" style="margin-top:40px;">
-					<form class="form-horizontal" name="courseFrm" novalidate>{{editCourse}}
+					<form class="form-horizontal" name="courseFrm" novalidate>{{editAssesement}}
 						<div class="form-group" ng-class="{ 'has-error' : courseFrm.trainingNo.$invalid && !courseFrm.trainingNo.$pristine }">
 							<label for="trainingNo" class="col-sm-3 control-label">Course No</label>
 							<div class="col-sm-5">
@@ -67,23 +66,17 @@
 					</form>
 				</div>
 				<div class="text-center">
-					<input type="submit" wz-next value="Continue" class="btn btn-primary"  ng-disabled="courseFrm.$invalid" ng-click="saveAssesement(editAssesement)" />
+					<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="courseSaveSuccess" ng-click="saveAssesement(editAssesement)" />
+					<div  ng-show="courseSaveSuccess">Course Saved Successfully</div>
+					<input type="submit" wz-next value="Continue" class="btn btn-primary"  ng-disabled="!courseSaveSuccess" />
 				</div>
 			</wz-step>
 			<wz-step title="Add Training">
 			<div class="row" style="margin-top:40px;">
 				<form class="form-horizontal"  name="trainingFrm" novalidate>
 					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentMasterId.$invalid && !trainingFrm.assesmentMasterId.$pristine }">
-						<label for="assesmentMasterId" class="col-sm-3 control-label">Course</label>
-						<div class="col-sm-2">
-							<select ng-model="editAssesmentCourses.assesmentMasterId" name="assesmentMasterId" class="form-control" required>
-								<option ng-repeat="operator in assesementList.data"
-										value="{{operator.id}}">
-								  {{operator.name}}
-								</option>
-							</select>
-							<p ng-show="courseFrm.assesmentType.$invalid && !courseFrm.assesmentType.$pristine" class="help-block">Course type is required.</p>
-						</div>
+						<label for="assesmentMasterId" class="col-sm-3 control-label">Course</label>						
+						<div>Add Training for "{{newAddedCourse.name}}"</div>
 					</div>
 						
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.courseNumber.$invalid && !trainingFrm.courseNumber.$pristine }">
@@ -205,7 +198,9 @@
 				
 				</div>
 				<div class = "text-center">
-					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary"  ng-disabled="trainingFrm.$invalid" ng-click="saveAssesementCourse(editAssesmentCourses)" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
+				<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="trainingSaveSuccess" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
+				<div  ng-show="trainingSaveSuccess">Course Saved Successfully</div>
+					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary"  ng-disabled="!trainingSaveSuccess"/>
 				</div>
 			</wz-step>
 			<wz-step title="Upload TRAINEE">
@@ -213,27 +208,26 @@
 					<div class="row">
 						<div class="col-md-6">
 							<form class="form-horizontal">
-								<div class="form-group" ng-class="{ 'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
-									<label for="courseDescription" class="col-sm-3 control-label">Name</label>
+								<div class="form-group">courseid >> =={{editCourseId}}===== trainongid >>> {{newAssesmentAddedId}}===
+									<label for="name" class="col-sm-3 control-label">Name</label>
 									<div class="col-sm-5">
-										<input class="form-control" name="name"/>
-										<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
-									</div>
-								</div>
-											
-								<div class="form-group" ng-class="{ 'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
-									<label for="courseDescription" class="col-sm-3 control-label">Email</label>
-									<div class="col-sm-5">
-										<input class="form-control" name="name"/>
-										<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
+										<input class="form-control" ng-model="trainee.name" name="name" />
 									</div>
 								</div>
 
-								<div class="form-group" ng-class="{'has-error' : trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine }">
-									<label for="courseDescription" class="col-sm-3 control-label">Mobile</label>
+
+											
+								<div class="form-group">
+									<label for="email" class="col-sm-3 control-label">Email</label>
 									<div class="col-sm-5">
-										<input class="form-control" name="name"/>
-										<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
+										<input class="form-control" ng-model="trainee.email" name="email"/>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="mobile" class="col-sm-3 control-label">Mobile</label>
+									<div class="col-sm-5">
+										<input class="form-control" ng-model="trainee.phone" name="phone"/>
 									</div>
 								</div>
 							</form>
@@ -247,11 +241,11 @@
 							</div>
 						</div>
 					</div>
-					<input type="submit" wz-next="logStep()" value="Save & Add New" class="btn btn-primary"/>
+					<input type="submit" wz-next="logStep()" ng-click="saveTrainee(trainee)" value="Save & Add New" class="btn btn-primary"/>
 				</div>
 				
 				<div class = "text-center">
-					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
+					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary"/>
 				</div>
 			</wz-step>
 			<wz-step title="Summary">

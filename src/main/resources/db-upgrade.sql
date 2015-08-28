@@ -1,6 +1,19 @@
 ALTER TABLE tblassesmentcourse ADD  customner character varying(100);
 
 -- assessment
+create table tblTrainee(
+cid serial primary key,
+assesmentMasterId integer REFERENCES tblAssesmentMaster (cid),
+assesmentMasterTrainingId integer REFERENCES tblAssesmentCourse (cid),
+name varchar(100),
+email varchar(100),
+phone varchar(100),
+password varchar(100),
+startDate timestamp without time zone,
+endDate timestamp without time zone,
+isExpired boolean default false
+)
+
 
 create table tblAssesmentType(
   cid serial primary key,

@@ -20,7 +20,7 @@
 			   </div>
 			   <div class="col-md-4">
 					<div class="pull-right" style="margin-right: 10px;">
-						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId=0" class="btn btn-primary">Add</a> </div>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId=0&editTrainingId=0" class="btn btn-primary">Add</a> </div>
 					</div>	
 			   </div>
 			</div>
@@ -39,7 +39,7 @@
 							</div>
 						</accordion-heading>
 						<div class="pull-right"> 
-							<a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.id}}">Edit</a> 
+							<a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.id}}&editTrainingId=0">Edit</a> 
 							<span ng-if="group.active" ng-click="toggleActive(group)">
 								<i class="fa fa-play"></i>
 							</span>

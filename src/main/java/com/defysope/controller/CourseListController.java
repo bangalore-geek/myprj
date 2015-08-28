@@ -56,12 +56,16 @@ public class CourseListController {
 	@Menu(title = "Course Wizard", url = "/sample-wizard", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
 	@RequestMapping(value = "/sample-wizard", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
-	public ModelAndView loadWizard(HttpServletRequest request, @RequestParam Integer editCourseId) {
+	public ModelAndView loadWizard(HttpServletRequest request, @RequestParam Integer editCourseId, @RequestParam Integer editTrainingId) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		model.put("editCourseId", editCourseId);
+		model.put("editTrainingId", editTrainingId);
+		
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("editCourseId", editCourseId);
+		session.setAttribute("editTrainingId", editTrainingId);
 		
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
@@ -94,12 +98,9 @@ public class CourseListController {
 		
 		if (editCourseId > 0) {
 			AssesmentMaster assesmentMaster = (AssesmentMaster) manager.getObjectOrNull(AssesmentMaster.class, editCourseId);
-			System.out.println("name >> "+assesmentMaster.getName());
 			model.put("editCourse", assesmentMaster);
 			model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(editCourseId));
 		}
-		
-		
 		return model;
 	}
 

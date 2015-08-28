@@ -74,7 +74,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a href="#" class="navbar-brand"><span class="first">Corp</span> <span class="second">YOGI</span></a>
+	          <img style="cursor: pointer;" alt="Corp Yogi" src="/careerpoint/resources/img/CorpYogiLogo.png">
 	        </div>
 	        <a class="btn btn-default navbar-btn pull-right" type="button" href="${rc.getContextPath()}/user-login" style="margin-left:10px;">Freelancer/Candidate Login</a>
 	        <a class="btn btn-default navbar-btn pull-right" type="button" href="${rc.getContextPath()}/user-login">Corporate Login</a>
