@@ -76,7 +76,6 @@ public class CourseListController {
 	@Secured("ROLE_DF_HOME_PAGE")
 	@ResponseBody
 	public Object updateData(HttpServletRequest request, @RequestBody AssesmentMaster assesmentMaster) {
-		System.out.println("comed >>>>>>>>>>>");
 		boolean active = assesmentMaster.isActive();
 		assesmentMaster.setActive(!active);
 		
@@ -94,7 +93,6 @@ public class CourseListController {
 		HttpSession session = request.getSession();
 		int editCourseId = (int) session.getAttribute("editCourseId");
 		model.put("editCourseId", editCourseId);
-		System.out.println("editCourseId >>>>>>>>>> "+editCourseId);
 		
 		if (editCourseId > 0) {
 			AssesmentMaster assesmentMaster = (AssesmentMaster) manager.getObjectOrNull(AssesmentMaster.class, editCourseId);

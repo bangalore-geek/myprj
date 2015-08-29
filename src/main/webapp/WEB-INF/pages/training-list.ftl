@@ -11,7 +11,7 @@
 		<div class="col-md-10">
 			<div class="row" style="padding:10px;">
 				<div class="col-md-8">
-					<div class="form-group">
+					<div class="form-group" ng-show="training.content.length > 0">
 					 <div class="input-group">
 					  <span class="input-group-addon">Search</span>
 					  <input type="text" class="form-control">
@@ -19,8 +19,8 @@
 				   </div>	
 			   </div>
 			   <div class="col-md-4">
-					<div class="pull-right" style="margin-right: 10px;">
-						<a class="btn btn-primary"  href="${rc.getContextPath()}/sample-wizard?editCourseId=0&editTrainingId=2">Add</a>
+					<div class="pull-right" style="margin-right: 10px;" ng-hide="courseId==0">
+						<a class="btn btn-primary"  href="${rc.getContextPath()}/sample-wizard?editCourseId=${courseId}&editTrainingId=0">Add</a>
 					</div>	
 			   </div>
 			</div>
@@ -50,6 +50,10 @@
 						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/assesment?id={{group.id}}">Manage Assessment</a> </div>
 					</accordion-group>
 				</accordion>
+				
+				<div class="alert alert-info" role="alert"  ng-show="training.content.length == 0">
+					No Training found !!
+				</div>
 			</div>
 		</div>
 		<div class="col-md-1"></div>

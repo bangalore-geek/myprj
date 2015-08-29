@@ -70,9 +70,11 @@ public class TrainingListController {
 	public Object trainingEdit(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
+		model.put("courseId", session.getAttribute("courseId"));
+		
 		int editTrainingId = (int) session.getAttribute("editTrainingId");
-		model.put("editTrainingId", editTrainingId);
 		if (editTrainingId > 0) {
+			model.put("editTrainingId", editTrainingId);
 			AssesmentCourse assesmentCourse = (AssesmentCourse) manager.getObjectOrNull(AssesmentCourse.class, editTrainingId);
 			model.put("editTraining", assesmentCourse);
 		}

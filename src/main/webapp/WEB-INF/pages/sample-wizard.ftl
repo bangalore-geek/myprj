@@ -67,7 +67,7 @@
 				</div>
 				<div class="text-center">
 					<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="courseSaveSuccess || courseFrm.$invalid" ng-click="saveAssesement(editAssesement)" />
-					<input type="submit" wz-next value="Continue" class="btn btn-primary"  ng-disabled="!courseSaveSuccess" />
+					<input type="submit" wz-next value="Continue" class="btn btn-primary"  ng-disabled="courseFrm.$invalid" />
 				</div>
 			</wz-step>
 			<wz-step title="Add Training">
@@ -169,31 +169,7 @@
 							<p ng-show="trainingFrm.courseDescription.$invalid && !trainingFrm.courseDescription.$pristine" class="help-block">Training description is required.</p>
 						</div>
 					</div>
-				
 				</form>
-				
-				<div class="row" >
-					<div class="col-md-1"></div>
-					<div class="col-md-10">
-						<div  style="padding:10px;" >
-							<accordion class="accordion" close-others="true">
-								<accordion-group  ng-repeat="group in trainingListForEditCourse">
-									<accordion-heading>
-										<span>{{group.trainingName}}</span>
-									</accordion-heading>
-									<div>  Number : {{group.courseNumber}} </div>
-									<div>  Start Date : {{group.startdate | date:'dd-MMM-yyyy'}} </div>
-									<div>  End Date : {{group.enddate | date:'dd-MMM-yyyy'}} </div>
-									<div>  Assessment Date : {{group.assesmentDate | date:'dd-MMM-yyyy'}} </div>
-									<div>  Customer : {{group.coustomer}} </div>
-									<div>  Training Description : {{group.courseDescription}} </div>
-								</accordion-group>
-							</accordion>
-						</div>
-					</div>
-					<div class="col-md-1"></div>
-				</div>
-				
 				</div>
 				<div class = "text-center">
 					<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="trainingSaveSuccess" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
@@ -205,7 +181,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<form class="form-horizontal">
-								<div class="form-group">courseid >> =={{editCourseId}}===== trainongid >>> {{newAssesmentAddedId}}===
+								<div class="form-group">
 									<label for="name" class="col-sm-3 control-label">Name</label>
 									<div class="col-sm-5">
 										<input class="form-control" ng-model="trainee.name" name="name" />
@@ -254,7 +230,7 @@
 							<tr ng-repeat="trainee in traineeList">
 								<td>{{trainee.name}}</td>
 								<td>{{trainee.email}}</td>
-								<td>{{trainee.email}}</td>
+								<td>{{trainee.phone}}</td>
 							</tr>
 							
 						</table>					
@@ -268,20 +244,12 @@
 				<div class="row" style="margin-top:100px;margin-left:115px;">
 					<form class="form-horizontal">
 						<div>
-							<h2>Courses</h2>
-							<div>Name = {{assesments.assesment.name}}</div>
-							<div>Training No = {{assesments.assesment.trainingNo}}</div>
-							<div>Assessment Type = {{assesments.assesment.assesmentType}}</div>
-							<div>Description = {{assesments.assesment.description}}</div>
-							<div>version = {{assesments.assesment.version}}</div>
-						</div>
-						
-						<div>
-							<h2>Training</h2>
-							<div>Course Number = {{assesments.courses.courseNumber}}</div>
-							<div>Assessment = {{assesments.courses.assesmentMasterId}}</div>
-							<div>Course Description = {{assesments.courses.courseDescription}}</div>
-							<div>Customer = {{assesments.courses.coustomer}}</div>
+							<h2>Course</h2>
+							<div>Name = {{summary.courses.name}}</div>
+							<div>Training No = {{summary.courses.trainingNo}}</div>
+							<div>Assessment Type = {{summary.courses.assesmentType}}</div>
+							<div>Description = {{summary.courses.description}}</div>
+							<div>version = {{summary.courses.version}}</div>
 						</div>
 					</form>
 					<input type="submit" value="Finish" class="btn btn-primary" ng-click="ShowFinish()"/>

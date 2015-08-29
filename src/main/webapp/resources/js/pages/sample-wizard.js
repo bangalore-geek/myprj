@@ -3,6 +3,13 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
     return false;
   };
   
+  
+  $scope.summary = {
+		  courses : {},
+		  training: {}
+  };
+  
+  
   $timeout(function(){
 	  $scope.curr = 'Add Course'; 
 	 },100);
@@ -59,6 +66,10 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 				$thisTrainee).then(function(response) {
 					toastr.success('Trainee saved successfully.');
 					$scope.traineeList = response.data.traineeList;
+					$scope.trainee.name = "";
+					$scope.trainee.email = "";
+					$scope.trainee.phone = "";
+					$scope.trainee.assesmentMasterTrainingId=$scope.newAssesmentAddedId;
 					
 		});
 	};
@@ -82,6 +93,7 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 			$assesement.id = response.data.newCourseId;
 			$scope.newAddedCourse = $assesement;
 			$scope.courseSaveSuccess = true;
+			$scope.summary.courses = $assesement;
 			toastr.success('Course saved successfully.');
 		});
 	};
