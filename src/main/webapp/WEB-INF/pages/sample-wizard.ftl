@@ -9,7 +9,7 @@
 		<wizard on-finish="finished()" current-step="curr">
 			<wz-step  title="Add Course">
 				<div class="row" style="margin-top:40px;">
-					<form class="form-horizontal" name="courseFrm" novalidate>{{editAssesement}}
+					<form class="form-horizontal" name="courseFrm" novalidate>
 						<div class="form-group" ng-class="{ 'has-error' : courseFrm.trainingNo.$invalid && !courseFrm.trainingNo.$pristine }">
 							<label for="trainingNo" class="col-sm-3 control-label">Course No</label>
 							<div class="col-sm-5">
@@ -66,17 +66,15 @@
 					</form>
 				</div>
 				<div class="text-center">
-					<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="courseSaveSuccess" ng-click="saveAssesement(editAssesement)" />
-					<div  ng-show="courseSaveSuccess">Course Saved Successfully</div>
+					<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="courseSaveSuccess || courseFrm.$invalid" ng-click="saveAssesement(editAssesement)" />
 					<input type="submit" wz-next value="Continue" class="btn btn-primary"  ng-disabled="!courseSaveSuccess" />
 				</div>
 			</wz-step>
 			<wz-step title="Add Training">
 			<div class="row" style="margin-top:40px;">
 				<form class="form-horizontal"  name="trainingFrm" novalidate>
-					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentMasterId.$invalid && !trainingFrm.assesmentMasterId.$pristine }">
-						<label for="assesmentMasterId" class="col-sm-3 control-label">Course</label>						
-						<div>Add Training for "{{newAddedCourse.name}}"</div>
+					<div class="form-group" ng-class="{ 'has-error' : trainingFrm.assesmentMasterId.$invalid && !trainingFrm.assesmentMasterId.$pristine }">						
+						<div class="text-center" ng-show="newAddedCourse.name != null"><h2>Add Training for "{{newAddedCourse.name}}"</h2></div>
 					</div>
 						
 					<div class="form-group"  ng-class="{ 'has-error' : trainingFrm.courseNumber.$invalid && !trainingFrm.courseNumber.$pristine }">
@@ -198,8 +196,7 @@
 				
 				</div>
 				<div class = "text-center">
-				<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="trainingSaveSuccess" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
-				<div  ng-show="trainingSaveSuccess">Course Saved Successfully</div>
+					<input type="submit" value="Save" class="btn btn-primary"  ng-disabled="trainingSaveSuccess" ng-click="saveAssesementCourse(editAssesmentCourses)"/>
 					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary"  ng-disabled="!trainingSaveSuccess"/>
 				</div>
 			</wz-step>
@@ -214,9 +211,6 @@
 										<input class="form-control" ng-model="trainee.name" name="name" />
 									</div>
 								</div>
-
-
-											
 								<div class="form-group">
 									<label for="email" class="col-sm-3 control-label">Email</label>
 									<div class="col-sm-5">
@@ -230,7 +224,7 @@
 										<input class="form-control" ng-model="trainee.phone" name="phone"/>
 									</div>
 								</div>
-							</form>
+							</form>{{traineeList.newList.data}}
 						</div>
 						<div class="col-md-1"><b>OR<b>
 						</div>
@@ -241,12 +235,34 @@
 							</div>
 						</div>
 					</div>
-					<input type="submit" wz-next="logStep()" ng-click="saveTrainee(trainee)" value="Save & Add New" class="btn btn-primary"/>
 				</div>
-				
 				<div class = "text-center">
+					<input type="submit" ng-click="saveTrainee(trainee)" value="Save & Add New" class="btn btn-primary"/>
 					<input type="submit" wz-next="logStep()" value="Continue" class="btn btn-primary"/>
+					<input type="checkbox" ng-model="obj.showTrainee" ng-change="loadTrainee()"/>Show Trainee
+				</div><br>
+				
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<table class="table table-striped table-bordered" ng-show="obj.showTrainee">
+							<tr>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+							</tr>
+							<tr ng-repeat="trainee in traineeList">
+								<td>{{trainee.name}}</td>
+								<td>{{trainee.email}}</td>
+								<td>{{trainee.email}}</td>
+							</tr>
+							
+						</table>					
+					</div>
+					<div class="col-md-1"></div>
 				</div>
+
+				
 			</wz-step>
 			<wz-step title="Summary">
 				<div class="row" style="margin-top:100px;margin-left:115px;">
@@ -277,3 +293,5 @@
 <@macro.showFooter>
 <script type="text/javascript" src="${rc.getContextPath()}/resources/js/pages/sample-wizard.js"></script>
 </@macro.showFooter>
+
+

@@ -23,7 +23,7 @@
           <img src="${rc.getContextPath()}/resources/img/CorpYogiLogo.png" alt="Corp Yogi" style="cursor: pointer;"></img>
          </div>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-          <#if user.userName!='oraclestudent1'>
+          <#if user.userType?string != '2'>
 	          <ul class="nav navbar-nav" style="margin-left:103px;">
 	            <li><a href="#"><i class="fa fa-home"></i><span> Home</span></a></li>
 	            <li><a href="#"><i class="fa fa-lightbulb-o"></i><span> Skill Store</span></a></li>
@@ -51,7 +51,7 @@
 	</div><!-- /.container-fluid -->
  </nav>
  
- <#if user.userName!='oraclestudent1'>
+ <#if user.userType?string != '2'>
 	<div class="sidebar-nav">
 			<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
 			<ul class="nav nav-list collapse in" id="dashboard-menu" style="height: 246px;" aria-expanded="true">
@@ -65,7 +65,7 @@
 			</ul>
 	</div>
 </#if>
-<#if user.userName=='oraclestudent1'>
+<#if user.userType?string =='2'>
 	<div class="sidebar-nav">
 			<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
 			<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">

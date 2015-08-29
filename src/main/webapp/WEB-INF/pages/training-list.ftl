@@ -20,7 +20,6 @@
 			   </div>
 			   <div class="col-md-4">
 					<div class="pull-right" style="margin-right: 10px;">
-						<button class="btn btn-primary">Add</button>
 						<a class="btn btn-primary"  href="${rc.getContextPath()}/sample-wizard?editCourseId=0&editTrainingId=2">Add</a>
 					</div>	
 			   </div>

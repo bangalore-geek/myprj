@@ -10,6 +10,7 @@ import com.defysope.dao.AssesmentDAO;
 import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
 import com.defysope.model.AssesmentType;
+import com.defysope.model.Trainee;
 import com.defysope.service.AssesmentService;
 
 @Service
@@ -32,6 +33,11 @@ public class AssesmentServiceImpl implements AssesmentService {
 	@Override
 	public List<AssesmentCourse> getAssesmentCourses(int courseId) {
 		return assesmentDAO.getAssesmentCourses(courseId);
+	}
+
+	@Override
+	public List<Trainee> getTraineeList(int trainingId) {
+		return assesmentDAO.getTraineeList(trainingId);
 	}
 
 }

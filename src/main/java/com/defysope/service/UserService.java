@@ -26,4 +26,6 @@ public interface UserService {
 	
 	public List<University> getUniversity();
 	
+	public User saveUserInfo(User user);
+	
 }

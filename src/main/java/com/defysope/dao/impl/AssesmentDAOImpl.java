@@ -13,6 +13,7 @@ import com.defysope.dao.AssesmentDAO;
 import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
 import com.defysope.model.AssesmentType;
+import com.defysope.model.Trainee;
 
 @Repository
 public class AssesmentDAOImpl implements AssesmentDAO { 
@@ -43,5 +44,14 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 			criteria.add(Restrictions.eq("assesmentMasterId", courseId));
 		}
 		return (List<AssesmentCourse>) criteria.list();
+	}
+
+	@Override
+	public List<Trainee> getTraineeList(int trainingId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Trainee.class);
+		if (trainingId > 0 ) {
+			criteria.add(Restrictions.eq("assesmentMasterTrainingId", trainingId));
+		} 
+		return (List<Trainee>) criteria.list();
 	}
 }

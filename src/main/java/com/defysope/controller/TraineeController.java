@@ -27,21 +27,4 @@ public class TraineeController {
 	@Autowired
 	private ApplicationUtils utils;
 
-
-	@RequestMapping(value = "/save-trainee", method = RequestMethod.POST)
-	@Secured("ROLE_DF_HOME_PAGE")
-	@ResponseBody
-	public Object updateAssesement(HttpServletRequest request,
-			@RequestBody Trainee trainee) {
-		System.out.println("comec>>>>>>> ");
-		User user = utils.getLoggedInUser();
-		manager.saveObject(trainee);
-
-		Map<String, Object> model = new HashMap<String, Object>();
-		/*
-		 * model.put("newCourseId", assesmentMaster.getId());
-		 * model.put("success", true);
-		 */
-		return model;
-	}
 }

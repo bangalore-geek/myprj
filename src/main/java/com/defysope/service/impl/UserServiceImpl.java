@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
 	public List<University> getUniversity() {
 		return userDAO.getUniversity(); 
 	}
+	
+	@Override
+    public User saveUserInfo(User user) {
+        return userDAO.saveUserInfo(user);
+    }
 }

@@ -8,9 +8,9 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	};	
 	
 	
-	
-	
-	
+	$scope.gotoEdit = function(group){
+		window.location = _context + "/sample-wizard?editCourseId="+group.id+"&editTrainingId=0";
+	};
 	
 	$scope.toggleActive = function($course) {
 		console.log($course);

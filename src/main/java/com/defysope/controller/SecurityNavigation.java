@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.defysope.model.User;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.impl.Navigation;
 
@@ -36,9 +37,10 @@ public class SecurityNavigation {
 	@RequestMapping(value = "/success-login", method = RequestMethod.GET)
 	public ModelAndView successLogin() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("user", utils.getLoggedInUser());
+		User loggedInUser = utils.getLoggedInUser();
+		model.put("user", loggedInUser);
 		model.put("menus", navigation.displayMenuList());
-		return new ModelAndView("home", model);
+		return new ModelAndView(loggedInUser.getUserType()==2?"test-wizard":"home", model);
 	}
 
 	@RequestMapping(value = "/access-denied", method = RequestMethod.GET)

@@ -11,10 +11,10 @@
 		<div class="col-md-10">
 			<div class="row" style="padding:10px;">
 				<div class="col-md-8">
-					<div class="form-group">
+					<div class="form-group"  ng-show="courses.content.length > 0">
 					 <div class="input-group">
 					  <span class="input-group-addon">Search</span>
-					  <input type="text" class="form-control">
+					  <input type="text" class="form-control search-query" ng-model="courses.search">
 					</div>
 				   </div>	
 			   </div>
@@ -31,15 +31,15 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div  style="padding:10px;">
-				<accordion class="accordion" close-others="true">
-					<accordion-group  ng-repeat="group in courses.content">
+				<accordion class="accordion" close-others="true" ng-show="courses.content.length > 0">
+					<accordion-group  ng-repeat="group in courses.content | filter:courses.search | orderBy:'name'">
 						<accordion-heading>
 							<span>{{group.name}}</span>
-							<div class="pull-right">
-							</div>
-						</accordion-heading>
-						<div class="pull-right"> 
-							<a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.id}}&editTrainingId=0">Edit</a> 
+							<div class="pull-right"> 
+							<span ng-click="gotoEdit(group)">
+								<i class="fa fa-pencil"></i>
+							</span>
+							&nbsp;&nbsp;&nbsp;
 							<span ng-if="group.active" ng-click="toggleActive(group)">
 								<i class="fa fa-play"></i>
 							</span>
@@ -47,12 +47,19 @@
 								<i class="fa fa-pause"></i>
 							</span>
 						</div>
+						</accordion-heading>
 						<div>  Part No : {{group.trainingNo}} </div>
 						<div> Version : {{group.version}} </div>
 						<div> Course Type : {{group.assesmentType}} </div>
 						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/trainings?id={{group.id}}">Manage Training</a> </div>
 					</accordion-group>
 				</accordion>
+				
+				
+				<div class="alert alert-info" role="alert"  ng-show="courses.content.length == 0">
+					No course found !!
+				</div>
+				
 			</div>
 		</div>
 		<div class="col-md-1"></div>

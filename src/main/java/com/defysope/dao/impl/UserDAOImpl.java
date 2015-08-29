@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.UserDAO;
@@ -25,6 +26,9 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	private Session openSession() {
 		return sessionFactory.getCurrentSession();
@@ -83,4 +87,11 @@ public class UserDAOImpl implements UserDAO {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(University.class);
 		return (List<University>) criteria.list();
 	}
+	
+	
+	public User saveUserInfo(User user) {
+        sessionFactory.getCurrentSession().flush();
+        jdbcTemplate.execute("insert into tbl_user_roles(userid,roleid) values("+user.getId()+",(select cid from tblrole where name ='student'))");
+        return user;
+    }
 }

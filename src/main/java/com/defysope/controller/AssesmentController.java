@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,6 +25,7 @@ import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
 import com.defysope.service.PublicManager;
+import com.defysope.service.UserService;
 
 @Controller
 public class AssesmentController {
@@ -36,6 +38,9 @@ public class AssesmentController {
 	
 	@Autowired
 	private AssesmentService assesmentService;
+	
+	@Autowired
+	private UserService userService;
 	
 	// displaying the list of assessment
 	@Menu(title = "Assesment List", url = "/assesment-list", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
@@ -111,9 +116,6 @@ public class AssesmentController {
 		return model;
 	}
 	
-
-	
-	
 	@RequestMapping(value = "/delete-assesement-course/{id}", method = RequestMethod.DELETE)
 	@Secured("ROLE_DF_HOME_PAGE")
 	@ResponseBody
@@ -121,6 +123,48 @@ public class AssesmentController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		manager.removeObject(AssesmentCourse.class, id);
 		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(0));
+		return model;
+	}
+	
+	@RequestMapping(value = "/save-trainee", method = RequestMethod.POST)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object updateAssesement(HttpServletRequest request, @RequestBody Trainee trainee) {
+		// loading training
+		AssesmentCourse assesmentCourse = (AssesmentCourse) manager.getObjectOrNull(AssesmentCourse.class, trainee.getAssesmentMasterTrainingId());
+		trainee.setAssesmentMasterId(assesmentCourse.getAssesmentMasterId());
+		
+		trainee.setStartDate(assesmentCourse.getStartdate());
+		trainee.setEndDate(assesmentCourse.getEnddate());
+		trainee.setPassword(utils.encryptPassword("sa"));
+		
+		User user = utils.getLoggedInUser();
+		manager.saveObject(trainee);
+		
+		
+		User newUser = new User();
+		newUser.setUserName(trainee.getEmail());
+		newUser.setPassword(utils.encryptPassword("sa"));
+		newUser.setUserType(2);
+		manager.saveObject(newUser);
+		
+		userService.saveUserInfo(newUser);
+		
+		// loading trainee list for particular training
+		List<Trainee> traineeList = assesmentService.getTraineeList(trainee.getAssesmentMasterTrainingId());
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("traineeList", traineeList);
+	
+		return model;
+	}
+	
+	@RequestMapping(value = "/load-training", method = RequestMethod.GET)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object loadTrainee(HttpServletRequest request, @RequestParam int trainingId) {
+		List<Trainee> traineeList = assesmentService.getTraineeList(trainingId);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("traineeList", traineeList);
 		return model;
 	}
 }

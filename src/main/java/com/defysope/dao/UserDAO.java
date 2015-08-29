@@ -25,5 +25,7 @@ public interface UserDAO {
 	public List<UserReferences> getReferencesDetails(int userId);
 
 	public List<University> getUniversity();
+	
+	public User saveUserInfo(User user);
 
 }
