@@ -1,6 +1,7 @@
 package com.defysope.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,16 @@ public class AssesmentServiceImpl implements AssesmentService {
 	@Override
 	public List<Trainee> getTraineeList(int trainingId) {
 		return assesmentDAO.getTraineeList(trainingId);
+	}
+
+	@Override
+	public List<Map<String, Object>> getQuestion() {
+		return assesmentDAO.getQuestion();
+	}
+
+	@Override
+	public List<AssesmentCourse> getAssesmentForOrganization(int orgId) {
+		return assesmentDAO.getAssesmentForOrganization(orgId);
 	}
 
 }

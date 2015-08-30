@@ -167,4 +167,19 @@ public class AssesmentController {
 		model.put("traineeList", traineeList);
 		return model;
 	}
+	
+	
+	
+	@RequestMapping(value = "/load-question", method = RequestMethod.GET)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object loadQuestion(HttpServletRequest request) {
+		// http://stackoverflow.com/questions/8674718/best-way-to-select-random-rows-postgresql -- sample link
+		List<Map<String, Object>> questionList = assesmentService.getQuestion();
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("questionList", questionList);
+		return model;
+	}
+	
+	
 }

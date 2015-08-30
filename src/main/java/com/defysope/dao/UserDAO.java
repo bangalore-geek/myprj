@@ -1,6 +1,7 @@
 package com.defysope.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.defysope.model.AddressDetails;
 import com.defysope.model.Education;
@@ -27,5 +28,4 @@ public interface UserDAO {
 	public List<University> getUniversity();
 	
 	public User saveUserInfo(User user);
-
 }

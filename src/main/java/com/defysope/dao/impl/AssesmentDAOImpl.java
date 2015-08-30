@@ -1,12 +1,14 @@
 package com.defysope.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.AssesmentDAO;
@@ -20,6 +22,9 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	private Session openSession() {
 		return sessionFactory.getCurrentSession();
@@ -53,5 +58,16 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 			criteria.add(Restrictions.eq("assesmentMasterTrainingId", trainingId));
 		} 
 		return (List<Trainee>) criteria.list();
+	}
+	
+	public List<Map<String, Object>> getQuestion() {
+        sessionFactory.getCurrentSession().flush();
+        return  jdbcTemplate.queryForList("select question as que,opt1 as op1,opt2 as op2,opt3 as op3,opt4 as op4, correctanswer as ans from tblquestion order by random() limit 5");
+    }
+
+	@Override
+	public List<AssesmentCourse> getAssesmentForOrganization(int orgId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AssesmentCourse.class);
+		return (List<AssesmentCourse>) criteria.list();
 	}
 }
