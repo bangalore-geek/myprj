@@ -620,7 +620,7 @@ input[type="checkbox"]{
 							  
 							  <div class="row">
 								<div class="col-xs-12 topMarginData">
-								  <button type="button" wz-next="loadQuestin()" value="submit" class="btn btn-primary">Submit</button>&emsp;&emsp;&emsp;
+								  <button type="button" wz-next value="submit" class="btn btn-primary">Submit</button>&emsp;&emsp;&emsp;
 								  <button type="button" value="reset" class="btn btn-default">Reset</button>
 								</div>
 							  </div>
@@ -655,8 +655,8 @@ input[type="checkbox"]{
 						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op3"> {{question.op3}}</div>
 						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op4"> {{question.op4}}</div>
 						<div class="row" style="margin-top:10px;margin-left:115px;">
-							<input type="button"  class="btn btn-primary" ng-disabled="disablegetQuestion" ng-click="getQuestion(question)" value="Next Question" />
-							<input type="submit" wz-next value="Submit" class="btn btn-primary" />
+							<input type="button"  class="btn btn-primary" ng-disabled="disablegetQuestion" ng-click="nextQuestion(question)" value="Next Question" />
+							<input type="submit" wz-next="nextQuestion(question)" value="Submit" class="btn btn-primary" />
 						</div>
 					</div>				
 				</wz-step>
