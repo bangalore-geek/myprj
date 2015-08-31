@@ -76,7 +76,7 @@ public class TrainingListController {
 		if (editTrainingId > 0) {
 			model.put("editTrainingId", editTrainingId);
 			AssesmentCourse assesmentCourse = (AssesmentCourse) manager.getObjectOrNull(AssesmentCourse.class, editTrainingId);
-			model.put("editTraining", assesmentCourse);
+			model.put("thisTraining", assesmentCourse);
 		}
 		return model;
 	}

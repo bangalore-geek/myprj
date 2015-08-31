@@ -51,4 +51,9 @@ public class AssesmentServiceImpl implements AssesmentService {
 		return assesmentDAO.getAssesmentForOrganization(orgId);
 	}
 
+	@Override
+	public Trainee getTraineeByUserId(int userId) {
+		return assesmentDAO.getTraineeByUserId(userId);
+	}
+
 }

@@ -21,4 +21,6 @@ public interface AssesmentDAO {
 	public List<Map<String, Object>> getQuestion();
 
 	public List<AssesmentCourse> getAssesmentForOrganization(int orgId);
+
+	public Trainee getTraineeByUserId(int userId);
 }

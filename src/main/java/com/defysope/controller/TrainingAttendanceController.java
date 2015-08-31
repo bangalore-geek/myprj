@@ -10,6 +10,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -62,5 +63,25 @@ public class TrainingAttendanceController {
 		return model;
 	}
 	
+	
+	@RequestMapping(value = "/load-course", method = RequestMethod.GET)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object loadCourse(HttpServletRequest request) {
+		User user = utils.getLoggedInUser();
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("courseList", assesmentService.getAssesmentMaster());
+		return model;
+	}
+	
+	@RequestMapping(value = "/load-training-for-course", method = RequestMethod.GET)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object loadTraining(HttpServletRequest request, @RequestParam int courseId) {
+		User user = utils.getLoggedInUser();
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("trainingList", assesmentService.getAssesmentCourses(courseId));
+		return model;
+	}
 
 }

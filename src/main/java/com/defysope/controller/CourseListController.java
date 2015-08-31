@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
+import com.defysope.model.Education;
 import com.defysope.model.StudentDetails;
+import com.defysope.model.Trainee;
 import com.defysope.model.User;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
@@ -96,9 +99,20 @@ public class CourseListController {
 		
 		if (editCourseId > 0) {
 			AssesmentMaster assesmentMaster = (AssesmentMaster) manager.getObjectOrNull(AssesmentMaster.class, editCourseId);
-			model.put("editCourse", assesmentMaster);
-			model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(editCourseId));
+			model.put("thisCourse", assesmentMaster);
+			model.put("trainingList", assesmentService.getAssesmentCourses(editCourseId));
 		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/delete-trainee/{id}", method = RequestMethod.DELETE)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object deleteTrainee(HttpServletRequest request,  @PathVariable Integer id) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		manager.removeObject(Trainee.class, id);
+		model.put("success", true);
+		User user = utils.getLoggedInUser();
 		return model;
 	}
 

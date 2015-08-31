@@ -29,6 +29,8 @@ public class Trainee {
 	private Date startDate ;
 	private Date endDate;
 	private boolean isExpired;
+	private int userId;
+	
 	
 	public Integer getId() {
 		return id;
@@ -108,5 +110,13 @@ public class Trainee {
 
 	public void setExpired(boolean isExpired) {
 		this.isExpired = isExpired;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 }

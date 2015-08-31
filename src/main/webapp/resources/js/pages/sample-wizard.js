@@ -3,11 +3,138 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
     return false;
   };
   
-  
-  $scope.summary = {
-		  courses : {},
-		  training: {}
+  /*handling date control for training*/
+/*  $scope.startdateopen = function($event) {
+  	$event.preventDefault();
+  	$event.stopPropagation();
+  	$scope.startdateopened = !$scope.startdateopened;
   };
+  $scope.enddateopen = function($event) {
+  	$event.preventDefault();
+  	$event.stopPropagation();
+  	$scope.enddateopened = !$scope.enddateopened;
+  };
+  $scope.assesmentopen = function($event) {
+	  	$event.preventDefault();
+	  	$event.stopPropagation();
+	  	$scope.assesmentopened = !$scope.assesmentopened;
+  };*/ 
+  
+  $scope.thisSummary = {
+	thisCourse :{},
+	thisCourseTrainingList : {},
+	thisTraineeList :{}
+  };
+  
+  $scope.thisCourse = {};
+	$scope.saveCourse = function($course) {
+		$http.post(_context + '/save-course', $course).then(function(response) {
+			$scope.thisCourse = response.data.thisCourse;
+			$scope.thisSummary.thisCourse = response.data.thisCourse;
+			console.log($scope.thisCourse);	
+			toastr.success('Course saved successfully.');
+		});
+	};
+  
+	$scope.thisTraining = {};
+	
+	$scope.saveTraining = function($thisTraining) {
+		$thisTraining.assesmentMasterId = $scope.thisSummary.thisCourse.id;
+		$http.post(_context + '/save-training', $thisTraining).then(function(response) {
+			$scope.thisTraining = {};
+			$scope.thisSummary.thisCourseTrainingList = response.data.trainingList;
+			toastr.success('Training saved successfully.');
+		});
+	};
+	
+
+	/*save trainee*/
+	$scope.thisTrainee = {};
+	$scope.saveTrainee = function($thisTrainee) {
+		$thisTrainee.assesmentMasterId = $scope.thisSummary.thisCourse.id;
+		$http.post(_context + '/save-trainee',
+				$thisTrainee).then(function(response) {
+					toastr.success('Trainee saved successfully.');
+					$scope.thisSummary.thisTraineeList = response.data.traineeList;
+					$scope.thisTrainee = {};
+					
+		});
+	};
+  
+    $scope.obj = {showTrainee:false};
+    $scope.loadTrainee = function($thisTrainingId){
+    		console.log('loading trainee');
+    			$http.get(_context + '/load-training?trainingId='+$thisTrainingId).then( function(response) {
+    				$scope.traineeList = response.data.traineeList;
+    			});
+    };
+  
+    $scope.loadEditCourse = function() {
+    	$http.get(_context + '/load-edit-course').then(
+    		function(response) {
+    			$scope.thisCourse = response.data.thisCourse;
+    			$scope.thisSummary.thisCourse = response.data.thisCourse;
+    			$scope.thisSummary.thisCourseTrainingList = response.data.trainingList;
+    		});
+     };
+     $scope.loadEditCourse();
+     
+     $scope.loadEditTraining = function() {
+		$http.get(_context + '/load-edit-training').then(
+		function(response) {
+			$scope.thisTraining = response.data.thisTraining;
+		});
+	  };
+	  $scope.loadEditTraining();
+  
+	  $scope.deleteTrainee = function(id, index) {
+			if ( window.confirm("Are u sure delete trainee") ) {
+				$http['delete'](_context + '/delete-trainee/' + id, $scope.education).then(function(response) {
+						$scope.traineeList.splice( index, 1 );	
+				});
+			}
+	  };
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
   
   
   $timeout(function(){
@@ -29,16 +156,7 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
   $scope.editCourseId = 0;
   $scope.editTrainingId = 0;
   
-  $scope.loadEditCourse = function() {
-	$http.get(_context + '/load-edit-course').then(
-		function(response) {
-			$scope.editCourseId = response.data.editCourseId;
-			$scope.trainee.assesmentMasterId = $scope.editCourseId;
-			$scope.editAssesement = response.data.editCourse;
-			console.log($scope.editAssesement);
-			$scope.trainingListForEditCourse = response.data.viewCourseAssesmentList;
-		});
-  };
+
   
   $scope.loadEditTraining = function() {
 	$http.get(_context + '/load-edit-training').then(
@@ -53,26 +171,10 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 	});
   };
   $scope.loadEditTraining();
-  $scope.loadEditCourse();
   
   
-  /*save trainee*/
-	$scope.traineeList = [];
-	$scope.saveTrainee = function($thisTrainee) {
-		if ($thisTrainee.assesmentMasterTrainingId == 0) {
-			$thisTrainee.assesmentMasterTrainingId = $scope.newAssesmentAddedId;
-		}
-		$http.post(_context + '/save-trainee',
-				$thisTrainee).then(function(response) {
-					toastr.success('Trainee saved successfully.');
-					$scope.traineeList = response.data.traineeList;
-					$scope.trainee.name = "";
-					$scope.trainee.email = "";
-					$scope.trainee.phone = "";
-					$scope.trainee.assesmentMasterTrainingId=$scope.newAssesmentAddedId;
-					
-		});
-	};
+  
+
 
 	/*load assesment type*/
   	$scope.assesmentType = {data : {}};
@@ -142,32 +244,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
         WizardHandler.wizard().goTo(0);
     };
 
-    /*handling date control for training*/
-    $scope.startdateopen = function($event) {
-    	$event.preventDefault();
-    	$event.stopPropagation();
-    	$scope.startdateopened = !$scope.startdateopened;
-    };
-    $scope.enddateopen = function($event) {
-    	$event.preventDefault();
-    	$event.stopPropagation();
-    	$scope.enddateopened = !$scope.enddateopened;
-    };
-    $scope.assesmentopen = function($event) {
-  	  	$event.preventDefault();
-  	  	$event.stopPropagation();
-  	  	$scope.assesmentopened = !$scope.assesmentopened;
-    }; 
-    
-    $scope.obj = {showTrainee:false};
-    $scope.loadTrainee = function(){
-    	if($scope.obj.showTrainee){
-    		console.log('loading trainee');
-    		
-    			$http.get(_context + '/load-training?trainingId='+$scope.newAssesmentAddedId).then( function(response) {
-    				$scope.traineeList = response.data.traineeList;
-    			});
-    		
-    	}
-    };
+
+
  });

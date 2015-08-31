@@ -42,212 +42,67 @@ color:#333;
 </div><br>
 
 <div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
-<div class="container-fluid">
-
-   
-
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<div class="container-fluid"  ng-controller="TrainingAttendanceCtrl">
     <form class="">
-
-    <div class="row col-xs-12 col-lg-12 col-md-12 col-sm-12">
-
-    <div class="top-buffer col-xs-6 col-lg-6 col-md-6 col-sm-6 form-group">
-
-    
-
-      <label>Course </label>
-
-      <input type="text" name="text" class="form-control" placeholder="course name" 
-
-size="35" maxlength="40" required>
-
-     
-
-     </div>
-
-    <div class="row top-buffer form-group col-xs-6 col-lg-6 col-md-6 col-sm-6">
-
-    <label>From date</label>
-
-    <input name="frmDate" type="date" class="form-control"  size="35"/>
-
-    </div>
-
-    
-
-    </div>
-
-  
-
-  
-
-    <div class="row col-xs-12 col-lg-12 col-md-12 col-sm-12">
-
-    <div class="top-buffer col-xs-6 col-lg-6 col-md-6 col-sm-6 form-group">
-
-    <label>Trainer</label>
-
-    <input type="text" name="text" class="form-control" placeholder="trainer name" 
-
-size="35" maxlength="2" required>
-
-   </div>
-
-    <div class="row top-buffer form-group col-xs-6 col-lg-6 col-md-6 col-sm-6">
-
-    <label>To date</label>
-
-    <input name="toDate" type="date" class="form-control"  size="35"/>
-
-    </div>
-
-    
-
-    </div>
-
-    
-
-    
-
-   
-
-     <div class="row col-xs-12 col-lg-12 col-md-12 col-sm-12">
-
-    <div class="top-buffer col-xs-6 col-lg-6 col-md-6 col-sm-6 form-group">
-
-    <label>Training</label>
-
-    <input type="text" class="form-control" placeholder="training name" required>
-    
-	
-
-    
-
-    </div>
-    
-    <div class="row col-xs-12 mb-10 text-center  mb-10" style="padding-bottom:20px">
-    <input type="button" value="Add" class="btn btn-primary">
-    </div>
-
-   </div>
-
+		<div class="form-group">
+			<label for="assesmentType" class="col-sm-3 control-label">Select Course</label>
+			<div class="col-sm-5">
+				<select ng-model="thisCourseId" name="assesmentType" class="form-control" ng-change="loadTraining(thisCourseId)" >
+					<option ng-repeat="operator in courseList"
+							value="{{operator.id}}">
+					  {{operator.name}}
+					</option>
+				</select>
+			</div>
+		</div><br><br>
+		
+		<div class="form-group">
+			<label for="assesmentType" class="col-sm-3 control-label">Select Training</label>
+			<div class="col-sm-5">
+				<select ng-model="thisTrainingId" name="assesmentType" class="form-control" ng-change="loadTrainee(thisTrainingId)" >
+					<option ng-repeat="operator in trainingList"
+							value="{{operator.id}}">
+					  {{operator.trainingName}}
+					</option>
+				</select>
+			</div>
+		</div>
     </form>
-
- 
-
-    
-
     <br><br>
 
-  <div class="table-responsive form-group top-buffer col-xs-12 col-lg-12 col-md-12 
-
-col-sm-12">
-
-    
-
+  <div class="table-responsive form-group top-buffer col-xs-12 col-lg-12 col-md-12 col-sm-12">
     <table class="table-striped" width="100%">
-
-    
-
       <tr>
-
         <th class="text-center">Name</th>
-
         <th class="text-center">Email</th>
-
         <th class="text-center">Day1</th> 
-
-<th class="text-center">Day2</th> 
-
-<th class="text-center">Day3</th> 
-
-<th class="text-center">Day4</th> 
-
-<th class="text-center">Day5</th>
-
+		<th class="text-center">Day2</th> 
+		<th class="text-center">Day3</th> 
+		<th class="text-center">Day4</th> 
+		<th class="text-center">Day5</th>
       </tr>
 
-      <tr>
-
-        <td class="text-center">xyz</td>
-
-        <td class="text-center">xyz@gmail.com</td>
-
+      <tr ng-repeat="operator in traineeList"> 
+        <td class="text-center">{{operator.name}}</td>
+        <td class="text-center">{{operator.email}}</td>
         <td class="text-center"><input type="checkbox" name="attendence"></td>
-
         <td class="text-center"><input type="checkbox" name="attendence"></td>
-
         <td class="text-center"><input type="checkbox" name="attendence"></td>
-
         <td class="text-center"><input type="checkbox" name="attendence"></td>
-
         <td class="text-center"><input type="checkbox" name="attendence"></td>
-
       </tr>
 
-      <tr>
-
-        <td class="text-center">yyy</td>
-
-        <td class="text-center">yyy@gmail.com</td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-      </tr>
-
-      <tr>
-
-        <td class="text-center">abc</td>
-
-        <td class="text-center">abc@gmail.com</td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-      </tr>
-
-      <tr>
-
-        <td class="text-center">bbb</td>
-
-        <td class="text-center">bbb@gmail.com</td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-        <td class="text-center"><input type="checkbox" name="attendence"></td>
-
-      </tr>
-
-    </table>
-
+    </table><br><br><br>
+	<div class="text-center">
+		<input type="submit" wz-next value="Submit" class="btn btn-primary"/>
+	</div>
    </div>
-
   </div>
-		</div>
-		<div class="col-md-1"></div>
+</div>
+<div class="col-md-1"></div>
 </div>
 <@macro.showFooter>
-
+<script type="text/javascript" src="${rc.getContextPath()}/resources/js/pages/training-attendance.js"></script>
 </@macro.showFooter>

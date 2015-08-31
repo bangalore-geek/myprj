@@ -3,6 +3,18 @@ defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
     return false;
   };
   
+  $scope.course = {};
+  $scope.training = {};
+  
+  $scope.loadTestDetails = function(){
+  	$http.get(_context+'/load-test-details').then(function(res){
+  		$scope.course = res.data.course;
+  		$scope.training = res.data.training;
+  	});
+  };
+ 
+  
+  
 	$scope.qb = [];	
 	$scope.question = {};
     $scope.loadQuestin = function(){
@@ -10,6 +22,7 @@ defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
     		$scope.qb = res.data.questionList;
     		$scope.question = $scope.qb[0];
     	});
+    	 $scope.loadTestDetails();
     };
     $scope.loadQuestin();
     

@@ -42,6 +42,72 @@ public class AssesmentController {
 	@Autowired
 	private UserService userService;
 	
+	
+	@RequestMapping(value = "/save-course", method = RequestMethod.POST)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object saveCourse(HttpServletRequest request, @RequestBody AssesmentMaster thisCourse) {
+		User user = utils.getLoggedInUser();
+		thisCourse.setOrgId(1);
+		manager.saveObject(thisCourse);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("thisCourse", thisCourse);
+		model.put("success", true);
+		return model;
+	}
+	
+	@RequestMapping(value = "/save-training", method = RequestMethod.POST)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object saveTraining(HttpServletRequest request, @RequestBody AssesmentCourse thisTraining) {
+		manager.saveObject(thisTraining);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("thisTraining", thisTraining);
+		// getting training list for particuLAr course
+		model.put("trainingList", assesmentService.getAssesmentCourses(thisTraining.getAssesmentMasterId()));
+		
+		
+		model.put("success", true);
+		return model;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// displaying the list of assessment
 	@Menu(title = "Assesment List", url = "/assesment-list", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
 	@RequestMapping(value = "/assesment-list", method = RequestMethod.GET)
@@ -139,7 +205,7 @@ public class AssesmentController {
 		trainee.setPassword(utils.encryptPassword("sa"));
 		
 		User user = utils.getLoggedInUser();
-		manager.saveObject(trainee);
+		
 		
 		
 		User newUser = new User();
@@ -147,6 +213,8 @@ public class AssesmentController {
 		newUser.setPassword(utils.encryptPassword("sa"));
 		newUser.setUserType(2);
 		manager.saveObject(newUser);
+		trainee.setUserId(newUser.getId());
+		manager.saveObject(trainee);
 		
 		userService.saveUserInfo(newUser);
 		

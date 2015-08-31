@@ -6,6 +6,7 @@ import java.util.Map;
 import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
 import com.defysope.model.AssesmentType;
+import com.defysope.model.StudentDetails;
 import com.defysope.model.Trainee;
 
 public interface AssesmentService {
@@ -22,4 +23,5 @@ public interface AssesmentService {
 	
 	public List<AssesmentCourse> getAssesmentForOrganization(int orgId);
 	
+	public Trainee getTraineeByUserId(int userId);
 }

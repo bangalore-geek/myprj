@@ -645,15 +645,17 @@ input[type="checkbox"]{
 				</wz-step>
 				<wz-step title="Trainee Assessment">
 					<div class="row" style="margin-top:50px;margin-left:115px;">
+						Course: {{course.name}}<br>
+						Training: {{training.trainingName}}
 						<h3>Question</h3>
 						<div>{{question.que}}</div>
 					</div>
 					<div class="row" style="margin-top:10px;margin-left:115px;">
 						<h3>Options</h3>
-						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op1"> {{question.op1}}</div>
-						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op2"> {{question.op2}}</div>
-						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op3"> {{question.op3}}</div>
-						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="op4"> {{question.op4}}</div>
+						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="opt1"> {{question.op1}}</div>
+						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="opt2"> {{question.op2}}</div>
+						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="opt3"> {{question.op3}}</div>
+						<div><input type="radio" name="option" ng-model="correctkAnswer.ans" value="opt4"> {{question.op4}}</div>
 						<div class="row" style="margin-top:10px;margin-left:115px;">
 							<input type="button"  class="btn btn-primary" ng-disabled="disablegetQuestion" ng-click="nextQuestion(question)" value="Next Question" />
 							<input type="submit" wz-next="nextQuestion(question)" value="Submit" class="btn btn-primary" />
@@ -665,7 +667,7 @@ input[type="checkbox"]{
 						<h3>Summary</h3>
 					</div>
 					<div class="row" style="margin-left:115px;">
-						Correct Answer: {{correctkAnswerCount}}/{{questionAttempetCount}}
+						Correct Answer: {{correctkAnswerCount}} of {{questionAttempetCount}}
 					</div>
 				</wz-step>
 			</wizard>

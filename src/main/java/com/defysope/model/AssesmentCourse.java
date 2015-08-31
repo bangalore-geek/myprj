@@ -1,6 +1,8 @@
 package com.defysope.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table (name = "tblAssesmentCourse")
@@ -30,6 +33,9 @@ public class AssesmentCourse {
 	private String coustomer;
 	private String trainingName;
 	private String traininerName;
+
+	@Transient
+	private  List<Trainee> traineeList = new ArrayList<Trainee>(); 
 	
 	public Integer getId() {
 		return id;
@@ -98,4 +104,11 @@ public class AssesmentCourse {
 		this.traininerName = traininerName;
 	}
 	
+	
+	public List<Trainee> getTraineeList() {
+		return traineeList;
+	}
+	public void setTraineeList(List<Trainee> traineeList) {
+		this.traineeList = traineeList;
+	}
 }

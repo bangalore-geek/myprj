@@ -16,6 +16,7 @@ import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
 import com.defysope.model.AssesmentType;
 import com.defysope.model.Trainee;
+import com.defysope.model.University;
 
 @Repository
 public class AssesmentDAOImpl implements AssesmentDAO { 
@@ -69,5 +70,12 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 	public List<AssesmentCourse> getAssesmentForOrganization(int orgId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AssesmentCourse.class);
 		return (List<AssesmentCourse>) criteria.list();
+	}
+
+	@Override
+	public Trainee getTraineeByUserId(int userId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Trainee.class);
+		criteria.add(Restrictions.eq("userId", userId));
+		return (Trainee) criteria.uniqueResult();
 	}
 }
