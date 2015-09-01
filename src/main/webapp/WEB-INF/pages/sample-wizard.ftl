@@ -114,9 +114,9 @@
 								<p class="input-group">
 									<input type="text" class="form-control"
 										datepicker-popup="dd-MMM-yyyy" name="fromDate"
-										ng-model="editAssesmentCourses.startdate" is-open="startdateopened"
+										ng-model="thisTraining.startdate" is-open="startdateopened"
 										datepicker-options="dateOptions"
-										close-text="Close" show-button-bar="false"  /> <span class="input-group-btn">
+										close-text="Close" show-button-bar="false" /> <span class="input-group-btn">
 										<button type="button" class="btn btn-default"
 											ng-click="startdateopen($event)">
 											<i class="fa fa-calendar"></i>
@@ -132,7 +132,7 @@
 								<p class="input-group">
 									<input type="text" class="form-control" name="toDate"
 										datepicker-popup="dd-MMM-yyyy"
-										ng-model="editAssesmentCourses.enddate" is-open="enddateopened"
+										ng-model="thisTraining.enddate" is-open="enddateopened"
 										datepicker-options="dateOptions"
 										close-text="Close" show-button-bar="false" /> <span class="input-group-btn">
 										<button type="button" class="btn btn-default"
@@ -150,7 +150,7 @@
 								<p class="input-group">
 									<input type="text" class="form-control" name="assesmentDate"
 										datepicker-popup="dd-MMM-yyyy"
-										ng-model="editAssesmentCourses.assesmentDate" is-open="assesmentopened"
+										ng-model="thisTraining.assesmentDate" is-open="assesmentopened"
 										datepicker-options="dateOptions"
 										close-text="Close" show-button-bar="false"/> <span class="input-group-btn">
 										<button type="button" class="btn btn-default"

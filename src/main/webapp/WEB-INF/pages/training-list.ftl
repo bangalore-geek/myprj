@@ -19,9 +19,7 @@
 				   </div>	
 			   </div>
 			   <div class="col-md-4">
-					<div class="pull-right" style="margin-right: 10px;" ng-hide="courseId==0">
-						<a class="btn btn-primary"  href="${rc.getContextPath()}/sample-wizard?editCourseId=${courseId}&editTrainingId=0">Add</a>
-					</div>	
+			     <a class="btn btn-primary pull-right"  href="${rc.getContextPath()}/sample-wizard?editCourseId=${courseId}&editTrainingId=0">Add</a>
 			   </div>
 			</div>
 		</div>

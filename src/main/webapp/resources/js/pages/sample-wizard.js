@@ -4,7 +4,7 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
   };
   
   /*handling date control for training*/
-/*  $scope.startdateopen = function($event) {
+  $scope.startdateopen = function($event) {
   	$event.preventDefault();
   	$event.stopPropagation();
   	$scope.startdateopened = !$scope.startdateopened;
@@ -18,7 +18,7 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 	  	$event.preventDefault();
 	  	$event.stopPropagation();
 	  	$scope.assesmentopened = !$scope.assesmentopened;
-  };*/ 
+  };
   
   $scope.thisSummary = {
 	thisCourse :{},

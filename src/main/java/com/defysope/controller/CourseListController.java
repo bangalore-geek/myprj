@@ -115,5 +115,4 @@ public class CourseListController {
 		User user = utils.getLoggedInUser();
 		return model;
 	}
-
 }

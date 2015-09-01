@@ -63,7 +63,6 @@ public class TrainingAttendanceController {
 		return model;
 	}
 	
-	
 	@RequestMapping(value = "/load-course", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
 	@ResponseBody

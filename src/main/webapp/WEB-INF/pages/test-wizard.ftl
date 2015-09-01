@@ -55,7 +55,7 @@ input[type="checkbox"]{
 							  <div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							   
-								  <label><strong>Course Name&nbsp;:</strong>&nbsp;<input type="text" name="course" placeholder="____________________________________________________________"></label>
+								  <label><strong>Course Name&nbsp;:</strong>&nbsp;<input type="text" name="course" value="{{course.name}}" placeholder="____________________________________________________________"></label>
 								  
 								  
 								  <label><strong>Instructor&nbsp;:</strong>&nbsp;<input type="text" name="instructor" placeholder="_____________________________________________"></label>
