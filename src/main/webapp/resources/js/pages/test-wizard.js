@@ -33,9 +33,6 @@ defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
     $scope.correctkAnswer={ans: ''};
     
 	$scope.nextQuestion = function($thisQuestion) {
-		console.log("$thisQuestion >>> "+$thisQuestion.ans);
-		console.log("$scope.correctkAnswer >>> "+$scope.correctkAnswer.ans);
-		
 		$scope.question = $scope.qb[$scope.i];
 		$scope.i = $scope.i + 1;
 		if ($scope.i == 5) {
@@ -43,12 +40,7 @@ defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
 		}
 		if ($scope.correctkAnswer.ans != "") {
 			 $scope.questionAttempetCount = $scope.questionAttempetCount + 1;
-			 
-			 console.log("$scope.correctkAnswer.ans >>"+$scope.correctkAnswer.ans);
-			 console.log("$thisQuestion.ans > "+$thisQuestion.ans);
-			 
 			 if ($scope.correctkAnswer.ans == $thisQuestion.ans) { /*this is not able to check*/
-				 console.log("correct ans >>");
 				 $scope.correctkAnswerCount = $scope.correctkAnswerCount + 1;
 			 }
 		}

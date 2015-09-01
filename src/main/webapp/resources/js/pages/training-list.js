@@ -4,9 +4,7 @@ defysope.controller('TrainingListCtrl', [ '$scope', '$http',
 	
 	$http.get(_context + '/corpyogi/kv/load-course-tranings').then(
 			function(response) {
-				console.log(response);
 				$scope.courseId = response.data.courseId;
-				console.log('$scope.courseId',$scope.courseId);
 				$scope.training.content = response.data.viewCourseAssesmentList;
 			});
 	
@@ -25,7 +23,6 @@ defysope.controller('TrainingListCtrl', [ '$scope', '$http',
 	$scope.viewTrainings = function() {
 		$http.get(_context + '/load-course-assesement').success(
 				function(response) {
-					console.log(response);
 					$scope.courseId = 0;
 					$scope.training.content = response.viewCourseAssesmentList;
 				});

@@ -31,7 +31,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 		$http.post(_context + '/save-course', $course).then(function(response) {
 			$scope.thisCourse = response.data.thisCourse;
 			$scope.thisSummary.thisCourse = response.data.thisCourse;
-			console.log($scope.thisCourse);	
 			toastr.success('Course saved successfully.');
 		});
 	};
@@ -63,7 +62,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
   
     $scope.obj = {showTrainee:false};
     $scope.loadTrainee = function($thisTrainingId){
-    		console.log('loading trainee');
     			$http.get(_context + '/load-training?trainingId='+$thisTrainingId).then( function(response) {
     				$scope.traineeList = response.data.traineeList;
     			});
@@ -166,7 +164,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 	    	  $scope.curr = 'Add Training';
 	      }
 		$scope.trainee.assesmentMasterTrainingId = $scope.editTrainingId;
-		console.log(response.data.editTrainings);
 		$scope.editAssesmentCourses = response.data.editTraining;
 	});
   };
@@ -211,10 +208,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 		if ($scope.editAssesement.id != 0) {
 			$assesementCourse.assesmentMasterId = $scope.editAssesement.id;
 		}
-		console.log("$scope.editAssesement--> "+$scope.editAssesement.id);
-		console.log("$scope.newAddedCourse.id-->"+$scope.newAddedCourse.id);
-		
-		
 		$http.post(_context + '/save-assesement-course',
 			$assesementCourse).then(function(response) {
 			$scope.newAssesmentAddedId = response.data.newAssesmentId;
@@ -238,7 +231,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
         alert("Saved successfully");
     };
     $scope.logStep = function() {
-        console.log($scope.st);
     };
     $scope.goBack = function() {
         WizardHandler.wizard().goTo(0);

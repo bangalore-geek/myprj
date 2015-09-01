@@ -12,7 +12,6 @@ defysope.controller('AssesementCoursesCtrl', [
 			$scope.viewAssesement = function() {
 				$http.get(_context + '/load-assesement').success(
 						function(response) {
-							console.log(response);
 							$scope.assesementList.data = response.viewAssesmentList;
 						});
 			};
@@ -25,7 +24,6 @@ defysope.controller('AssesementCoursesCtrl', [
 			$scope.viewAssesmentType = function() {
 				$http.get(_context + '/load-course-assesement').success(
 					function(response) {
-						console.log(response);
 						$scope.assesmentCourses.data = response.viewCourseAssesmentList;
 					});
 			};
@@ -55,7 +53,6 @@ defysope.controller('AssesementCoursesCtrl', [
 				if ( window.confirm("Are u sure") ) {
 					$http['delete'](_context + '/delete-assesement-course/' + id,
 							$scope.AssesementCourse).then(function(response) {
-								console.log(response);
 								$scope.assesmentCourses.data = response.data.viewCourseAssesmentList;
 					});
 				}

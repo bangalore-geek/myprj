@@ -14,7 +14,6 @@ defysope.controller('AssesementCtrl', [
 			$scope.viewAssesement = function() {
 				$http.get(_context + '/load-assesement').success(
 						function(response) {
-							console.log(response);
 							$scope.assesementList.data = response.viewAssesmentList;
 						});
 			};
@@ -43,7 +42,6 @@ defysope.controller('AssesementCtrl', [
 			$scope.viewAssesmentType = function() {
 				$http.get(_context + '/load-assesmentType').success(
 						function(response) {
-							console.log(response);
 							$scope.assesmentType.data = response.viewAssesmentTypeList;
 						});
 			};

@@ -32,12 +32,10 @@ defysope.controller('StudentDetailsCtrl', [
 			};
 			
 			$scope.enableEdit = function(key){
-				console.log(key);
 				$scope.studentDetails[key].editable = !$scope.studentDetails[key].editable; 
 			};
 			
 			$scope.enableEditReferences = function(key){
-				console.log(key);
 				$scope.studentDetails.references[key].editable = !$scope.studentDetails.references[key].editable; 
 			};			
 
@@ -73,7 +71,6 @@ defysope.controller('StudentDetailsCtrl', [
 			$scope.viewWorkhistory = function() {
 				$http.get(_context + '/load-student-workhistory').success(
 						function(response) {
-							console.log(response);
 							$scope.studentDetails.workhistory.data = response.viewWorkhistory;
 						});
 			};
@@ -82,16 +79,13 @@ defysope.controller('StudentDetailsCtrl', [
 			$scope.viewUniversity = function() {
 				$http.get(_context + '/load-university').success(
 						function(response) {
-							console.log(response);
 							$scope.university.data = response.viewUniversity;
 						});
 			};
 			
 			$scope.viewEducation = function() {
-				console.log("load education ");
 				$http.get(_context + '/load-student-education').success(
 						function(response) {
-							console.log(response);
 							$scope.studentDetails.education.data = response.viewEducation;
 						});
 				$scope.viewUniversity();
@@ -100,7 +94,6 @@ defysope.controller('StudentDetailsCtrl', [
 			$scope.viewReferences = function() {
 				$http.get(_context + '/load-student-references').success(
 					function(response) {
-						console.log(response);
 						$scope.studentDetails.references.data = response.viewReferences;
 					});
 			};

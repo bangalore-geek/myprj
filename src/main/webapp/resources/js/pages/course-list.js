@@ -13,7 +13,6 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	};
 	
 	$scope.toggleActive = function($course) {
-		console.log($course);
 		$http.post(_context + '/edit-course-active',
 				$course).then(function(response) {
 					if(response.data.success){
@@ -26,14 +25,12 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	
 	
 	$scope.assesmentWizard = function(){
-		console.log("comed >>>>>>>>>>>>>");
 		window.location = _context + "/sample-wizard?editCourseId=0";
 	};
 	
 	$scope.viewAssesement = function() {
 		$http.get(_context + '/load-assesement').success(
 				function(response) {
-					console.log(response);
 					$scope.courses.content = response.viewAssesmentList;
 				});
 	};
