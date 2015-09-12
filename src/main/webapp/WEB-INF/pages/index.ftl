@@ -4,7 +4,7 @@
 <#include "header.ftl" />
 
 <style>
-	/* Carousel base class */
+/* Carousel base class */
 .carousel {
 	margin-bottom: 60px;
 }
@@ -24,24 +24,23 @@
 }
 
 .carousel .item {
-	height: 500px;
+	height: 200px;
 }
 
 .carousel img {
 	position: absolute;
 	top: 0;
 	left: 0;
-	min-width: 100%;
-	height: 500px;
+	min-width: 50%;
+	height: 50px;
 }
-
 .carousel-caption {
 	background-color: transparent;
 	position: static;
 	padding: 0 20px;
 	margin-top: 200px;
 }
-
+ 
 .carousel-caption h1,.carousel-caption .lead {
 	margin: 0;
 	line-height: 1.25;
@@ -53,34 +52,18 @@
 	margin-top: 10px;
 }
  .first {
-		    color: tomato;
-		    font-size: 2em;
-		    font-style: italic;
-		}
-	    .second {
-		    color: skyblue;
-		    font-size: 0.6em;
-		    font-weight: bold;
-		}
+    color: tomato;
+    font-size: 2em;
+    font-style: italic;
+}
+.second {
+    color: skyblue;
+    font-size: 0.6em;
+    font-weight: bold;
+}
 </style>
-<div ng-app="defysope">
-	<nav class="navbar navbar-inverse">
-	      <div class="container-fluid">
-	        <!-- Brand and toggle get grouped for better mobile display -->
-	        <div class="navbar-header">
-	          <button data-target="#bs-example-navbar-collapse-9" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <img style="cursor: pointer;" alt="Corp Yogi" src="/careerpoint/resources/img/CorpYogiLogo.png">
-	        </div>
-	        <a class="btn btn-default navbar-btn pull-right" type="button" href="${rc.getContextPath()}/user-login" style="margin-left:10px;">Freelancer/Candidate Login</a>
-	        <a class="btn btn-default navbar-btn pull-right" type="button" href="${rc.getContextPath()}/user-login">Corporate Login</a>
-		</div><!-- /.container-fluid -->
-	 </nav>
-	
+<br>
+<div ng-app="defysope">	
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
@@ -153,26 +136,13 @@
 	  <!-- Controls -->
 	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	    <span class="sr-only">Previous</span>
+    <span class="sr-only">Previous</span>
 	  </a>
 	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
 	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
-	
-	
-	
-	<div class="row posRelative" ng-controller="HomeCtrl" style="margin-left:50px;margin-right:50px;">
-	  <div ng-init="sWindow=sWindow" ng-repeat="sWindow in windowList">
-		<skwindow  title="{{sWindow.title}}" margin="{{sWindow.topMargin}}" height="{{sWindow.height}}" windowid="{{sWindow.id}}" enableremovesession="{{sWindow.enableRemoveSession}}" enableremovepermanent="{{sWindow.enableRemovePermanent}}"  windowclass="col-sm-12 col-md-4">
-		<div collapse="sWindow.flag">
-		  		<div  ng-show="sWindow.filterTemplate" ng-include="sWindow.filterTemplate"></div>
-		  	</div>
-			<div ng-include="sWindow.storeTemplate" onload="hideLoading(sWindow.id)"></div>
-		</skwindow>
-	  </div>
-	 </div>
 	</div>
 </div>
 <@macro.showFooter>

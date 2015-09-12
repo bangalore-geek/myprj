@@ -1,0 +1,79 @@
+/* header css start */
+.bs-qbmnpg {
+  margin: 0.15em;
+}
+
+.bs-frmbrdr {
+  margin: 2.5em 4em;
+}
+					   
+ul#navfooter li:after {
+	content:"|";
+	padding-left: 0.5em;
+}
+			
+ul#navfooter li:last-child:after {
+  content: "";
+}
+
+h2#kvsign {
+  margin: 1.5em;
+  color:  #000000;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.leftpane {
+  border-right: 0.20em solid #E8E8E8;
+  margin: auto;
+  padding: 0.5em;
+}
+
+.rightpane {
+  margin: auto;
+}
+
+.form-horizontal .control-label {
+  text-align: left;
+}
+
+p.addln-info {
+  color: red;
+}
+
+.hdr-margin {
+  margin: 0;
+}
+.hdr-padding {
+  padding: 0.1em;
+}
+
+.img-padding {
+  padding: 0.25em 0.5em;
+}
+
+.nav-grad {
+  background: -webkit-linear-gradient(left, #0000FF, #ADD8E6);
+  background: -o-linear-gradient(right, #0000FF, #ADD8E6);
+  background: -moz-linear-gradient(right, #0000FF, #ADD8E6);
+  background: linear-gradient(to right, #0000FF, #ADD8E6);
+  /*blue to lightblue*/
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar .nav  > li > a {
+  color: white /* #000000; /*black */
+}
+
+.navbar-fixed-top {
+  top: 0.5em;
+}
+
+.hdrListType {
+  list-style-type: none;
+  display: inline;
+}
+
+/* header css end */

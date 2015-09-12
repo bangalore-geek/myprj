@@ -14,12 +14,12 @@
 					<div class="form-group" ng-show="training.content.length > 0">
 					 <div class="input-group">
 					  <span class="input-group-addon">Search</span>
-					  <input type="text" class="form-control">
+					  <input type="text" class="form-control search-query" ng-model="training.content.search">
 					</div>
 				   </div>	
 			   </div>
 			   <div class="col-md-4">
-			     <a class="btn btn-primary pull-right"  href="${rc.getContextPath()}/sample-wizard?editCourseId=${courseId}&editTrainingId=0">Add</a>
+			     <a class="btn btn-primary pull-right"  href="${rc.getContextPath()}/sample-wizard?editCourseId=${courseId}&editTrainingId=0"><i class="glyphicon glyphicon-plus"></i> Add Training</a>
 			   </div>
 			</div>
 		</div>
@@ -30,13 +30,9 @@
 		<div class="col-md-10">
 			<div  style="padding:10px;">
 				<accordion class="accordion" close-others="true">
-					<accordion-group  ng-repeat="group in training.content">
+					<accordion-group  ng-repeat="group in training.content | filter:training.search">
 						<accordion-heading>
 							<span>{{group.trainingName}}</span>
-							<div class="pull-right">
-								<i class="fa fa-pencil"></i>&nbsp&nbsp
-								<i class="fa fa-play"></i>
-							</div>
 						</accordion-heading>
 						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.assesmentMasterId}}&editTrainingId={{group.id}}">Edit</a> </div>
 						<div>  Number : {{group.courseNumber}} </div>

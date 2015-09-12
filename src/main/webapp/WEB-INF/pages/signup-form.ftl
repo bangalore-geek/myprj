@@ -1,22 +1,10 @@
 <#import "/spring.ftl" as spring/>
+<#include "header.ftl" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Sign up-CorpYOGI</title>
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/theme.css">
-    <link rel="stylesheet" href="${rc.getContextPath()}/resources/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/toastr.css">
-
-    <script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="${rc.getContextPath()}/resources/js/plugin/bootbox.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
 
@@ -53,22 +41,6 @@
   <!--[if (gt IE 9)|!(IE)]><!--> 
   <body ng-app="defysope"> 
   <!--<![endif]-->
-    
- <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button data-target="#bs-example-navbar-collapse-9" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <img style="cursor: pointer;" alt="Corp Yogi" src="/careerpoint/resources/img/CorpYogiLogo.png">
-        </div>
-	</div><!-- /.container-fluid -->
- </nav>
-    
 	<div class="row-fluid" ng-controller="SignupCtrl">
 	    <div class="dialog">
 	        <div class="block">

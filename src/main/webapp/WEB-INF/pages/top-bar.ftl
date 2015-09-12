@@ -26,11 +26,7 @@
           <#if user.userType?string != '2'>
 	          <ul class="nav navbar-nav" style="margin-left:103px;">
 	            <li><a href="#"><i class="fa fa-home"></i><span> Home</span></a></li>
-	            <li><a href="#"><i class="fa fa-lightbulb-o"></i><span> Skill Store</span></a></li>
 	            <li><a href="#">KwicValuate</a></li>
-	            <li><a href="#"><i class="fa fa-database"></i><span> QB Knox</span></a></li>
-	            <li><a href="#">Freelancer</a></li>
-	            <li><a href="#">Candidate</a></li>
 	          </ul>
           </#if>
           

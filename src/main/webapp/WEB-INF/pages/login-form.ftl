@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring/>
+<#include "header.ftl" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,13 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
-     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/bootstrap.min.css">
-	 <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/bootstrap-theme.min.css">
-     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/font-awesome.css">
-     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/theme.css">
-     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/toastr.css">
-     <link rel="stylesheet" type="text/css" href="${rc.getContextPath()}/resources/css/jquery.jqplot.css">
     <script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
@@ -51,25 +45,7 @@
   <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--> 
   <body class=""> 
-  <!--<![endif]-->
-  
- <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button data-target="#bs-example-navbar-collapse-9" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <img style="cursor: pointer;" alt="Corp Yogi" src="/careerpoint/resources/img/CorpYogiLogo.png">
-        </div>
-	</div><!-- /.container-fluid -->
- </nav>
-    
-   
-    
+  <!--<![endif]-->   
 <div class="row-fluid">
     <div class="dialog">
     	<#if error?exists>
@@ -100,7 +76,7 @@
                 </form>
             </div>
         </div>
-        <p class="pull-right" style=""><a href="${rc.getContextPath()}/signup" >Create an account</a></p>
+        <!-- <p class="pull-right" style=""><a href="${rc.getContextPath()}/signup" >Create an account</a></p> -->
         <p><a href="${rc.getContextPath()}/reset-password">Forgot your password?</a></p>
     </div>
   </div>

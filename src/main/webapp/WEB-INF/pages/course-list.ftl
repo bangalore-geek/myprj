@@ -3,7 +3,7 @@
 
 <@macro.showHeader />
 <div class="header">
-    <h1 class="page-title">Course List</h1>
+    <h1 class="page-title">Course Listing</h1>
 </div><br>
 <div ng-controller="AccordionDemoCtrl">
 	<div class="row" >
@@ -20,7 +20,7 @@
 			   </div>
 			   <div class="col-md-4">
 					<div class="pull-right" style="margin-right: 10px;">
-						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId=0&editTrainingId=0" class="btn btn-primary">Add</a> </div>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId=0&editTrainingId=0" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Course</a> </div>
 					</div>	
 			   </div>
 			</div>
@@ -34,27 +34,31 @@
 				<accordion class="accordion" close-others="true" ng-show="courses.content.length > 0">
 					<accordion-group  ng-repeat="group in courses.content | filter:courses.search | orderBy:'name'">
 						<accordion-heading>
-							<span>{{group.name}}</span>
-							<div class="pull-right"> 
-							<span ng-click="gotoEdit(group)">
-								<i class="fa fa-pencil"></i>
-							</span>
-							&nbsp;&nbsp;&nbsp;
-							<span ng-if="group.active" ng-click="toggleActive(group)">
-								<i class="fa fa-play"></i>
-							</span>
-							<span ng-if="!group.active" ng-click="toggleActive(group)">
-								<i class="fa fa-pause"></i>
-							</span>
-						</div>
+							<h5>{{group.name}} 
+								<small>
+									<span ng-if="group.active">(Active)</span>
+									<span ng-if="!group.active">(In-active)</span>
+								</small> 
+							</h5>
 						</accordion-heading>
-						<div>  Part No : {{group.trainingNo}} </div>
+						<div>  Part No : {{group.trainingNo}}
+							<div class="pull-right">
+								<span ng-click="gotoEdit(group)" title="edit" style="cursor: pointer;">
+									<i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;
+								</span>
+								<span ng-if="group.active" ng-click="toggleActive(group)" style="cursor: pointer;">
+									<i class="fa fa-play"></i>
+								</span>
+								<span ng-if="!group.active" ng-click="toggleActive(group)" style="cursor: pointer;">
+									<i class="fa fa-pause"></i>
+								</span>
+							</div>
+						</div>
 						<div> Version : {{group.version}} </div>
 						<div> Course Type : {{group.assesmentType}} </div>
 						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/trainings?id={{group.id}}">Manage Training</a> </div>
 					</accordion-group>
 				</accordion>
-				
 				
 				<div class="alert alert-info" role="alert"  ng-show="courses.content.length == 0">
 					No course found !!
