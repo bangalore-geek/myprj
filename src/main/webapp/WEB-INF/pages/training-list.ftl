@@ -3,7 +3,7 @@
 
 <@macro.showHeader />
 <div class="header">
-    <h1 class="page-title">Training List</h1>
+    <h1 class="page-title">Training Listing</h1>
 </div><br>
 <div ng-controller="TrainingListCtrl">
 	<div class="row" >
@@ -19,7 +19,7 @@
 				   </div>	
 			   </div>
 			   <div class="col-md-4">
-			     <a class="btn btn-primary pull-right"  href="${rc.getContextPath()}/sample-wizard?editCourseId=${courseId}&editTrainingId=0"><i class="glyphicon glyphicon-plus"></i> Add Training</a>
+			     <a class="btn btn-primary pull-right"  href="${rc.getContextPath()}/course/add/wizard?editCourseId=${courseId}&editTrainingId=0"><i class="glyphicon glyphicon-plus"></i> Add Training</a>
 			   </div>
 			</div>
 		</div>
@@ -30,11 +30,11 @@
 		<div class="col-md-10">
 			<div  style="padding:10px;">
 				<accordion class="accordion" close-others="true">
-					<accordion-group  ng-repeat="group in training.content | filter:training.search">
+					<accordion-group  ng-init="isOpen = $first" is-open="isOpen" ng-repeat="group in training.content | filter:training.content.search | orderBy:'trainingName'" ng-show="training.content.length > 0">
 						<accordion-heading>
 							<span>{{group.trainingName}}</span>
 						</accordion-heading>
-						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId={{group.assesmentMasterId}}&editTrainingId={{group.id}}">Edit</a> </div>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/course/add/wizard?editCourseId={{group.assesmentMasterId}}&editTrainingId={{group.id}}">Edit</a> </div>
 						<div>  Number : {{group.courseNumber}} </div>
 						<div>  Start Date : {{group.startdate | date:'dd-MMM-yyyy'}} </div>
 						<div>  End Date : {{group.enddate | date:'dd-MMM-yyyy'}} </div>

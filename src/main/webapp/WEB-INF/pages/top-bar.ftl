@@ -37,7 +37,7 @@
 		            <ul class="dropdown-menu">
 		                <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>My Account</span></a></li>
 		                <li><a href="#"><i class="fa fa-cog"></i><span> Application Settings</span></a></li>
-		                <li><a href="#"><i class="fa fa-users"></i> <span>User Administration</span></a></li>
+		                <li><a href="${rc.getContextPath()}/corpyogi/administration/userinfo"><i class="fa fa-users"></i> <span>User Administration</span></a></li>
 		                <li class="divider"></li>
 		                <li><a href="${rc.getContextPath()}/logout"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
 		            </ul>
@@ -53,11 +53,12 @@
 			<ul class="nav nav-list collapse in" id="dashboard-menu" style="height: 246px;" aria-expanded="true">
 			    	<li><a href="${rc.getContextPath()}/success-login">Dashboard</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?id=0">Manage Training</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?courseIdFilter=0">Manage Training</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/assesment">Manage Assessment</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/importer">Import from excel</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainingattendance">Training Attendance</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>
+			    	<li><a href="${rc.getContextPath()}/corpyogi/administration/userinfo">Manage User</a></li>
 			</ul>
 	</div>
 </#if>

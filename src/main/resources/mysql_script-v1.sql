@@ -1,0 +1,27 @@
+CREATE TABLE cy_ts_user
+(
+  user_id integer NOT NULL,
+  first_name character varying(100) NOT NULL,
+  last_name character varying(100),
+  user_name character varying(45) NOT NULL,
+  password character varying(100) NOT NULL,
+  alt_email_id character varying(45),
+  land_number character varying(45),
+  mobile_number1 character varying(45) NOT NULL,
+  mobile_number2 character varying(45),
+  security_quest1 character varying(200) NOT NULL,
+  security_answ1 character varying(200) NOT NULL,
+  security_quest2 character varying(200) NOT NULL,
+  security_answ2 character varying(200) NOT NULL,
+  status character varying(20),
+  gender character varying(20),
+  dob character varying(45) NOT NULL,
+  user_type character varying(45) NOT NULL,
+  comp_id integer NOT NULL,
+  created_user integer NOT NULL,
+  last_updated_date timestamp without time zone NOT NULL,
+  last_updated_user integer NOT NULL,
+  created_date timestamp without time zone NOT NULL,
+  last_updated_login integer NOT NULL,
+  CONSTRAINT cy_ts_user_pkey PRIMARY KEY (user_id)
+);

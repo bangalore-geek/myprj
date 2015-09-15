@@ -59,7 +59,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 		$thisTrainee.assesmentMasterId = $scope.thisSummary.thisCourse.id;
 		$http.post(_context + '/save-trainee',
 		$thisTrainee).then(function(response) {
-			toastr.success('Trainee saved successfully.');
 			$scope.thisSummary.thisTraineeList = response.data.traineeList;
 			toastr.success('Trainee saved successfully.');
 			$scope.thisTrainee = {};
@@ -109,6 +108,7 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
 	  $scope.deleteTrainee = function(id, index) {
 		if ( window.confirm("Are u sure delete trainee") ) {
 			$http['delete'](_context + '/delete-trainee/' + id, $scope.education).then(function(response) {
+				toastr.success('Trainee deleted successfully.');
 					$scope.traineeList.splice( index, 1 );	
 			});
 		}

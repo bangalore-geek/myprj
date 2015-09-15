@@ -20,7 +20,7 @@
 			   </div>
 			   <div class="col-md-4">
 					<div class="pull-right" style="margin-right: 10px;">
-						<div class="pull-right"> <a href="${rc.getContextPath()}/sample-wizard?editCourseId=0&editTrainingId=0" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Course</a> </div>
+						<div class="pull-right"> <a href="${rc.getContextPath()}/course/add/wizard?editCourseId=0&editTrainingId=0" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Course</a> </div>
 					</div>	
 			   </div>
 			</div>
@@ -32,7 +32,7 @@
 		<div class="col-md-10">
 			<div  style="padding:10px;">
 				<accordion class="accordion" close-others="true" ng-show="courses.content.length > 0">
-					<accordion-group  ng-repeat="group in courses.content | filter:courses.search | orderBy:'name'">
+					<accordion-group ng-init="isOpen = $first" is-open="isOpen" ng-repeat="group in courses.content | filter:courses.search | orderBy:'name'">
 						<accordion-heading>
 							<h5>{{group.name}} 
 								<small>
@@ -43,9 +43,7 @@
 						</accordion-heading>
 						<div>  Part No : {{group.trainingNo}}
 							<div class="pull-right">
-								<span ng-click="gotoEdit(group)" title="edit" style="cursor: pointer;">
-									<i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;
-								</span>
+							 	<a href="${rc.getContextPath()}/course/add/wizard?editCourseId={{group.id}}&editTrainingId=0">Edit&nbsp&nbsp</a>
 								<span ng-if="group.active" ng-click="toggleActive(group)" style="cursor: pointer;">
 									<i class="fa fa-play"></i>
 								</span>
@@ -56,7 +54,7 @@
 						</div>
 						<div> Version : {{group.version}} </div>
 						<div> Course Type : {{group.assesmentType}} </div>
-						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/trainings?id={{group.id}}">Manage Training</a> </div>
+						<div class="pull-right"> <a ng-click="callManageTrainingPage()" href="${rc.getContextPath()}/corpyogi/kv/trainings?courseIdFilter={{group.id}}">Manage Training</a> </div>
 					</accordion-group>
 				</accordion>
 				

@@ -1,45 +1,23 @@
 defysope.controller('TrainingListCtrl', [ '$scope', '$http',
 		function($scope, $http) {
-	
+
+	$scope.training = {
+	  title : 'headerfdvdggbgbbggg',
+	  content : {}
+	};
 	
 	$http.get(_context + '/corpyogi/kv/load-course-tranings').then(
-			function(response) {
-				$scope.courseId = response.data.courseId;
-				$scope.training.content = response.data.viewCourseAssesmentList;
-			});
-	
-	
-	$scope.oneAtATime = true;
-
-	  
-	$scope.training = {
-			content : {}
-	};
+	  function(response) {
+		$scope.courseId = response.data.courseIdFilter;
+		$scope.training.content = response.data.viewCourseAssesmentList;
+	});
 	
 	$scope.assesmentWizard = function(){
-		window.location = _context + "/sample-wizard";
+	  window.location = _context + "/course/add/wizard";
 	};
 	
-	$scope.viewTrainings = function() {
-		$http.get(_context + '/load-course-assesement').success(
-				function(response) {
-					$scope.courseId = 0;
-					$scope.training.content = response.viewCourseAssesmentList;
-				});
-	};
-	$scope.viewTrainings();	  
-		  
-
-  $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-
-  $scope.addItem = function() {
-    var newItemNo = $scope.items.length + 1;
-    $scope.items.push('Item ' + newItemNo);
-  };
-
-  $scope.status = {
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
-
-		} ]);
+    $scope.status = {
+      isFirstOpen: true,
+      isFirstDisabled: false
+    };
+} ]);

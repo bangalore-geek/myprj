@@ -55,5 +55,4 @@ public class AssesmentServiceImpl implements AssesmentService {
 	public Trainee getTraineeByUserId(int userId) {
 		return assesmentDAO.getTraineeByUserId(userId);
 	}
-
 }

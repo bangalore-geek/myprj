@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.model.AssesmentCourse;
-import com.defysope.model.AssesmentMaster;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
@@ -41,12 +40,12 @@ public class TrainingListController {
 	@Menu(title = "Course List", url = "/corpyogi/kv/trainings", accessCode = "ROLE_DF_CREATE_ROLE", order = 1, visible = true)
 	@RequestMapping(value = "/corpyogi/kv/trainings", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_ROLE")
-	public ModelAndView createRole(HttpServletRequest request, @RequestParam Integer id) {
+	public ModelAndView createRole(HttpServletRequest request, @RequestParam Integer courseIdFilter) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
-		model.put("courseId", id);
+		model.put("courseId", courseIdFilter);
 		HttpSession session = request.getSession();
-		session.setAttribute("courseId", id);
+		session.setAttribute("courseIdFilter", courseIdFilter);
 		model.put("menus", navigation.displayMenuList());
 		return new ModelAndView("training-list", model);
 	}
@@ -57,12 +56,10 @@ public class TrainingListController {
 	public Object cou(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
-		int courseId = (int) session.getAttribute("courseId");
-		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(courseId));
-		model.put("courseId", courseId);
+		int courseIdFilter = (int) session.getAttribute("courseIdFilter");
+		model.put("viewCourseAssesmentList", assesmentService.getAssesmentCourses(courseIdFilter));
 		return model;
 	}
-	
 	
 	@RequestMapping(value = "/load-edit-training", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_ROLE")

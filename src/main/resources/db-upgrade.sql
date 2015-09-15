@@ -1,3 +1,8 @@
+alter table tbluser add name character varying(200)
+
+
+
+
 ALTER TABLE tblassesmentcourse ADD  customner character varying(100);
 
 -- assessment

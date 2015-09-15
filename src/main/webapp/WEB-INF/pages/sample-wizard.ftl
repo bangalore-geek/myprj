@@ -48,8 +48,7 @@
 								<label for="assesmentType" class="col-sm-3 control-label">Course Type</label>
 								<div class="col-sm-2">
 									<select ng-model="thisCourse.assesmentType" name="assesmentType" class="form-control" required>
-										<option ng-selected ng-repeat="thisAssesment in assesmentType.data"
-												value="{{thisAssesment.description}}">
+										<option ng-selected ng-repeat="thisAssesment in assesmentType.data" value="{{thisAssesment.description}} ">
 										  {{thisAssesment.description}}
 										</option>
 									</select>
@@ -61,7 +60,7 @@
 								<label for="assesmentType" class="col-sm-3 control-label">Active</label>
 								<div class="col-sm-2">
 									<select ng-model="thisCourse.active" class="form-control" ng-init="thisCourse.active=true">
-										<option value="true" selected="selected" >YES</option>
+										<option value="true" ng-selected="true" >YES</option>
 										<option value="false">NO</option>
 									</select>
 								</div>
@@ -191,7 +190,7 @@
 									<div>  Training Description : {{group.courseDescription}} </div>
 								</accordion-group>
 							</accordion>
-							<div class="alert alert-info" role="alert"  ng-show="training.content.length == 0">
+							<div class="alert alert-info" role="alert"  ng-show="!thisSummary.thisCourseTrainingList.length">
 								No Training found !!
 							</div>
 						</div>
@@ -254,7 +253,7 @@
 							<div class="text-center">
 								<div class="label label-success">Trainee Added</div>
 							</div><br>
-							<table class="table table-striped table-bordered">
+							<table class="table table-striped table-bordered" ng-show="traineeList.length">
 								<tr>
 									<th>Name</th>
 									<th>Email</th>
@@ -267,8 +266,10 @@
 									<td>{{trainee.phone}}</td>
 									<td><button ng-click="deleteTrainee(trainee.id,$index)" title="delete" class="fa fa-trash"></button></td>
 								</tr>
-								
 							</table>
+							<div class="alert alert-info" role="alert" ng-show="!traineeList.length">
+								No Trainee found !!
+							</div>
 						</div>
 					</div>
 				</wz-step>		

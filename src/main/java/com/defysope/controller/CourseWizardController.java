@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.defysope.model.AssesmentCourse;
 import com.defysope.model.AssesmentMaster;
-import com.defysope.model.Education;
-import com.defysope.model.StudentDetails;
 import com.defysope.model.Trainee;
 import com.defysope.model.User;
 import com.defysope.navigation.Menu;
@@ -30,7 +27,7 @@ import com.defysope.service.PublicManager;
 import com.defysope.service.impl.Navigation;
 
 @Controller
-public class CourseListController {
+public class CourseWizardController {
 
 	@Autowired
 	private PublicManager manager; 
@@ -56,8 +53,8 @@ public class CourseListController {
 	
 	
 	// displaying the list of assessment
-	@Menu(title = "Course Wizard", url = "/sample-wizard", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
-	@RequestMapping(value = "/sample-wizard", method = RequestMethod.GET)
+	@Menu(title = "Course Wizard", url = "/course/add/wizard", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
+	@RequestMapping(value = "/course/add/wizard", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
 	public ModelAndView loadWizard(HttpServletRequest request, @RequestParam Integer editCourseId, @RequestParam Integer editTrainingId) {
 		Map<String, Object> model = new HashMap<String, Object>();

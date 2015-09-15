@@ -9,7 +9,7 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	
 	
 	$scope.gotoEdit = function(group){
-		window.location = _context + "/sample-wizard?editCourseId="+group.id+"&editTrainingId=0";
+		window.location = _context + "/course/add/wizard?editCourseId="+group.id+"&editTrainingId=0";
 	};
 	
 	$scope.toggleActive = function($course) {
@@ -25,7 +25,7 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	
 	
 	$scope.assesmentWizard = function(){
-		window.location = _context + "/sample-wizard?editCourseId=0";
+		window.location = _context + "/course/add/wizard?editCourseId=0";
 	};
 	
 	$scope.viewAssesement = function() {

@@ -71,6 +71,15 @@ public class AssesmentController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/load-trainee-list", method = RequestMethod.GET)
+	@Secured("ROLE_DF_HOME_PAGE")
+	@ResponseBody
+	public Object loadTrainee(HttpServletRequest request, @RequestParam int trainingId) {
+		List<Trainee> traineeList = assesmentService.getTraineeList(trainingId);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("traineeList", traineeList);
+		return model;
+	}
 	
 	
 	
@@ -206,8 +215,6 @@ public class AssesmentController {
 		
 		User user = utils.getLoggedInUser();
 		
-		
-		
 		User newUser = new User();
 		newUser.setUserName(trainee.getEmail());
 		newUser.setPassword(utils.encryptPassword("sa"));
@@ -225,18 +232,6 @@ public class AssesmentController {
 	
 		return model;
 	}
-	
-	@RequestMapping(value = "/load-training", method = RequestMethod.GET)
-	@Secured("ROLE_DF_HOME_PAGE")
-	@ResponseBody
-	public Object loadTrainee(HttpServletRequest request, @RequestParam int trainingId) {
-		List<Trainee> traineeList = assesmentService.getTraineeList(trainingId);
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("traineeList", traineeList);
-		return model;
-	}
-	
-	
 	
 	@RequestMapping(value = "/load-question", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
