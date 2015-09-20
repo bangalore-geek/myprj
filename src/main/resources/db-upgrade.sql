@@ -1,6 +1,20 @@
 alter table tbluser add name character varying(200)
 
 
+create table tblCourse(
+ cid serial primary key,
+ name varchar(100),
+ trainingNo varchar(100) unique,
+ description varchar(5000),
+ version varchar(50),
+ active boolean default true,
+ assesmentType varchar(100),
+ createdDate timestamp without time zone,
+ modifiedDate timestamp without time zone,
+ orgId integer,
+ createdBy integer
+)
+
 
 
 ALTER TABLE tblassesmentcourse ADD  customner character varying(100);
@@ -8,7 +22,7 @@ ALTER TABLE tblassesmentcourse ADD  customner character varying(100);
 -- assessment
 create table tblTrainee(
 cid serial primary key,
-assesmentMasterId integer REFERENCES tblAssesmentMaster (cid),
+assesmentMasterId integer REFERENCES tblCourse (cid),
 assesmentMasterTrainingId integer REFERENCES tblAssesmentCourse (cid),
 name varchar(100),
 email varchar(100),
@@ -26,19 +40,7 @@ create table tblAssesmentType(
   code varchar(5)
 )
 
-create table tblAssesmentMaster(
- cid serial primary key,
- name varchar(100),
- trainingNo varchar(100) unique,
- description varchar(5000),
- version varchar(50),
- active boolean default true,
- assesmentType varchar(100),
- createdDate timestamp without time zone,
- modifiedDate timestamp without time zone,
- orgId integer,
- createdBy integer
-)
+
 
 create table tblAssesmentCourse(
    cid serial primary key,

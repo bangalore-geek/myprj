@@ -59,13 +59,13 @@ public class CreateUserController {
 		return model;
 	}
 	
-	/*@RequestMapping(value = "/load/user/role", method = RequestMethod.GET)
+	@RequestMapping(value = "/load/user/role", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_USER")
 	@ResponseBody
 	public Object loadRoleList(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Role> list = userService.getObjects(Role.class, "description");
+		List<Role> list = publicManager.getObjects(Role.class, "description");
 		model.put("roleLisdsadast", list);
 		return model;
-	}*/
+	}
 }

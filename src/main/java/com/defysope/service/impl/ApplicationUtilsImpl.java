@@ -1,19 +1,14 @@
 package com.defysope.service.impl;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.defysope.dao.ApplicationUtilsDao;
 import com.defysope.dao.Page;
 import com.defysope.model.AuditLogCategory;
 import com.defysope.model.AuditLogEntry;
-import com.defysope.model.Bookmark;
 import com.defysope.model.User;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.PublicManager;
@@ -33,10 +28,10 @@ public class ApplicationUtilsImpl implements ApplicationUtils {
 		return dao.getLoggedInUser();
 	}
 
-	@Override
+/*	@Override
 	public List<Bookmark> getBookmarkList(Integer userId) {
 		return dao.getBookmarkList(userId);
-	}
+	}*/
 
 	@Override
 	public Page getBookarkList(int page, int rows) {

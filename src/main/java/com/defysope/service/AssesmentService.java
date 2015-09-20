@@ -3,25 +3,26 @@ package com.defysope.service;
 import java.util.List;
 import java.util.Map;
 
-import com.defysope.model.AssesmentCourse;
-import com.defysope.model.AssesmentMaster;
-import com.defysope.model.AssesmentType;
-import com.defysope.model.StudentDetails;
-import com.defysope.model.Trainee;
+import com.defysope.model.kv.AssesmentType;
+import com.defysope.model.kv.Course;
+import com.defysope.model.kv.Trainee;
+import com.defysope.model.kv.Training;
 
 public interface AssesmentService {
 
-	public List<AssesmentMaster> getAssesmentMaster();
+	public List<Course> getAssesmentMaster();
 	
 	public List<AssesmentType> getAssesmentType();
 	
-	public List<AssesmentCourse> getAssesmentCourses(int courseId);
+	public List<Training> getAssesmentCourses(int courseId);
 	
 	public List<Trainee> getTraineeList(int trainingId);
 	
 	public List<Map<String, Object>> getQuestion();
 	
-	public List<AssesmentCourse> getAssesmentForOrganization(int orgId);
+	public List<Training> getAssesmentForOrganization(int orgId);
 	
 	public Trainee getTraineeByUserId(int userId);
+	
+	public Trainee getTraineeByEmail(String email);
 }

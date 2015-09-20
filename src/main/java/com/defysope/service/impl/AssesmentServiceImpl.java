@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.defysope.dao.AssesmentDAO;
-import com.defysope.model.AssesmentCourse;
-import com.defysope.model.AssesmentMaster;
-import com.defysope.model.AssesmentType;
-import com.defysope.model.Trainee;
+import com.defysope.model.kv.AssesmentType;
+import com.defysope.model.kv.Course;
+import com.defysope.model.kv.Trainee;
+import com.defysope.model.kv.Training;
 import com.defysope.service.AssesmentService;
 
 @Service
@@ -22,7 +22,7 @@ public class AssesmentServiceImpl implements AssesmentService {
 	private AssesmentDAO assesmentDAO;
 
 	@Override
-	public List<AssesmentMaster> getAssesmentMaster() {
+	public List<Course> getAssesmentMaster() {
 		return assesmentDAO.getAssesmentMaster();
 	}
 
@@ -32,7 +32,7 @@ public class AssesmentServiceImpl implements AssesmentService {
 	}
 
 	@Override
-	public List<AssesmentCourse> getAssesmentCourses(int courseId) {
+	public List<Training> getAssesmentCourses(int courseId) {
 		return assesmentDAO.getAssesmentCourses(courseId);
 	}
 
@@ -47,12 +47,17 @@ public class AssesmentServiceImpl implements AssesmentService {
 	}
 
 	@Override
-	public List<AssesmentCourse> getAssesmentForOrganization(int orgId) {
+	public List<Training> getAssesmentForOrganization(int orgId) {
 		return assesmentDAO.getAssesmentForOrganization(orgId);
 	}
 
 	@Override
 	public Trainee getTraineeByUserId(int userId) {
 		return assesmentDAO.getTraineeByUserId(userId);
+	}
+
+	@Override
+	public Trainee getTraineeByEmail(String email) {
+		return assesmentDAO.getTraineeByEmail(email);
 	}
 }

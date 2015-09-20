@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.defysope.dao.UserDAO;
-import com.defysope.model.AddressDetails;
-import com.defysope.model.Education;
 import com.defysope.model.StudentDetails;
 import com.defysope.model.University;
 import com.defysope.model.User;
 import com.defysope.model.UserReferences;
-import com.defysope.model.WorkHistory;
+import com.defysope.model.skillset.AddressDetails;
+import com.defysope.model.skillset.Education;
+import com.defysope.model.skillset.WorkHistory;
 import com.defysope.service.UserService;
 
 @Service
@@ -61,4 +61,9 @@ public class UserServiceImpl implements UserService {
     public User saveUserInfo(User user) {
         return userDAO.saveUserInfo(user);
     }
+
+	@Override
+	public boolean hasAccessRight(User user, String code) {
+		 return userDAO.hasAccessRight(user.getId(), code);
+	}
 }

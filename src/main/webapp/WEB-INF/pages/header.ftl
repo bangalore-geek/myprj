@@ -12,7 +12,7 @@
 	<#else>
 	<div class="page-header hdr-margin hdr-padding">
 		<div class="row row-list">
-			<div class="col-xs-2 container-img"><img alt="Corp Yogi" onClick="${rc.getContextPath()}" src="/careerpoint/resources/img/CorpYogiLogo.png" class="img-responsive img-padding" width="90" height="40"></div>
+			<div class="col-xs-2 container-img"><img alt="Corp Yogi" onClick="${rc.getContextPath()}" src="${rc.getContextPath()}/resources/img/CorpYogiLogo.png" class="img-responsive img-padding" width="90" height="40"></div>
 			<div class="col-xs-5 container-paragraph"><marquee> Enhancing the Corporates' Value System Enabling the capability matrix mechanism</marquee> </div>
 			<div class="col-xs-2 container-img">
 				<div class="form-group">
@@ -20,12 +20,12 @@
 						<input type="email" placeholder="Search" class="form-control">
 					</div>
 					<div>
-						<img alt="Corp Yogi" onClick="${rc.getContextPath()}" src="/careerpoint/resources/img/facebook_logo.png" class="img-responsive img-padding" width="40" height="40">
+						<img alt="Corp Yogi" onClick="${rc.getContextPath()}" src="${rc.getContextPath()}/resources/img/facebook_logo.png" class="img-responsive img-padding" width="40" height="40">
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-2 container-img">
-				<img alt="Corp Yogi" onClick="${rc.getContextPath()}" src="/careerpoint/resources/img/linkedIn_logo.png" class="img-responsive img-padding" width="100" height="90">
+				<img alt="Corp Yogi" onClick="${rc.getContextPath()}" src="${rc.getContextPath()}/resources/img/linkedIn_logo.png" class="img-responsive img-padding" width="100" height="90">
 			</div>
 		</div>
 	</div>	

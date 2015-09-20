@@ -1,15 +1,13 @@
 package com.defysope.dao;
 
 import java.util.List;
-import java.util.Map;
-
-import com.defysope.model.AddressDetails;
-import com.defysope.model.Education;
 import com.defysope.model.StudentDetails;
 import com.defysope.model.University;
 import com.defysope.model.User;
 import com.defysope.model.UserReferences;
-import com.defysope.model.WorkHistory;
+import com.defysope.model.skillset.AddressDetails;
+import com.defysope.model.skillset.Education;
+import com.defysope.model.skillset.WorkHistory;
 
 public interface UserDAO {
 
@@ -28,4 +26,6 @@ public interface UserDAO {
 	public List<University> getUniversity();
 	
 	public User saveUserInfo(User user);
+
+	public boolean hasAccessRight(int id, String code);
 }

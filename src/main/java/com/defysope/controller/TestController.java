@@ -16,8 +16,6 @@ import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.impl.Navigation;
 
-
-
 @Controller
 public class TestController {
 	
@@ -97,7 +95,7 @@ public class TestController {
 		return new ModelAndView("home", model);
 	}
 
-	@Menu(title = "Company Profile", url = "/company-profile", accessCode = "ROLE_DF_COMPANY_PROFILE", order = 1, visible = true)
+/*	@Menu(title = "Company Profile", url = "/company-profile", accessCode = "ROLE_DF_COMPANY_PROFILE", order = 1, visible = true)
 	@RequestMapping(value = "/company-profile", method = RequestMethod.GET)
 	@Secured("ROLE_DF_COMPANY_PROFILE")
 	public ModelAndView h(HttpServletRequest request) {
@@ -105,6 +103,5 @@ public class TestController {
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
 		return new ModelAndView("home", model);
-	}
-
+	}*/
 }

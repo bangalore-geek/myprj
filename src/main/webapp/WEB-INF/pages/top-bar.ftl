@@ -46,17 +46,19 @@
 		</div>
 	</div><!-- /.container-fluid -->
  </nav>
- 
+
+
+<!--
  <#if user.userType?string != '2'>
 	<div class="sidebar-nav">
 			<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
 			<ul class="nav nav-list collapse in" id="dashboard-menu" style="height: 246px;" aria-expanded="true">
 			    	<li><a href="${rc.getContextPath()}/success-login">Dashboard</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/courses">Manage Course</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainings?courseIdFilter=0">Manage Training</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/assesment">Manage Assessment</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/importer">Import from excel</a></li>
-			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/trainingattendance">Training Attendance</a></li>
+			    	<li><a href="${rc.getContextPath()}/kv/courses">Manage Courses</a></li>
+			    	<li><a href="${rc.getContextPath()}/kv/trainings?courseIdFilter=0">Manage Trainings</a></li>
+			    	<li><a href="${rc.getContextPath()}/kv/assesments">Manage Assessments</a></li>
+			    	<li><a href="${rc.getContextPath()}/kv/importer">Import from excel</a></li>
+			    	<li><a href="${rc.getContextPath()}/kv/training-attendance">Training Attendance</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/kv/corpprofile">Profile</a></li>
 			    	<li><a href="${rc.getContextPath()}/corpyogi/administration/userinfo">Manage User</a></li>
 			</ul>
@@ -70,3 +72,16 @@
 			</ul>
 	</div>
 </#if>
+-->
+
+
+<div class="sidebar-nav">
+		<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
+		<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">
+		<#list menus as menu>
+			<#if menu.visible?string != "false">
+		    	<li><a href="${rc.getContextPath()}${menu.url}">${menu.title}</a></li>
+		    </#if>
+        </#list>
+		</ul>
+</div>
