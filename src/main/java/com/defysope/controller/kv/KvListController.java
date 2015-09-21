@@ -52,7 +52,7 @@ public class KvListController {
 	@ResponseBody
 	public Object loadCourses(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Course> assesmentCourses = assesmentService.getAssesmentMaster(); 
+		List<Course> assesmentCourses = assesmentService.getCoursesForCompany(utils.getLoggedInUser().getComId()); 
 		model.put("viewAssesmentList",assesmentCourses );
 		return model;
 	}
@@ -90,7 +90,7 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		int courseIdFilter = (int) session.getAttribute("courseIdFilter");
-		model.put("trainingList", assesmentService.getAssesmentCourses(courseIdFilter));
+		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), courseIdFilter));
 		return model;
 	}
 	

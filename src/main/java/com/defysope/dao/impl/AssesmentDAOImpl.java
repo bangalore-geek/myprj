@@ -31,8 +31,9 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 	}
 
 	@Override
-	public List<Course> getAssesmentMaster() {
+	public List<Course> getCoursesForCompany(int cmpId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Course.class);
+		criteria.add(Restrictions.eq("cmpId", cmpId));
 		return (List<Course>) criteria.list();
 	}
 
@@ -43,10 +44,13 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 	}
 
 	@Override
-	public List<Training> getAssesmentCourses(int courseId) {
+	public List<Training> getTrainings(int cmpId, int courseId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Training.class);
-		if (courseId > 0 ) {
-			criteria.add(Restrictions.eq("assesmentMasterId", courseId));
+		if (cmpId > 0) {
+			criteria.add(Restrictions.eq("cmpId", cmpId));
+		}
+		if (courseId > 0) {
+			criteria.add(Restrictions.eq("assesmentMasterId", courseId));	
 		}
 		return (List<Training>) criteria.list();
 	}

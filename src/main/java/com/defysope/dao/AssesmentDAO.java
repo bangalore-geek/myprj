@@ -10,11 +10,11 @@ import com.defysope.model.kv.Training;
 
 public interface AssesmentDAO {
 
-	public List<Course> getAssesmentMaster();
+	public List<Course> getCoursesForCompany(int cmpId);
 
 	public List<AssesmentType> getAssesmentType();
 
-	public List<Training> getAssesmentCourses(int courseId);
+	public List<Training> getTrainings(int cmpId, int courseId);
 
 	public List<Trainee> getTraineeList(int trainingId);
 	

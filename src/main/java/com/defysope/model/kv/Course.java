@@ -30,7 +30,7 @@ public class Course {
 	private String assesmentType;
 	private Date createdDate;
 	private Date modifiedDate;
-	private int orgId;
+	private int cmpId;
 	private String status;
 	
 	public Integer getId() {
@@ -87,11 +87,11 @@ public class Course {
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-	public int getOrgId() {
-		return orgId;
+	public int getCmpId() {
+		return cmpId;
 	}
-	public void setOrgId(int orgId) {
-		this.orgId = orgId;
+	public void setCmpId(int cmpId) {
+		this.cmpId = cmpId;
 	}
 	public String getName() {
 		return name;

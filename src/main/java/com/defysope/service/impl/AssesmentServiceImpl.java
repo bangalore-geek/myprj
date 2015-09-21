@@ -22,8 +22,8 @@ public class AssesmentServiceImpl implements AssesmentService {
 	private AssesmentDAO assesmentDAO;
 
 	@Override
-	public List<Course> getAssesmentMaster() {
-		return assesmentDAO.getAssesmentMaster();
+	public List<Course> getCoursesForCompany(int cmpId) {
+		return assesmentDAO.getCoursesForCompany(cmpId);
 	}
 
 	@Override
@@ -32,8 +32,8 @@ public class AssesmentServiceImpl implements AssesmentService {
 	}
 
 	@Override
-	public List<Training> getAssesmentCourses(int courseId) {
-		return assesmentDAO.getAssesmentCourses(courseId);
+	public List<Training> getTrainings(int cmpId, int courseId) {
+		return assesmentDAO.getTrainings(cmpId, courseId);
 	}
 
 	@Override

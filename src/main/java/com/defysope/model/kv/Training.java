@@ -33,6 +33,7 @@ public class Training {
 	private String coustomer;
 	private String trainingName;
 	private String traininerName;
+	private int cmpId;
 
 	@Transient
 	private  List<Trainee> traineeList = new ArrayList<Trainee>(); 
@@ -108,5 +109,11 @@ public class Training {
 	}
 	public void setTraineeList(List<Trainee> traineeList) {
 		this.traineeList = traineeList;
+	}
+	public int getCmpId() {
+		return cmpId;
+	}
+	public void setCmpId(int cmpId) {
+		this.cmpId = cmpId;
 	}
 }

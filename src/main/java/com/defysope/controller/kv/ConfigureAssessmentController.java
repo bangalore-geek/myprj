@@ -85,7 +85,8 @@ public class ConfigureAssessmentController {
 	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT_COURSE")
 	@ResponseBody
 	public Object saveCourse(HttpServletRequest request, @RequestBody Course thisCourse) {
-		thisCourse.setOrgId(1);
+		
+		thisCourse.setCmpId(utils.getLoggedInUser().getComId());
 		manager.saveObject(thisCourse);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("thisCourse", thisCourse);
@@ -101,7 +102,7 @@ public class ConfigureAssessmentController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("thisTraining", thisTraining);
 		// getting training list for particuLAr course
-		model.put("trainingList", assesmentService.getAssesmentCourses(thisTraining.getAssesmentMasterId()));
+		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), thisTraining.getAssesmentMasterId()));
 		model.put("success", true);
 		return model;
 	}
@@ -149,7 +150,7 @@ public class ConfigureAssessmentController {
 		if (editCourseId > 0) {
 			Course assesmentMaster = (Course) manager.getObjectOrNull(Course.class, editCourseId);
 			model.put("thisCourse", assesmentMaster);
-			model.put("trainingList", assesmentService.getAssesmentCourses(editCourseId));
+			model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), editCourseId));
 		}
 		return model;
 	}

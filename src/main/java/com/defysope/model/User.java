@@ -48,6 +48,8 @@ public class User implements Serializable {
 
 	private Date modifiedDate;
 	
+	private int comId;
+	
 	public String getName() {
 		return name;
 	}
@@ -130,5 +132,13 @@ public class User implements Serializable {
 
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+
+	public int getComId() {
+		return comId;
+	}
+
+	public void setComId(int compId) {
+		this.comId = compId;
 	}
 }
