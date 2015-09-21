@@ -76,8 +76,8 @@
 
 
 <div class="sidebar-nav">
-		<a data-toggle="collapse" class="nav-header collapsed" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
-		<ul class="nav nav-list collapse" id="dashboard-menu" style="height: 0px;">
+		<a data-toggle="collapse" class="nav-header" href="#dashboard-menu"><i class="icon-dashboard"></i>Menu</a>
+		<ul class="nav nav-list" id="dashboard-menu" style="height: auto;">
 		<#list menus as menu>
 			<#if menu.visible?string != "false">
 		    	<li><a href="${rc.getContextPath()}${menu.url}">${menu.title}</a></li>
