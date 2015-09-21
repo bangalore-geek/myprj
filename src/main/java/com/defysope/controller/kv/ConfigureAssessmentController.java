@@ -47,7 +47,7 @@ public class ConfigureAssessmentController {
 	@Autowired
 	private UserService userService;
 	
-	@Menu(title = "Configure Assessment", url = "/kv/configure-assessment?editCourseId=0&editTrainingId=0", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT", order = 1, visible = true)
+	@Menu(title = "Configure Assessment", url = "/kv/configure-assessment?editCourseId=0&editTrainingId=0", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT", order = 7, visible = true)
 	@RequestMapping(value = "/kv/configure-assessment", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT")
 	public ModelAndView loadWizardFtl(HttpServletRequest request, @RequestParam Integer editCourseId, @RequestParam Integer editTrainingId) {

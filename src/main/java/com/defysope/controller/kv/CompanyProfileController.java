@@ -29,7 +29,7 @@ public class CompanyProfileController {
 	@Autowired
 	private UserService userService;
 
-	@Menu(title = "Company Profile", url = "/kv/company-profile", accessCode = "ROLE_DF_COMPANY_PROFILE", order = 1, visible = true)
+	@Menu(title = "Company Profile", url = "/kv/company-profile", accessCode = "ROLE_DF_COMPANY_PROFILE", order = 6, visible = true)
 	@RequestMapping(value = "/kv/company-profile", method = RequestMethod.GET)
 	@Secured("ROLE_DF_COMPANY_PROFILE")
 	public ModelAndView createRole(HttpServletRequest request) {
