@@ -20,8 +20,6 @@ public interface AssesmentService {
 	
 	public List<Map<String, Object>> getQuestion();
 	
-	public List<Training> getAssesmentForOrganization(int orgId);
-	
 	public Trainee getTraineeByUserId(int userId);
 	
 	public Trainee getTraineeByEmail(String email);

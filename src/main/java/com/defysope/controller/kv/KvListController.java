@@ -110,7 +110,7 @@ public class KvListController {
 	@ResponseBody
 	public Object loadData(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("trainingList", assesmentService.getAssesmentForOrganization(1));
+		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), 0));
 		return model;
 	}
 	
@@ -134,5 +134,15 @@ public class KvListController {
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
 		return new ModelAndView("/kv/training-attendance", model);
+	}
+
+	@Menu(title = "Manage User", url = "/kv/manage/user", accessCode = "ROLE_DF_CREATE_COMPANY_USER", order = 9, visible = true)
+	@RequestMapping(value = "/kv/manage/user", method = RequestMethod.GET)
+	@Secured("ROLE_DF_CREATE_COMPANY_USER")
+	public ModelAndView createCorporateUser(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("user", utils.getLoggedInUser());
+		model.put("menus", navigation.displayMenuList());
+		return new ModelAndView("/kv/company_manage_user", model);
 	}
 }

@@ -1,4 +1,4 @@
-defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
+defysope.controller('CourseListCtrl', [ '$scope', '$http', function ($scope, $http) {
 	$scope.courses = {};	
 	
 	$scope.toggleActive = function(thisCourse) {
@@ -15,4 +15,4 @@ defysope.controller('AccordionDemoCtrl', function ($scope, $http) {
 	function(response) {
 		$scope.courses = response.viewAssesmentList;
 	});
-});
+}]);

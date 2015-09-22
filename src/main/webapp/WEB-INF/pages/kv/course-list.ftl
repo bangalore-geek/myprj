@@ -5,7 +5,7 @@
 <div class="header">
     <h1 class="page-title">Course Listing</h1>
 </div><br>
-<div ng-controller="AccordionDemoCtrl">
+<div ng-controller="CourseListCtrl">
 	<div class="row" >
 		<div class="col-md-1"></div>
 		<div class="col-md-10">

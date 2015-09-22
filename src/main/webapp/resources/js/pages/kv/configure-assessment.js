@@ -1,4 +1,4 @@
-defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeout, userService) {
+defysope.controller('ConfigureAssessmentCtrl', ['$scope', 'WizardHandler', '$http', '$timeout', 'userService', function($scope, WizardHandler, $http, $timeout, userService) {
   $scope.stop=function(){
     return false;
   };
@@ -14,8 +14,6 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
       ;
   };
   $scope.hasAccessRight();
-  
-  
   
   /*handling date control for training*/
   $scope.startdateopen = function($event) {
@@ -172,4 +170,4 @@ defysope.controller('WizardCtrl', function($scope, WizardHandler, $http, $timeou
     	  window.scrollTo(0, 0);
         WizardHandler.wizard().goTo(0);
       };
- });
+ }]);

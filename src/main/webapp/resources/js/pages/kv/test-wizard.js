@@ -1,4 +1,4 @@
-defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
+defysope.controller('TestCtrl', ['$scope','$http', function($scope, WizardHandler, $http) {
   $scope.stop=function(){
     return false;
   };
@@ -62,4 +62,4 @@ defysope.controller('TestCtrl', function($scope, WizardHandler, $http) {
     $scope.goBack = function() {
         WizardHandler.wizard().goTo(0);
     };
- });
+ }]);

@@ -1,7 +1,4 @@
-defysope.controller('StudentDetailsCtrl', [
-		'$scope',
-		'$http',
-		function($scope, $http) {
+defysope.controller('StudentDetailsCtrl', ['$scope', '$http', function($scope, $http) {
 			
 			$scope.university = {data : {}};
 			

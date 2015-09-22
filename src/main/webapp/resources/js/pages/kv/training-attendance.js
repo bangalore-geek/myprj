@@ -1,4 +1,4 @@
-defysope.controller('TrainingAttendanceCtrl', function ($scope, $http) {
+defysope.controller('TrainingAttendanceCtrl', ['$scope','$http', function ($scope, $http) {
 
 	$scope.courseList = {};
 	$scope.trainingList = {};
@@ -21,4 +21,4 @@ defysope.controller('TrainingAttendanceCtrl', function ($scope, $http) {
 			$scope.traineeList = response.data.traineeList;
 		});
     };
-});
+}]);

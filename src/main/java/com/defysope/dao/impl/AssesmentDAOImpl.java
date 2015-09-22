@@ -70,12 +70,6 @@ public class AssesmentDAOImpl implements AssesmentDAO {
     }
 
 	@Override
-	public List<Training> getAssesmentForOrganization(int orgId) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Training.class);
-		return (List<Training>) criteria.list();
-	}
-
-	@Override
 	public Trainee getTraineeByUserId(int userId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Trainee.class);
 		criteria.add(Restrictions.eq("userId", userId));
