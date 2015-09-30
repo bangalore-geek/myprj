@@ -38,7 +38,7 @@ public class CreateUserController {
 	@Autowired
 	private Navigation navigation;
 
-	@Menu(title = "Create New User", url = "/corpyogi/administration/userinfo", accessCode = "ROLE_DF_CREATE_USER", order = 1, visible = true)
+	@Menu(title = "Create New User", url = "/corpyogi/administration/userinfo", accessCode = "ROLE_DF_CREATE_USER", order = 2, visible = true)
 	@RequestMapping(value = "/corpyogi/administration/userinfo", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_USER")
 	public ModelAndView createUser(HttpServletRequest request) {

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.defysope.dao.UserDAO;
+import com.defysope.model.ProductMaster;
 import com.defysope.model.StudentDetails;
 import com.defysope.model.University;
 import com.defysope.model.User;
@@ -58,12 +59,17 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-    public User saveUserInfo(User user) {
-        return userDAO.saveUserInfo(user);
+    public User saveUserInfo(User user, String role) {
+        return userDAO.saveUserInfo(user, role);
     }
 
 	@Override
 	public boolean hasAccessRight(User user, String code) {
 		 return userDAO.hasAccessRight(user.getId(), code);
+	}
+
+	@Override
+	public List<ProductMaster> getProductList(int userId) {
+		return userDAO.getProductList(userId);
 	}
 }

@@ -25,7 +25,7 @@ public class NavController {
 	@Autowired
 	private Navigation navigation;
 
-	@Menu(title = "home", url = "/", accessCode = "ROLE_DF_HOME_PAGE", order = 1, visible = false)
+	@Menu(title = "home", url = "/", accessCode = "ROLE_DF_HOME_PAGE", order = 17, visible = false)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
 	public ModelAndView homePage(HttpServletRequest request) {

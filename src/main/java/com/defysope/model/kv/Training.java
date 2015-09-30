@@ -115,5 +115,5 @@ public class Training {
 	}
 	public void setCmpId(int cmpId) {
 		this.cmpId = cmpId;
-	}
+	}	
 }

@@ -1,4 +1,4 @@
-package com.defysope.dao.impl;
+package com.defysope.dao.impl.kv;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.defysope.dao.AssesmentDAO;
+import com.defysope.dao.kv.AssesmentDAO;
 import com.defysope.model.kv.AssesmentType;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
@@ -81,5 +81,30 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Trainee.class);
 		criteria.add(Restrictions.eq("email", email));
 		return (Trainee) criteria.uniqueResult();
+	}
+
+	@Override
+	public Course getCourse(int cmpId, int courseId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Course.class);
+		criteria.add(Restrictions.eq("cmpId", cmpId));
+		criteria.add(Restrictions.eq("id", courseId));
+		return (Course) criteria.uniqueResult();
+	}
+
+	@Override
+	public Training getTraining(int cmpId, int courseId, int trainingId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Training.class);
+		criteria.add(Restrictions.eq("cmpId", cmpId));
+		criteria.add(Restrictions.eq("id", courseId));
+		criteria.add(Restrictions.eq("id", trainingId));
+		return (Training) criteria.uniqueResult();
+	}
+
+	@Override
+	public List<Trainee> getCandidateList(int compId, int requirementId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Trainee.class);
+		criteria.add(Restrictions.eq("compId", compId));
+		criteria.add(Restrictions.eq("requirementId", requirementId));
+		return (List<Trainee>) criteria.list();
 	}
 }

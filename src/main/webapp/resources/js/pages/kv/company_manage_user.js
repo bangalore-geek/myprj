@@ -1,9 +1,15 @@
-defysope.controller('ManageCompanyUserCtrl', ['$scope','$http',
-function($scope, $http) {
+defysope.controller('ManageCompanyUserCtrl', ['$scope','$http', function($scope, $http) {
 		
-	$scope.trainings = {};
-	$http.get(_context + '/kv/corporate/coordinator').success(
-			function(response) {
-				$scope.trainings = response.trainingList;
-	});
-} ]);
+	$scope.manageUsers = {
+		roleList :{}
+	};
+	
+/*	$scope.loadRole = function() {
+		$http.get(_context + '/load/role').success(function(response) {
+			$scope.manageUsers.roleList = response.roleList;
+		});
+	};
+	$scope.loadRole();*/
+	
+	
+}]);

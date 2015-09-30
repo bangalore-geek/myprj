@@ -24,7 +24,7 @@ public class TestController {
 
 	@Autowired
 	private Navigation navigation;
-
+	/*
 	@Menu(title = "Student Profile", url = "/student-profiles", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
 	@RequestMapping(value = "/student-profiles", method = RequestMethod.GET)
 	@Secured("ROLE_DF_STUDENT_PROFILE")
@@ -95,7 +95,7 @@ public class TestController {
 		return new ModelAndView("home", model);
 	}
 
-/*	@Menu(title = "Company Profile", url = "/company-profile", accessCode = "ROLE_DF_COMPANY_PROFILE", order = 1, visible = true)
+	@Menu(title = "Company Profile", url = "/company-profile", accessCode = "ROLE_DF_COMPANY_PROFILE", order = 1, visible = true)
 	@RequestMapping(value = "/company-profile", method = RequestMethod.GET)
 	@Secured("ROLE_DF_COMPANY_PROFILE")
 	public ModelAndView h(HttpServletRequest request) {

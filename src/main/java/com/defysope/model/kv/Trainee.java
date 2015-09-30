@@ -30,6 +30,8 @@ public class Trainee {
 	private Date endDate;
 	private boolean isExpired;
 	private int userId;
+	private int requirementId;
+	private int compId;
 	
 	public Integer getId() {
 		return id;
@@ -117,5 +119,21 @@ public class Trainee {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public int getRequirementId() {
+		return requirementId;
+	}
+
+	public void setRequirementId(int requirementId) {
+		this.requirementId = requirementId;
+	}
+
+	public int getCompId() {
+		return compId;
+	}
+
+	public void setCompId(int compId) {
+		this.compId = compId;
 	}
 }

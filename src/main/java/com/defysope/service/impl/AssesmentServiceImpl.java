@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.defysope.dao.AssesmentDAO;
+import com.defysope.dao.kv.AssesmentDAO;
 import com.defysope.model.kv.AssesmentType;
+import com.defysope.model.kv.Company;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Training;
@@ -54,5 +55,20 @@ public class AssesmentServiceImpl implements AssesmentService {
 	@Override
 	public Trainee getTraineeByEmail(String email) {
 		return assesmentDAO.getTraineeByEmail(email);
+	}
+
+	@Override
+	public Course getCourse(int cmpId, int courseId) {
+		return assesmentDAO.getCourse(cmpId, courseId);
+	}
+
+	@Override
+	public Training getTraining(int cmpId, int courseId, int trainingId) {
+		return assesmentDAO.getTraining(cmpId, courseId, trainingId);
+	}
+
+	@Override
+	public List<Trainee> getCandidateList(int compId, int requirementId) {
+		return assesmentDAO.getCandidateList(compId, requirementId);
 	}
 }

@@ -34,6 +34,27 @@ isExpired boolean default false
 )
 
 
+-- requirement table 
+CREATE TABLE cy_kv_requirement
+(
+  requirementid serial primary key,
+  compid integer REFERENCES cy_ts_company (compid),
+  companyjobcode character varying(45),
+  jobdesignation character varying(45),
+  minexperience character varying(45),
+  maxexperience character varying(45),
+  status character varying(45),
+  startdate timestamp without time zone,
+  enddate timestamp without time zone,
+  noticeperiod character varying(45),
+  currentctc integer,
+  employmenttype character varying(45),
+  creationdate timestamp without time zone,
+  createdby character varying(45),
+  updateddate timestamp without time zone,
+  updatedby character varying(45)
+)
+
 create table tblAssesmentType(
   cid serial primary key,
   description varchar(200),

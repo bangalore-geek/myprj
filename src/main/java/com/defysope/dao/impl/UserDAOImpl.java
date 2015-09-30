@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.UserDAO;
+import com.defysope.model.ProductMaster;
 import com.defysope.model.StudentDetails;
 import com.defysope.model.University;
 import com.defysope.model.User;
@@ -87,24 +88,33 @@ public class UserDAOImpl implements UserDAO {
 		return (List<University>) criteria.list();
 	}
 	
-	public User saveUserInfo(User user) {
+	public User saveUserInfo(User user, String role) {
         sessionFactory.getCurrentSession().flush();
-        jdbcTemplate.execute("insert into tbl_user_roles(userid,roleid) values("+user.getId()+",(select cid from tblrole where name ='student'))");
+        jdbcTemplate.execute("insert into tbl_user_roles(userid,roleid) values("+user.getId()+",(select cid from tblrole where name ='"+role+"'))");
+        
+        /*Query query = openSession().createQuery("insert into tbl_user_roles(userid,roleid) values( :userId, (select cid from tblrole where name =:role))");
+		query.setParameter("userId", user.getId());
+		query.setParameter("role", role);
+		System.out.println("Query string >>>"+query.getQueryString());
+		System.out.println("Query toString >>>"+query.toString());
+		int result = query.executeUpdate();*/
         return user;
     }
 
 	@Override
 	public boolean hasAccessRight(int id, String code) {
-		System.out.println("===============Start==============");
-		jdbcTemplate.execute("select count(*) from tbl_role_accessrights a inner join tblaccessrights b on b.cid = a.featureid"
-				+ " where a.roleid = (select cid from tblrole where cid ="+ id +")" +
-				"and a.featureid = (select cid from tblaccessrights where code = '"+ code +"')");
-		/*Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger("id", id);
-		query.setString("code", code);
-		query.executeUpdate();*/
+		Integer count = jdbcTemplate .queryForInt(
+				"select count(*) from tbl_role_accessrights a inner join tblaccessrights b on b.cid = a.featureid"
+				+ " where a.roleid = (select cid from tblrole where cid = ?)" 
+				+ "and a.featureid = (select cid from tblaccessrights where code ilike ?)", new Object[] { id, code });
+		return count > 0; 
+	}
+
+	@Override
+	public List<ProductMaster> getProductList(int userId) {
 		
-		System.out.println("==============End===============");
-		return false;
+		
+		
+		return null;
 	}
 }

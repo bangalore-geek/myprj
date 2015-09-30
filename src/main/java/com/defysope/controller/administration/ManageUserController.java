@@ -21,7 +21,7 @@ public class ManageUserController {
 	@Autowired
 	private ApplicationUtils utils;
 
-	@Menu(title = "Manage User", url = "/manage-user", accessCode = "ROLE_DF_MANAGE_USER", order = 1, visible = true)
+	@Menu(title = "Manage User", url = "/manage-user", accessCode = "ROLE_DF_MANAGE_USER", order = 3, visible = true)
 	@RequestMapping(value = "/manage-user", method = RequestMethod.GET)
 	@Secured("ROLE_PG_HOME")
 	public ModelAndView manageUser(HttpServletRequest request) {

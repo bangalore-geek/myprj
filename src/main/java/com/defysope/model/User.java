@@ -25,6 +25,8 @@ public class User implements Serializable {
 	public static final int STUDENT = 3;
 	public static final int FREELANCER = 4;
 	public static final int CORPORATE = 5;
+	public static final int INTERVIEW_CANDIDATE = 6;
+	public static final int CORPORATE_TRAINEE = 7;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tbluser_cid_gen")

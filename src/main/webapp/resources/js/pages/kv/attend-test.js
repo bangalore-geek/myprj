@@ -1,4 +1,4 @@
-defysope.controller('TestCtrl', ['$scope','$http', function($scope, WizardHandler, $http) {
+defysope.controller('TestCtrl', ['$scope', 'WizardHandler', '$http', function($scope, WizardHandler, $http) {
   $scope.stop=function(){
     return false;
   };

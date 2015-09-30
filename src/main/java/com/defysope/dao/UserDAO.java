@@ -1,6 +1,8 @@
 package com.defysope.dao;
 
 import java.util.List;
+
+import com.defysope.model.ProductMaster;
 import com.defysope.model.StudentDetails;
 import com.defysope.model.University;
 import com.defysope.model.User;
@@ -25,7 +27,9 @@ public interface UserDAO {
 
 	public List<University> getUniversity();
 	
-	public User saveUserInfo(User user);
+	public User saveUserInfo(User user, String role);
 
 	public boolean hasAccessRight(int id, String code);
+
+	public List<ProductMaster> getProductList(int userId);
 }

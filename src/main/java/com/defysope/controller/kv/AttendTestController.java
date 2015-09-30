@@ -25,7 +25,7 @@ import com.defysope.service.PublicManager;
 import com.defysope.service.impl.Navigation;
 
 @Controller
-public class OnlineTestController {
+public class AttendTestController {
 	
 	@Autowired
 	private ApplicationUtils utils;
@@ -39,18 +39,18 @@ public class OnlineTestController {
 	@Autowired
 	private PublicManager manager;
 	
-	@Menu(title = "Course List", url = "/corpyogi/kv/test", accessCode = "ROLE_DF_CREATE_ROLE", order = 1, visible = true)
-	@RequestMapping(value = "/corpyogi/kv/test", method = RequestMethod.GET)
-	@Secured("ROLE_DF_HOME_PAGE")
+	@Menu(title = "Attend Test", url = "/kv/attend-test", accessCode = "ROLE_DF_CREATE_ROLE", order = 7, visible = true)
+	@RequestMapping(value = "/kv/attend-test", method = RequestMethod.GET)
+	@Secured("ROLE_DF_ATTEND_TEST")
 	public ModelAndView createRole(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
-		return new ModelAndView("/kv/test-wizard", model); 
+		return new ModelAndView("/kv/attend-test", model); 
 	}
 	
 	@RequestMapping(value = "/kv/load-test-details", method = RequestMethod.GET)
-	@Secured("ROLE_DF_HOME_PAGE")
+	@Secured("ROLE_DF_ATTEND_TEST")
 	@ResponseBody
 	public Object loadData(HttpServletRequest request) {
 		User user = utils.getLoggedInUser();
@@ -66,7 +66,7 @@ public class OnlineTestController {
 	}
 	
 	@RequestMapping(value = "/kv/load-question", method = RequestMethod.GET)
-	@Secured("ROLE_DF_HOME_PAGE")
+	@Secured("ROLE_DF_ATTEND_TEST")
 	@ResponseBody
 	public Object loadQuestions(HttpServletRequest request) {
 		// http://stackoverflow.com/questions/8674718/best-way-to-select-random-rows-postgresql -- sample link

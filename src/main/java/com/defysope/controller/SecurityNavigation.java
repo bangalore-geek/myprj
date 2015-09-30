@@ -37,11 +37,20 @@ public class SecurityNavigation {
 
 	@RequestMapping(value = "/success-login", method = RequestMethod.GET)
 	public ModelAndView successLogin() {
+		String page = "home";
 		Map<String, Object> model = new HashMap<String, Object>();
 		User loggedInUser = utils.getLoggedInUser();
 		model.put("user", loggedInUser);
 		model.put("menus", navigation.displayMenuList());
-		return new ModelAndView(loggedInUser.getUserType()==2?"test-wizard":"home", model);
+		if (loggedInUser.getUserType() == User.CORPORATE_TRAINEE) {
+			page = "kv/attend-test";
+		}
+		
+		if (loggedInUser.getUserType() == User.INTERVIEW_CANDIDATE) {
+			page = "/kv/attend-interview";
+		}
+		//return new ModelAndView(loggedInUser.getUserType()==2?"test-wizard":"home", model);
+		return new ModelAndView(page, model);
 	}
 
 	@RequestMapping(value = "/access-denied", method = RequestMethod.GET)

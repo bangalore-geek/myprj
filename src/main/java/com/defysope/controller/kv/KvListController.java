@@ -37,7 +37,7 @@ public class KvListController {
 	private PublicManager manager;
 	
 	/* ===================== Courses ========================*/
-	@Menu(title = "Course List", url = "/kv/courses", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT_COURSE", order = 1, visible = true)
+	@Menu(title = "Course List", url = "/kv/courses", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT_COURSE", order = 10, visible = true)
 	@RequestMapping(value = "/kv/courses", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT")
 	public ModelAndView courseListFtl(HttpServletRequest request) {
@@ -70,7 +70,7 @@ public class KvListController {
 	} 
 
 	/* ===================== Training list ========================*/
-	@Menu(title = "Training List", url = "/kv/trainings?courseIdFilter=0", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT_TRAINING", order = 2, visible = true)
+	@Menu(title = "Training List", url = "/kv/trainings?courseIdFilter=0", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT_TRAINING", order = 11, visible = true)
 	@RequestMapping(value = "/kv/trainings", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT_TRAINING")
 	public ModelAndView trainingListFtl(HttpServletRequest request, @RequestParam Integer courseIdFilter) {
@@ -95,7 +95,7 @@ public class KvListController {
 	}
 	
 	/* ===================== Manage Assessment list ========================*/
-	@Menu(title = "Assessment List", url = "/kv/assesments", accessCode = "ROLE_DF_MANAGE_ASSESSMENT", order = 3, visible = true)
+	@Menu(title = "Assessment List", url = "/kv/assesments", accessCode = "ROLE_DF_MANAGE_ASSESSMENT", order = 12, visible = true)
 	@RequestMapping(value = "/kv/assesments", method = RequestMethod.GET)
 	@Secured("ROLE_DF_MANAGE_ASSESSMENT")
 	public ModelAndView assessmentListFtl(HttpServletRequest request) {
@@ -115,7 +115,7 @@ public class KvListController {
 	}
 	
 	/* =================Impoter list============================*/
-	@Menu(title = "Impoter List", url = "/kv/importer", accessCode = "ROLE_DF_IMPOTER", order = 4, visible = true)
+	@Menu(title = "Impoter List", url = "/kv/importer", accessCode = "ROLE_DF_IMPOTER", order = 13, visible = true)
 	@RequestMapping(value = "/kv/importer", method = RequestMethod.GET)
 	@Secured("ROLE_DF_IMPOTER")
 	public ModelAndView excelImpoterListFtl(HttpServletRequest request) {
@@ -126,7 +126,7 @@ public class KvListController {
 	}
 	
 	/* =================Training Attendance============================*/
-	@Menu(title = "Training Attendance", url = "/kv/training-attendance", accessCode = "ROLE_DF_TRAINING_ATTENDANCE", order = 5, visible = true)
+	@Menu(title = "Training Attendance", url = "/kv/training-attendance", accessCode = "ROLE_DF_TRAINING_ATTENDANCE", order = 14, visible = true)
 	@RequestMapping(value = "/kv/training-attendance", method = RequestMethod.GET)
 	@Secured("ROLE_DF_TRAINING_ATTENDANCE")
 	public ModelAndView trainingAttandanceFtl(HttpServletRequest request) {
@@ -136,7 +136,7 @@ public class KvListController {
 		return new ModelAndView("/kv/training-attendance", model);
 	}
 
-	@Menu(title = "Manage User", url = "/kv/manage/user", accessCode = "ROLE_DF_CREATE_COMPANY_USER", order = 9, visible = true)
+	@Menu(title = "Manage User", url = "/kv/manage/user", accessCode = "ROLE_DF_CREATE_COMPANY_USER", order = 15, visible = true)
 	@RequestMapping(value = "/kv/manage/user", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_COMPANY_USER")
 	public ModelAndView createCorporateUser(HttpServletRequest request) {

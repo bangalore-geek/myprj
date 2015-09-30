@@ -42,7 +42,7 @@ public class StudentProfileController {
 	private Navigation navigation;
 
 	// displaying the add student details form
-	@Menu(title = "Student Profile", url = "/student-profile", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 1, visible = true)
+	@Menu(title = "Student Profile", url = "/student-profile", accessCode = "ROLE_DF_STUDENT_PROFILE", order = 16, visible = true)
 	@RequestMapping(value = "/student-profile", method = RequestMethod.GET)
 	@Secured("ROLE_DF_HOME_PAGE")
 	public ModelAndView loadFtl(HttpServletRequest request) {

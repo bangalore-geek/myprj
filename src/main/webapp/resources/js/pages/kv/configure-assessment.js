@@ -73,6 +73,8 @@ defysope.controller('ConfigureAssessmentCtrl', ['$scope', 'WizardHandler', '$htt
 	/*Save Training*/
 	$scope.thisTraining = {};
 	$scope.saveTraining = function($thisTraining) {
+		console.log("Save training comed >>");
+		console.log($thisTraining);
 		$thisTraining.assesmentMasterId = $scope.thisSummary.thisCourse.id;
 		$http.post(_context + '/kv/save-training', $thisTraining).then(function(response) {
 			$scope.thisSummary.thisCourseTrainingList = response.data.trainingList;

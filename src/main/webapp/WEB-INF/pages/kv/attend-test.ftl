@@ -1,5 +1,5 @@
 	<#import "/spring.ftl" as spring />
-	<#import "macro.ftl" as macro/>
+	<#import "/macro.ftl" as macro/>
 
 	<@macro.showHeader />
 <style>
@@ -674,5 +674,5 @@ input[type="checkbox"]{
 		</div>
 
 	<@macro.showFooter>
-	<script type="text/javascript" src="${rc.getContextPath()}/resources/js/pages/kv/test-wizard.js"></script>
+	<script type="text/javascript" src="${rc.getContextPath()}/resources/js/pages/kv/attend-test.js"></script>
 	</@macro.showFooter>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.defysope.Constant;
 import com.defysope.model.User;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
@@ -47,7 +48,6 @@ public class ConfigureAssessmentController {
 	@Autowired
 	private UserService userService;
 	
-	@Menu(title = "Configure Assessment", url = "/kv/configure-assessment?editCourseId=0&editTrainingId=0", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT", order = 7, visible = true)
 	@RequestMapping(value = "/kv/configure-assessment", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT")
 	public ModelAndView loadWizardFtl(HttpServletRequest request, @RequestParam Integer editCourseId, @RequestParam Integer editTrainingId) {
@@ -95,7 +95,7 @@ public class ConfigureAssessmentController {
 	}
 	
 	@RequestMapping(value = "/kv/save-training", method = RequestMethod.POST)
-	@Secured("ROLE_DF_CONFIGURE_TRAINING")
+	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT_TRAINING")
 	@ResponseBody
 	public Object saveTraining(HttpServletRequest request, @RequestBody Training thisTraining) {
 		manager.saveObject(thisTraining);
@@ -118,16 +118,17 @@ public class ConfigureAssessmentController {
 		trainee.setStartDate(assesmentCourse.getStartdate());
 		trainee.setEndDate(assesmentCourse.getEnddate());
 		trainee.setPassword(utils.encryptPassword("sa"));
+		trainee.setCompId(utils.getLoggedInUser().getComId());
 		
 		User newUser = new User();
 		newUser.setUserName(trainee.getEmail());
 		newUser.setPassword(utils.encryptPassword("sa"));
-		newUser.setUserType(2);
+		newUser.setUserType(User.CORPORATE_TRAINEE);
 		manager.saveObject(newUser);
 		trainee.setUserId(newUser.getId());
 		manager.saveObject(trainee);
 		
-		userService.saveUserInfo(newUser);
+		userService.saveUserInfo(newUser, Constant.ROLE_COMPANY_TRAINEE);
 		
 		// loading trainee list for particular training
 		List<Trainee> traineeList = assesmentService.getTraineeList(trainee.getTrainingId());
@@ -148,8 +149,8 @@ public class ConfigureAssessmentController {
 		model.put("editCourseId", editCourseId);
 		
 		if (editCourseId > 0) {
-			Course assesmentMaster = (Course) manager.getObjectOrNull(Course.class, editCourseId);
-			model.put("thisCourse", assesmentMaster);
+			Course thisCourse = assesmentService.getCourse(utils.getLoggedInUser().getComId(), editCourseId);
+			model.put("thisCourse", thisCourse);
 			model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), editCourseId));
 		}
 		return model;
@@ -204,14 +205,11 @@ public class ConfigureAssessmentController {
 		return model;
 	}
 	
-	
 	@RequestMapping(value = "/kv/has-access-right", method = RequestMethod.GET)
 	@ResponseBody
 	public Object hasAccessRight(HttpServletRequest request) {
-		System.out.println("has access right comed >>>>>>>>>>");
 		Map<String, Object> model = new HashMap<String, Object>();
 		userService.hasAccessRight(utils.getLoggedInUser(), "");
 		return model;
 	}
-	
 }

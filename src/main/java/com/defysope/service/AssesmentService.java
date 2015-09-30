@@ -23,4 +23,10 @@ public interface AssesmentService {
 	public Trainee getTraineeByUserId(int userId);
 	
 	public Trainee getTraineeByEmail(String email);
+	
+	public Course getCourse(int cmpId, int courseId);
+	
+	public Training getTraining(int cmpId, int courseId, int trainingId);
+	
+	public List<Trainee> getCandidateList(int compId, int requirementId);
 }

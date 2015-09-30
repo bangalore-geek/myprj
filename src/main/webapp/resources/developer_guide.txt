@@ -1,0 +1,3 @@
+1) Mapping table will not have a model class
+2) in javascript file dont use a double quote alwayse use a single quote because it will create 
+ a problem while minifying.

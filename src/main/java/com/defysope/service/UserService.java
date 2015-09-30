@@ -2,6 +2,7 @@ package com.defysope.service;
 
 import java.util.List;
 
+import com.defysope.model.ProductMaster;
 import com.defysope.model.StudentDetails;
 import com.defysope.model.University;
 import com.defysope.model.User;
@@ -26,8 +27,10 @@ public interface UserService {
 	
 	public List<University> getUniversity();
 	
-	public User saveUserInfo(User user);
+	public User saveUserInfo(User user, String role);
 	
 	public boolean hasAccessRight(User user, String code);
+	
+	public List<ProductMaster> getProductList(int userId);
 	
 }
