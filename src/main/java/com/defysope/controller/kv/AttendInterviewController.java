@@ -74,6 +74,16 @@ public class AttendInterviewController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/kv/laod-schedule-interview-data", method = RequestMethod.GET)
+	@Secured("ROLE_DF_ATTEND_INTERVIEW")
+	@ResponseBody
+	public Object loadData(HttpServletRequest request) {
+		Company thisCompany = (Company) manager.getObjectOrNull(Company.class,  utils.getLoggedInUser().getComId());
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("thisCompany", thisCompany);
+		return model;
+	}
+	
 /*	@RequestMapping(value = "/kv/save-candidate-profile", method = RequestMethod.POST)
 	@Secured("ROLE_DF_ATTEND_INTERVIEW")
 	@ResponseBody
