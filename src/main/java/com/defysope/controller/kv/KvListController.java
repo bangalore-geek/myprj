@@ -3,8 +3,10 @@ package com.defysope.controller.kv;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -14,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.defysope.model.kv.Course;
+import com.defysope.model.kv.Requirement;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
 import com.defysope.service.PublicManager;
+import com.defysope.service.RequirementService;
 import com.defysope.service.impl.Navigation;
 
 @Controller
@@ -35,6 +40,9 @@ public class KvListController {
 	
 	@Autowired
 	private PublicManager manager;
+	
+	@Autowired
+	private RequirementService requirementService;
 	
 	/* ===================== Courses ========================*/
 	@Menu(title = "Course List", url = "/kv/courses", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT_COURSE", order = 10, visible = true)
@@ -144,5 +152,24 @@ public class KvListController {
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
 		return new ModelAndView("/kv/company_manage_user", model);
+	}
+	
+	@Menu(title = "Requirement List", url = "/kv/requirement-list", accessCode = "ROLE_DF_CONFIGURE_INTERVIEW", order = 15, visible = true)
+	@RequestMapping(value = "/kv/requirement-list")
+	@Secured("ROLE_DF_CONFIGURE_INTERVIEW")
+    public ModelAndView requirementList(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("user", utils.getLoggedInUser());
+		model.put("menus", navigation.displayMenuList());
+		return new ModelAndView("kv/requirement-list", model);
+    }
+	@RequestMapping(value = "/kv/load-requirement", method = RequestMethod.GET)
+	@Secured("ROLE_DF_CONFIGURE_INTERVIEW")
+	@ResponseBody
+	public Object loadRequirement(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<Requirement> requirementList = requirementService.getRequirementForCompany(utils.getLoggedInUser().getComId()); 
+		model.put("requirementList",requirementList );
+		return model;
 	}
 }

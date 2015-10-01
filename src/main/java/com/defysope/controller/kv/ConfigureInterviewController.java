@@ -49,7 +49,6 @@ public class ConfigureInterviewController {
 	@Autowired
 	private AssesmentService assesmentService;
 	
-	@Menu(title = "Configure Interview", url = "/kv/configure-interview", accessCode = "ROLE_DF_CONFIGURE_INTERVIEW", order = 9, visible = true)
     @RequestMapping(value = "/kv/configure-interview", method = RequestMethod.GET)
     @Secured("ROLE_DF_CONFIGURE_INTERVIEW")
     public ModelAndView configureRequiremetn(HttpServletRequest request) {

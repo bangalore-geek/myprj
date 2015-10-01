@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.model.User;
-import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.impl.Navigation;
 
@@ -47,9 +46,8 @@ public class SecurityNavigation {
 		}
 		
 		if (loggedInUser.getUserType() == User.INTERVIEW_CANDIDATE) {
-			page = "/kv/attend-interview";
+			page = "/kv/schedule-interview";
 		}
-		//return new ModelAndView(loggedInUser.getUserType()==2?"test-wizard":"home", model);
 		return new ModelAndView(page, model);
 	}
 
@@ -57,5 +55,4 @@ public class SecurityNavigation {
 	public ModelAndView accessDenied() {
 		return new ModelAndView("access-denied");
 	}
-
 }
