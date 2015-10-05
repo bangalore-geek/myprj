@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 3254858222800347249L;
-	public static final int OWNER = 1;
+	public static final int SITE_OWNER = 1;
 	public static final int ADMIN = 2;
 	public static final int STUDENT = 3;
 	public static final int FREELANCER = 4;

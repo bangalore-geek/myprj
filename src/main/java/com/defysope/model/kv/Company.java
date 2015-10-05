@@ -27,6 +27,11 @@ public class Company {
 	private int lastUpdatedUser;
 	private Date createdDate;
 	private int lastUpdatedLogin;
+	private String tinNumber;
+	private String companyMobileNum;
+	private Date approvedOn;
+	private int approvedBy;
+	private boolean isApproved;
 	
 	public int getCompId() {
 		return compId;
@@ -122,5 +127,45 @@ public class Company {
 	
 	public void setLastUpdatedLogin(int lastUpdatedLogin) {
 		this.lastUpdatedLogin = lastUpdatedLogin;
+	}
+
+	public String getTinNumber() {
+		return tinNumber;
+	}
+
+	public void setTinNumber(String tinNumber) {
+		this.tinNumber = tinNumber;
+	}
+
+	public String getCompanyMobileNum() {
+		return companyMobileNum;
+	}
+
+	public void setCompanyMobileNum(String companyMobileNum) {
+		this.companyMobileNum = companyMobileNum;
+	}
+
+	public Date getApprovedOn() {
+		return approvedOn;
+	}
+
+	public void setApprovedOn(Date approvedOn) {
+		this.approvedOn = approvedOn;
+	}
+
+	public int getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(int approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
 	}
 }

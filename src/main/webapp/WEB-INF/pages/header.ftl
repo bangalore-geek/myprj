@@ -43,6 +43,7 @@
 					<li><a href="contact.htm"><span class="glyphicon glyphicon-phone-alt"></span> Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="${rc.getContextPath()}/company-registration">Company Registration</a></li>
 					<li><a href="${rc.getContextPath()}/user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</ul>
 			</div>

@@ -39,7 +39,7 @@ public class AttendTestController {
 	@Autowired
 	private PublicManager manager;
 	
-	@Menu(title = "Attend Test", url = "/kv/attend-test", accessCode = "ROLE_DF_CREATE_ROLE", order = 7, visible = true)
+	@Menu(title = "Attend Test", url = "/kv/attend-test", accessCode = "ROLE_DF_ATTEND_TEST", order = 7, visible = true)
 	@RequestMapping(value = "/kv/attend-test", method = RequestMethod.GET)
 	@Secured("ROLE_DF_ATTEND_TEST")
 	public ModelAndView createRole(HttpServletRequest request) {

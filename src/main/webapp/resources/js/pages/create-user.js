@@ -19,7 +19,7 @@ function($scope, $http) {
 	$scope.loadRoleList();
 
 /*	$scope.createUser = function(){
-	  $http.post(_context + '/corpyogi/administration/userinfo', $scope.userAdministration.user).then(function(res){
+	  $http.post(_context + '/administration/userinfo', $scope.userAdministration.user).then(function(res){
 		  console.log("SAve success >>>");
 		$scope.userAdministration.user = res.data.user;
 	  });

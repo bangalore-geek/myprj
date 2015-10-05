@@ -38,8 +38,8 @@ public class CreateUserController {
 	@Autowired
 	private Navigation navigation;
 
-	@Menu(title = "Create New User", url = "/corpyogi/administration/userinfo", accessCode = "ROLE_DF_CREATE_USER", order = 2, visible = true)
-	@RequestMapping(value = "/corpyogi/administration/userinfo", method = RequestMethod.GET)
+	@Menu(title = "Create New User", url = "/administration/userinfo", accessCode = "ROLE_DF_CREATE_USER", order = 2, visible = true)
+	@RequestMapping(value = "/administration/userinfo", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CREATE_USER")
 	public ModelAndView createUser(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -49,7 +49,7 @@ public class CreateUserController {
 		return new ModelAndView("create-user", model);
 	}
 
-	@RequestMapping(value = "/corpyogi/administration/userinfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/administration/userinfo", method = RequestMethod.POST)
 	@Secured("ROLE_DF_CREATE_USER")
 	@ResponseBody
 	public Object saveUser(@RequestBody User user) {
