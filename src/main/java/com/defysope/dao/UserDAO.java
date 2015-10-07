@@ -31,5 +31,5 @@ public interface UserDAO {
 
 	public boolean hasAccessRight(int id, String code);
 
-	public List<ProductMaster> getProductList(int userId);
+	public List<ProductMaster> getProductList(int cmpId);
 }

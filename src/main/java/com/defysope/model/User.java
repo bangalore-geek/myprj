@@ -50,7 +50,7 @@ public class User implements Serializable {
 
 	private Date modifiedDate;
 	
-	private int comId;
+	private int cmpId;
 	
 	public String getName() {
 		return name;
@@ -136,11 +136,11 @@ public class User implements Serializable {
 		this.modifiedDate = modifiedDate;
 	}
 
-	public int getComId() {
-		return comId;
+	public int getCmpId() {
+		return cmpId;
 	}
 
-	public void setComId(int compId) {
-		this.comId = compId;
+	public void setCmpId(int cmpId) {
+		this.cmpId = cmpId;
 	}
 }

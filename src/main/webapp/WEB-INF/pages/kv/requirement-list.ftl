@@ -46,7 +46,7 @@
 				</accordion>
 				
 				<div class="alert alert-info" role="alert"  ng-show="requirementList.length == 0">
-					No course found !!
+					No requirement found !!
 				</div>
 			</div>
 		</div>

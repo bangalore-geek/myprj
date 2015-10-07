@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.model.User;
 import com.defysope.service.ApplicationUtils;
+import com.defysope.service.UserService;
 import com.defysope.service.impl.Navigation;
 
 @Controller
@@ -21,6 +22,9 @@ public class SecurityNavigation {
 
 	@Autowired
 	private Navigation navigation;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/user-login", method = RequestMethod.GET)
 	public ModelAndView loginForm() {
@@ -41,10 +45,10 @@ public class SecurityNavigation {
 		User loggedInUser = utils.getLoggedInUser();
 		model.put("user", loggedInUser);
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		if (loggedInUser.getUserType() == User.CORPORATE_TRAINEE) {
 			page = "kv/attend-test";
 		}
-		
 		if (loggedInUser.getUserType() == User.INTERVIEW_CANDIDATE) {
 			page = "/kv/schedule-interview";
 		}

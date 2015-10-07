@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<ProductMaster> getProductList(int userId) {
-		return userDAO.getProductList(userId);
+	public List<ProductMaster> getProductList(int cmpId) {
+		return userDAO.getProductList(cmpId);
 	}
 }

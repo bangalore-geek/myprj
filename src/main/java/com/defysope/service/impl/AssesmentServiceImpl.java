@@ -2,14 +2,12 @@ package com.defysope.service.impl;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.defysope.dao.kv.AssesmentDAO;
 import com.defysope.model.kv.AssesmentType;
-import com.defysope.model.kv.Company;
+import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Training;
@@ -68,7 +66,7 @@ public class AssesmentServiceImpl implements AssesmentService {
 	}
 
 	@Override
-	public List<Trainee> getCandidateList(int compId, int requirementId) {
+	public List<Candidate> getCandidateList(int compId, int requirementId) {
 		return assesmentDAO.getCandidateList(compId, requirementId);
 	}
 }

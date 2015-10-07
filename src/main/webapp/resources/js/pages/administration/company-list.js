@@ -6,6 +6,7 @@ defysope.controller('CompanyListCtrl', [ '$scope', '$http', function ($scope, $h
 				thisCompany).then(function(response) {
 				if(response.data.success){
 					thisCompany.approve= true;
+					toastr.success('Approved successfully.');
 				}
 		});
 	};

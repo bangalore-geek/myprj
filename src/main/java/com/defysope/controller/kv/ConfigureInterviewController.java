@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.Constant;
 import com.defysope.model.User;
+import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Requirement;
 import com.defysope.model.kv.Trainee;
 import com.defysope.navigation.Menu;
@@ -55,6 +56,7 @@ public class ConfigureInterviewController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
         return new ModelAndView("kv/configure-interview", model);
     }
     
@@ -62,7 +64,7 @@ public class ConfigureInterviewController {
 	@Secured("ROLE_DF_CONFIGURE_INTERVIEW")
 	@ResponseBody
 	public Object saveRequirement(HttpServletRequest request, @RequestBody Requirement thisRequirement) {
-		thisRequirement.setCompId(utils.getLoggedInUser().getComId());
+		thisRequirement.setCompId(utils.getLoggedInUser().getCmpId());
 		manager.saveObject(thisRequirement);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("thisRequirement", thisRequirement);
@@ -75,21 +77,19 @@ public class ConfigureInterviewController {
 	@ResponseBody
 	public Object loadEditRequiremetnList(HttpServletRequest request) { 
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("requirementList", requirementService.getRequirementForCompany(utils.getLoggedInUser().getComId()));
+		model.put("requirementList", requirementService.getRequirementForCompany(utils.getLoggedInUser().getCmpId()));
 		return model;
 	}
 	
 	@RequestMapping(value = "/kv/save-candidate", method = RequestMethod.POST)
 	@Secured("ROLE_DF_CONFIGURE_INTERVIEW")
 	@ResponseBody
-	public Object saveTrainee(HttpServletRequest request, @RequestBody Trainee candidate) {
+	public Object saveTrainee(HttpServletRequest request, @RequestBody Candidate candidate) {
 		// loading Requirement
 		Requirement requirement = (Requirement) manager.getObjectOrNull(Requirement.class, candidate.getRequirementId());
 		
-		candidate.setCourseId(1);
-		candidate.setTrainingId(1);
-		
-		candidate.setCompId(utils.getLoggedInUser().getComId());
+		System.out.println("utils.getLoggedInUser().getCmpId() >> "+utils.getLoggedInUser().getCmpId());
+		candidate.setCmpId(utils.getLoggedInUser().getCmpId());
 		candidate.setStartDate(requirement.getStartDate());
 		candidate.setEndDate(requirement.getEndDate());
 		candidate.setPassword(utils.encryptPassword("sa"));
@@ -98,6 +98,7 @@ public class ConfigureInterviewController {
 		newUser.setUserName(candidate.getEmail());
 		newUser.setPassword(utils.encryptPassword("sa"));
 		newUser.setUserType(User.INTERVIEW_CANDIDATE);
+		newUser.setCmpId(utils.getLoggedInUser().getCmpId());
 		manager.saveObject(newUser);
 		candidate.setUserId(newUser.getId());
 		manager.saveObject(candidate);
@@ -117,7 +118,7 @@ public class ConfigureInterviewController {
 	@Secured("ROLE_DF_CONFIGURE_INTERVIEW")
 	@ResponseBody
 	public Object loadTrainee(HttpServletRequest request, @RequestParam int requirementId) {
-		List<Trainee> candidateList = assesmentService.getCandidateList(utils.getLoggedInUser().getComId(), requirementId);
+		List<Candidate> candidateList = assesmentService.getCandidateList(utils.getLoggedInUser().getCmpId(), requirementId);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("candidateList", candidateList);
 		return model;

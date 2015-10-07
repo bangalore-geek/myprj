@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.defysope.dao.kv.RequirementDao;
+import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Requirement;
 import com.defysope.service.RequirementService;
@@ -25,4 +26,9 @@ public class RequirementServiceImpl implements RequirementService {
     public List<Trainee> getCandidateForRequirement(int requirementId) {
     	return requirementDao.getCandidateForRequirement(requirementId);
     }
+
+	@Override
+	public Candidate getCandidateByUserId(int userId) {
+		return requirementDao.getCandidateByUserId(userId);
+	}
 }

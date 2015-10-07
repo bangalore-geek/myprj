@@ -5,9 +5,10 @@
 <div class="header">
     <h1 class="page-title">Start Interview</h1>
 </div><br>
-
-
 <div ng-controller="StartInterviewCtrl">   
+	<span ng-if="!thisSummary.elegibleForInterview">
+		<div>Interview date is not started yet</div>
+	</span>
 </div>
 
 <@macro.showFooter>

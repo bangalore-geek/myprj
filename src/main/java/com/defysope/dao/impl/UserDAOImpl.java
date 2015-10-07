@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.UserDAO;
@@ -111,10 +112,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<ProductMaster> getProductList(int userId) {
+	public List<ProductMaster> getProductList(int cmpId) {
 		
 		
+		String sql = "SELECT * FROM cy_ts_product_master where product_id in(select productid from cy_kv_company_licence_details where cmpid = "+ cmpId +")";
 		
-		return null;
+		List<ProductMaster> productList = 
+				jdbcTemplate.query(sql, 
+			   ParameterizedBeanPropertyRowMapper.newInstance(ProductMaster.class));
+		
+		
+/*		String query = "select * from cy_ts_product_master";
+		List<ProductMaster> productList = jdbcTemplate.queryForList(query, ProductMaster.class);*/
+		return productList;
 	}
 }

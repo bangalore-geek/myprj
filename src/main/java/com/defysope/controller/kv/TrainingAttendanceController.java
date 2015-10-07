@@ -31,7 +31,7 @@ public class TrainingAttendanceController {
 	@ResponseBody
 	public Object loadCourse(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("courseList", assesmentService.getCoursesForCompany(utils.getLoggedInUser().getComId()));
+		model.put("courseList", assesmentService.getCoursesForCompany(utils.getLoggedInUser().getCmpId()));
 		return model;
 	}
 
@@ -42,7 +42,7 @@ public class TrainingAttendanceController {
 			@RequestParam int courseId) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("trainingList",
-				assesmentService.getTrainings(utils.getLoggedInUser().getComId(), courseId));
+				assesmentService.getTrainings(utils.getLoggedInUser().getCmpId(), courseId));
 		return model;
 	}
 }

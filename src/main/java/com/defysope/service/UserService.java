@@ -31,6 +31,6 @@ public interface UserService {
 	
 	public boolean hasAccessRight(User user, String code);
 	
-	public List<ProductMaster> getProductList(int userId);
+	public List<ProductMaster> getProductList(int cmpId);
 	
 }

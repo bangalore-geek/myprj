@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.defysope.model.ProductMaster;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Requirement;
 import com.defysope.navigation.Menu;
@@ -24,6 +25,7 @@ import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
 import com.defysope.service.PublicManager;
 import com.defysope.service.RequirementService;
+import com.defysope.service.UserService;
 import com.defysope.service.impl.Navigation;
 
 @Controller
@@ -44,6 +46,9 @@ public class KvListController {
 	@Autowired
 	private RequirementService requirementService;
 	
+	@Autowired
+	private UserService userService;
+	
 	/* ===================== Courses ========================*/
 	@Menu(title = "Course List", url = "/kv/courses", accessCode = "ROLE_DF_CONFIGURE_ASSESSMENT_COURSE", order = 10, visible = true)
 	@RequestMapping(value = "/kv/courses", method = RequestMethod.GET)
@@ -52,6 +57,8 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
+		
 		return new ModelAndView("/kv/course-list", model);
 	}
 	
@@ -60,7 +67,7 @@ public class KvListController {
 	@ResponseBody
 	public Object loadCourses(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Course> assesmentCourses = assesmentService.getCoursesForCompany(utils.getLoggedInUser().getComId()); 
+		List<Course> assesmentCourses = assesmentService.getCoursesForCompany(utils.getLoggedInUser().getCmpId()); 
 		model.put("viewAssesmentList",assesmentCourses );
 		return model;
 	}
@@ -88,6 +95,7 @@ public class KvListController {
 		HttpSession session = request.getSession();
 		session.setAttribute("courseIdFilter", courseIdFilter);
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/training-list", model);
 	}
 	
@@ -98,7 +106,7 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		int courseIdFilter = (int) session.getAttribute("courseIdFilter");
-		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), courseIdFilter));
+		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getCmpId(), courseIdFilter));
 		return model;
 	}
 	
@@ -110,6 +118,7 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/assessment-list", model);
 	}
 	
@@ -118,7 +127,7 @@ public class KvListController {
 	@ResponseBody
 	public Object loadData(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), 0));
+		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getCmpId(), 0));
 		return model;
 	}
 	
@@ -130,6 +139,7 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("importer-list", model);
 	}
 	
@@ -141,6 +151,7 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/training-attendance", model);
 	}
 
@@ -151,6 +162,7 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/company_manage_user", model);
 	}
 	
@@ -161,14 +173,16 @@ public class KvListController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("kv/requirement-list", model);
     }
+	
 	@RequestMapping(value = "/kv/load-requirement", method = RequestMethod.GET)
 	@Secured("ROLE_DF_CONFIGURE_INTERVIEW")
 	@ResponseBody
 	public Object loadRequirement(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Requirement> requirementList = requirementService.getRequirementForCompany(utils.getLoggedInUser().getComId()); 
+		List<Requirement> requirementList = requirementService.getRequirementForCompany(utils.getLoggedInUser().getCmpId()); 
 		model.put("requirementList",requirementList );
 		return model;
 	}

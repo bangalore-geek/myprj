@@ -20,10 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.Constant;
 import com.defysope.model.User;
+import com.defysope.model.kv.AssesmentType;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Training;
-import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
 import com.defysope.service.PublicManager;
@@ -61,6 +61,7 @@ public class ConfigureAssessmentController {
 		
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/configure-assessment", model);
 	}
 	
@@ -86,7 +87,8 @@ public class ConfigureAssessmentController {
 	@ResponseBody
 	public Object saveCourse(HttpServletRequest request, @RequestBody Course thisCourse) {
 		
-		thisCourse.setCmpId(utils.getLoggedInUser().getComId());
+		thisCourse.setCmpId(utils.getLoggedInUser().getCmpId());
+		thisCourse.setCreatedBy(utils.getLoggedInUser().getId());
 		manager.saveObject(thisCourse);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("thisCourse", thisCourse);
@@ -98,11 +100,12 @@ public class ConfigureAssessmentController {
 	@Secured("ROLE_DF_CONFIGURE_ASSESSMENT_TRAINING")
 	@ResponseBody
 	public Object saveTraining(HttpServletRequest request, @RequestBody Training thisTraining) {
+		thisTraining.setCmpId(utils.getLoggedInUser().getCmpId());
 		manager.saveObject(thisTraining);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("thisTraining", thisTraining);
 		// getting training list for particuLAr course
-		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), thisTraining.getAssesmentMasterId()));
+		model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getCmpId(), thisTraining.getAssesmentMasterId()));
 		model.put("success", true);
 		return model;
 	}
@@ -118,12 +121,13 @@ public class ConfigureAssessmentController {
 		trainee.setStartDate(assesmentCourse.getStartdate());
 		trainee.setEndDate(assesmentCourse.getEnddate());
 		trainee.setPassword(utils.encryptPassword("sa"));
-		trainee.setCompId(utils.getLoggedInUser().getComId());
+		trainee.setCmpId(utils.getLoggedInUser().getCmpId());
 		
 		User newUser = new User();
 		newUser.setUserName(trainee.getEmail());
 		newUser.setPassword(utils.encryptPassword("sa"));
 		newUser.setUserType(User.CORPORATE_TRAINEE);
+		newUser.setCmpId(utils.getLoggedInUser().getCmpId());
 		manager.saveObject(newUser);
 		trainee.setUserId(newUser.getId());
 		manager.saveObject(trainee);
@@ -149,9 +153,9 @@ public class ConfigureAssessmentController {
 		model.put("editCourseId", editCourseId);
 		
 		if (editCourseId > 0) {
-			Course thisCourse = assesmentService.getCourse(utils.getLoggedInUser().getComId(), editCourseId);
+			Course thisCourse = assesmentService.getCourse(utils.getLoggedInUser().getCmpId(), editCourseId);
 			model.put("thisCourse", thisCourse);
-			model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getComId(), editCourseId));
+			model.put("trainingList", assesmentService.getTrainings(utils.getLoggedInUser().getCmpId(), editCourseId));
 		}
 		return model;
 	}
@@ -201,7 +205,7 @@ public class ConfigureAssessmentController {
 	@ResponseBody
 	public Object loadAssesementType(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("viewAssesmentTypeList", assesmentService.getAssesmentType());
+		model.put("viewAssesmentTypeList", manager.getObjects(AssesmentType.class));
 		return model;
 	}
 	

@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.defysope.Constant;
+import com.defysope.model.ProductMaster;
 import com.defysope.model.User;
 import com.defysope.model.kv.Company;
+import com.defysope.model.kv.CompanyLicenceDetails;
 import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.PublicManager;
@@ -40,7 +42,18 @@ public class RegisterCompanyController {
 	
 	@Autowired
 	private UserService userService;
-																					
+	
+													
+	// ============================= loading product list ===============
+	@RequestMapping(value = "/load-product-list", method = RequestMethod.GET)
+	@ResponseBody
+	public Object loadproductList(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<ProductMaster> productList = manager.getObjects(ProductMaster.class);
+		model.put("productList", productList);
+		return model;
+	}
+	
 	@RequestMapping(value = "/company-registration", method = RequestMethod.GET)
 	public ModelAndView getBookmarkListPage(HttpServletRequest request,HttpServletResponse response){
 		Map<String, Object> model = new HashMap<String,Object>();
@@ -50,8 +63,22 @@ public class RegisterCompanyController {
 	@RequestMapping(value = "/save-company-registration", method = RequestMethod.POST)
 	public @ResponseBody
 	Object saveSignUpForm(HttpServletRequest request, @RequestBody Company company) {
+
 		Map<String, Object> model = new HashMap<String, Object>();
+		company.setCreatedUser(0);
+		company.setLastUpdatedUser(0);
+		company.setLastUpdatedLogin(0);
+		company.setApprovedBy(0);
 		manager.saveObject(company);
+		
+		// saving product licence details
+		for(int i = 0; i< +company.getProductList().length; i++) {
+			CompanyLicenceDetails licenceDetails = new CompanyLicenceDetails();
+			licenceDetails.setCmpId(company.getCmpId());
+			licenceDetails.setProductId((int) company.getProductList()[i]);
+			
+			manager.saveObject(licenceDetails); 
+		}
 		return model;
 	}
 	
@@ -62,6 +89,7 @@ public class RegisterCompanyController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("administration/company-list", model);
 	}
 	
@@ -75,7 +103,7 @@ public class RegisterCompanyController {
 		return model;
 	}
 	
-	@RequestMapping(value = "//administration/approve/company", method = RequestMethod.POST)
+	@RequestMapping(value = "/administration/approve/company", method = RequestMethod.POST)
 	@Secured("ROLE_DF_APPROVE_COMPANY")
 	@ResponseBody
 	public Object approveCompany(HttpServletRequest request, @RequestBody Company thisCompany) {
@@ -92,10 +120,14 @@ public class RegisterCompanyController {
 		user.setPassword(utils.encryptPassword("sa"));
 		user.setBriefcasePassword(utils.encryptPassword("sa"));
 		user.setUserType(User.STUDENT);
-		user.setComId(thisCompany.getCompId());
+		user.setCmpId(thisCompany.getCmpId());
+		user.setName(thisCompany.getContactName());
+		user.setEmail(thisCompany.getContactEmailId());
 		manager.saveObject(user);
 		
 		userService.saveUserInfo(user, Constant.ROLE_COMPANY_ADMIN);
+		
+		// saving in CompanyLicenceDetails
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", true); 

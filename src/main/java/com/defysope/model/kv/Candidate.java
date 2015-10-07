@@ -11,17 +11,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "tblTrainee")
-public class Trainee {
+@Table (name = "tblcandidate")
+public class Candidate {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tblTrainee_cid_gen")
-	@SequenceGenerator(name = "tblTrainee_cid_gen", sequenceName = "tblTrainee_cid_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tblcandidate_cid_gen")
+	@SequenceGenerator(name = "tblcandidate_cid_gen", sequenceName = "tblcandidate_cid_seq")
 	@Column(name = "cid")
 	private Integer id;
 	
-	private int courseId;
-	private int trainingId;
+
 	private String name;
 	private String email;
 	private String phone;
@@ -30,6 +29,7 @@ public class Trainee {
 	private Date endDate;
 	private boolean isExpired;
 	private int userId;
+	private int requirementId;
 	private int cmpId;
 	
 	public Integer getId() {
@@ -38,22 +38,6 @@ public class Trainee {
 	
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	
-	public int getCourseId() {
-		return courseId;
-	}
-
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
-	}
-
-	public int getTrainingId() {
-		return trainingId;
-	}
-
-	public void setTrainingId(int trainingId) {
-		this.trainingId = trainingId;
 	}
 
 	public String getName() {
@@ -120,6 +104,14 @@ public class Trainee {
 		this.userId = userId;
 	}
 
+	public int getRequirementId() {
+		return requirementId;
+	}
+
+	public void setRequirementId(int requirementId) {
+		this.requirementId = requirementId;
+	}
+
 	public int getCmpId() {
 		return cmpId;
 	}
@@ -127,6 +119,4 @@ public class Trainee {
 	public void setCmpId(int cmpId) {
 		this.cmpId = cmpId;
 	}
-
-
 }

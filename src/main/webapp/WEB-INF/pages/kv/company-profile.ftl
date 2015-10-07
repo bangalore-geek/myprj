@@ -42,8 +42,42 @@
 				<div class="data-row">
 					<label>Licence ID: </label>
 					<div>{{thisCompany.data.licenceId}}</div>
-				</div>				
+				</div>
+				<div class="data-row">
+					<label></label>
+					<div><a class="btn btn-primary" ng-click="enableResetPassword()">Reset Password</a></div>
+				</div>
 			</div>
+			
+			<div ng-show="thisCompany.enableResetPassword">
+				<form class="form-horizontal">
+			        <div class="form-group">
+			            <label class="col-sm-4 control-label">Old Password </label>
+			            <div class="col-sm-6">
+			                <input type="text" class="form-control">
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-4 control-label">New Password </label>
+			            <div class="col-sm-6">
+			                <input type="text" class="form-control">
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-4 control-label">Conferm New Password </label>
+			            <div class="col-sm-6">
+			                <input type="text" class="form-control">
+			            </div>
+			        </div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-10">
+							<button class="btn btn-primary">Save</button>
+							<button ng-click="enableResetPassword()" class="btn">Cancel</button>
+						</div>
+					</div>
+		    	</form>
+			</div>
+			
 			<div ng-show="thisCompany.enableEdit">
 			    <form class="form-horizontal">
 			        <div class="form-group">

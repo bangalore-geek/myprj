@@ -1,21 +1,23 @@
 package com.defysope.model.kv;
 
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "cy_ts_company")
 public class Company {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cy_ts_company_compid_gen")
-	@SequenceGenerator(name = "cy_ts_company_compid_gen", sequenceName = "cy_ts_company_compid_seq")
-	private int compId;
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cy_ts_company_cmpid_gen")
+	@SequenceGenerator(name = "cy_ts_company_cmpid_gen", sequenceName = "cy_ts_company_cmpid_seq")
+	private int cmpId;
 	private String companyName;
 	private String contactName;
 	private String contactEmailId;
@@ -33,14 +35,17 @@ public class Company {
 	private int approvedBy;
 	private boolean isApproved;
 	
-	public int getCompId() {
-		return compId;
-	}
+	@Transient
+	int[] productList;
 	
-	public void setCompId(int compId) {
-		this.compId = compId;
+	public int getCmpId() {
+		return cmpId;
 	}
-	
+
+	public void setCmpId(int cmpId) {
+		this.cmpId = cmpId;
+	}
+
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -168,4 +173,14 @@ public class Company {
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
+
+	public int[] getProductList() {
+		return productList;
+	}
+
+	public void setProductList(int[] productList) {
+		this.productList = productList;
+	}
+
+
 }

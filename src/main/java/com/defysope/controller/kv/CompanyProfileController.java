@@ -47,6 +47,7 @@ public class CompanyProfileController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/company-profile", model);
 	}
 	
@@ -55,7 +56,7 @@ public class CompanyProfileController {
 	@ResponseBody
 	public Object loadCourses(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		Company thisCompany = (Company) publicManager.getObjectOrNull(Company.class, utils.getLoggedInUser().getComId());
+		Company thisCompany = (Company) publicManager.getObjectOrNull(Company.class, utils.getLoggedInUser().getCmpId());
 		model.put("thisCompany", thisCompany );
 		return model;
 	}

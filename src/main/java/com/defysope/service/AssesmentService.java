@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.defysope.model.kv.AssesmentType;
+import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Training;
@@ -28,5 +29,5 @@ public interface AssesmentService {
 	
 	public Training getTraining(int cmpId, int courseId, int trainingId);
 	
-	public List<Trainee> getCandidateList(int compId, int requirementId);
+	public List<Candidate> getCandidateList(int compId, int requirementId);
 }

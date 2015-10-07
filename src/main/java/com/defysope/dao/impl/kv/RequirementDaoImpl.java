@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.kv.RequirementDao;
+import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Requirement;
 
@@ -37,6 +38,16 @@ public class RequirementDaoImpl implements RequirementDao {
 			criteria.add(Restrictions.eq("reqirementId",requirementId));
 		}
 		return (List<Trainee>)criteria.list();
+	}
+
+	@Override
+	public Candidate getCandidateByUserId(int userId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Candidate.class);
+		if (userId > 0) {
+			criteria.add(Restrictions.eq("userId", userId));
+			return (Candidate)criteria.uniqueResult();
+		}
+		return null;
 	}
 
 }

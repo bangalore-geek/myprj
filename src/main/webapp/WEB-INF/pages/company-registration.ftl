@@ -49,70 +49,88 @@
 	<div class="row-fluid" ng-controller="CompanyRegestrationCtrl">
 	    <div class="container">
 			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div class="block">
-						<p class="block-heading">Company Regestration</p>
-						<div class="block-body">
-							<form class="form-horizontal">
-							  <div class="form-group">
-								<label for="companyName" class="col-sm-2 control-label">Company Name</label>
-								<div class="col-sm-10">
-								  <input type="textbox" class="form-control" id="companyName" ng-model="thisCompany.companyName">
-								</div>
-							  </div>
-							  
-							  <div class="form-group">
-								<label for="tinNumber" class="col-sm-2 control-label">Tin Number</label>
-								<div class="col-sm-10">
-								  <input type="textbox" class="form-control" id="tinNumber" ng-model="thisCompany.tinNumber">
-								</div>
-							  </div>
-							  
-							  
-							  <div class="form-group">
-								<label for="companyMobileNum" class="col-sm-2 control-label">Company Mobile number</label>
-								<div class="col-sm-10">
-								  <input type="textbox" class="form-control" id="companyMobileNum" ng-model="thisCompany.companyMobileNum">
-								</div>
-							  </div>
-							  
-							  
-							  <div class="form-group">
-								<label for="contactName" class="col-sm-2 control-label">Contact Name</label>
-								<div class="col-sm-10">
-								  <input type="textbox" class="form-control" id="contactName" ng-model="thisCompany.contactName">
-								</div>
-							  </div>
-							  
-							  <div class="form-group">
-								<label for="contactMobileNum" class="col-sm-2 control-label">Contact Mobile number</label>
-								<div class="col-sm-10">
-								  <input type="textbox" class="form-control" id="contactMobileNum" ng-model="thisCompany.contactMobileNum">
-								</div>
-							  </div>
-							  
-							  <div class="form-group">
-								<label for="contactEmailId" class="col-sm-2 control-label">Contact Email Id</label>
-								<div class="col-sm-10">
-								  <input type="textbox" class="form-control" id="contactEmailId" ng-model="thisCompany.contactEmailId">
-								</div>
-							  </div>
+				<div class="col-md-10">
+					<div class="col-md-8">
+						<div class="block">
+							<p class="block-heading">Company Regestration</p>
+							<div class="block-body">
+								<form class="form-horizontal">
+								  <div class="form-group">
+									<label for="companyName" class="col-sm-5 control-label">Company Name</label>
+									<div class="col-sm-7">
+									  <input type="textbox" class="form-control" id="companyName" ng-model="thisSummary.thisCompany.companyName">
+									</div>
+								  </div>
+								  
+								  <div class="form-group">
+									<label for="tinNumber" class="col-sm-5 control-label">Tin Number</label>
+									<div class="col-sm-7">
+									  <input type="textbox" class="form-control" id="tinNumber" ng-model="thisSummary.thisCompany.tinNumber">
+									</div>
+								  </div>
+								  
+								  
+								  <div class="form-group">
+									<label for="companyMobileNum" class="col-sm-5 control-label">Company Mobile number</label>
+									<div class="col-sm-7">
+									  <input type="textbox" class="form-control" id="companyMobileNum" ng-model="thisSummary.thisCompany.companyMobileNum">
+									</div>
+								  </div>
+								  
+								  
+								  <div class="form-group">
+									<label for="contactName" class="col-sm-5 control-label">Contact Name</label>
+									<div class="col-sm-7">
+									  <input type="textbox" class="form-control" id="contactName" ng-model="thisSummary.thisCompany.contactName">
+									</div>
+								  </div>
+								  
+								  <div class="form-group">
+									<label for="contactMobileNum" class="col-sm-5 control-label">Contact Mobile number</label>
+									<div class="col-sm-7">
+									  <input type="textbox" class="form-control" id="contactMobileNum" ng-model="thisSummary.thisCompany.contactMobileNum">
+									</div>
+								  </div>
+								  
+								  <div class="form-group">
+									<label for="contactEmailId" class="col-sm-5 control-label">Contact Email Id</label>
+									<div class="col-sm-7">
+									  <input type="textbox" class="form-control" id="contactEmailId" ng-model="thisSummary.thisCompany.contactEmailId">
+									</div>
+								  </div>
 
-							  <div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10">
-								  <button type="button" class="btn btn-default" ng-click="saveCompany(thisCompany)">Register</button>
-								  <button type="button" class="btn btn-default">Cancel</button>
-								</div>
-							  </div>
-							</form>
+								  <div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+									  <button type="button" class="btn btn-default" ng-click="saveCompany(thisSummary.thisCompany)">Register</button>
+									  <button type="button" class="btn btn-default">Cancel</button>
+									</div>
+								  </div>
+								</form>
+							</div>
 						</div>
 					</div>
+					<div class="col-md-4">
+						<div class="block">
+							<p class="block-heading">Product</p>
+							<div class="block-body">
+								<div ng-repeat="product in thisSummary.productList">
+									<div class="action-checkbox">
+									<input id="{{product.id}}" type="checkbox" 
+										value="{{product.name}}" 
+										ng-checked="selection.indexOf(product.id) > -1" 
+										ng-click="toggleSelection(product.id)" />
+										<label for="{{product.name}}"></label>
+										{{product.name}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-1"></div>
+					</div>
 				</div>
-				<div class="col-md-2"></div>
 			</div>
-	    </div>
-   </div>
+		</div>
+	</div>
    
    <script src="${rc.getContextPath()}/resources/js/core/jquery-1.9.1.js"></script>
 	<script src="${rc.getContextPath()}/resources/js/core/angular.min.js"></script>

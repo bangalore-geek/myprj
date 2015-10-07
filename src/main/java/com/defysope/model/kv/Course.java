@@ -19,7 +19,7 @@ public class Course {
 	@Column(name = "cid")
 	private Integer id;
 	
-	@Column(name = "createdBy")
+	@Column(name = "createdby")
 	private int createdBy;
 
 	private String name;

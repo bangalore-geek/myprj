@@ -2,7 +2,8 @@ defysope.controller('CompanyProfileCtrl', [ '$scope', '$http', function($scope, 
 	
 	$scope.thisCompany = {
 			data: '',
-			enableEdit: false
+			enableEdit: false,
+			enableResetPassword: false
 	};
 	// load company details when page is loaded
 	$http.get(_context + '/kv/load-company').success(
@@ -12,6 +13,10 @@ defysope.controller('CompanyProfileCtrl', [ '$scope', '$http', function($scope, 
 	
 	$scope.enableEdit = function(){
 		$scope.thisCompany.enableEdit = !$scope.thisCompany.enableEdit; 
+	};
+	
+	$scope.enableResetPassword = function(){
+		$scope.thisCompany.enableResetPassword = !$scope.thisCompany.enableResetPassword; 
 	};
 	
 	$scope.saveCompanyProfile = function() {

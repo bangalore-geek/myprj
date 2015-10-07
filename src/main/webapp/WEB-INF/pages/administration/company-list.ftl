@@ -38,8 +38,33 @@
 						</accordion-heading>
 						<div>  Tin Number : {{group.tinNumber}}
 							<span ng-if="!group.approved">
-								<div class="pull-right" ng-click="approveCompany(group)">
-								 	<a href="#">Approved It</a>
+								<div class="pull-right">
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-{{group.tinNumber}}">Approval</button>
+										<!-- Modal -->
+									<div class="modal fade" id="myModal-{{group.tinNumber}}" role="dialog">
+										<div class="modal-dialog">
+										  <!-- Modal content-->
+										  <div class="modal-content">
+											<div class="modal-header">
+											  <button type="button" class="close" data-dismiss="modal">&times;</button>
+											  <h4 class="modal-title">{{group.companyName}} Approval</h4>
+											</div>
+											<div class="modal-body">
+												<label for="reason" class="col-sm-2 control-label">Reason</label>
+												<div class="col-sm-10">
+													<textarea class="form-control" id="reason"></textarea>
+												</div><br><br><br>	
+												<div>
+													<button type="button" class="btn btn-primary" ng-click="approveCompany(group)">Approved it</button>
+													<button type="button" class="btn btn-primary" ng-click="rejectCompany(group)">Reject it</button>
+												</div>
+											</div>
+											<div class="modal-footer">
+											  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										  </div>
+										</div>
+									</div>
 								</div>
 							</span>
 						</div>

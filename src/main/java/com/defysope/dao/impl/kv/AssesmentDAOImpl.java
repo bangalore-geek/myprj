@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.defysope.dao.kv.AssesmentDAO;
 import com.defysope.model.kv.AssesmentType;
+import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
 import com.defysope.model.kv.Training;
@@ -101,10 +102,10 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 	}
 
 	@Override
-	public List<Trainee> getCandidateList(int compId, int requirementId) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Trainee.class);
-		criteria.add(Restrictions.eq("compId", compId));
+	public List<Candidate> getCandidateList(int compId, int requirementId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Candidate.class);
+		criteria.add(Restrictions.eq("cmpId", compId));
 		criteria.add(Restrictions.eq("requirementId", requirementId));
-		return (List<Trainee>) criteria.list();
+		return (List<Candidate>) criteria.list();
 	}
 }

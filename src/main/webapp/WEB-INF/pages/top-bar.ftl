@@ -26,7 +26,17 @@
           <#if user.userType?string != '2'>
 	          <ul class="nav navbar-nav" style="margin-left:103px;">
 	            <li><a href="${rc.getContextPath()}/success-login"><i class="fa fa-home"></i><span> Home</span></a></li>
-	            <li><a href="#">KwicValuate</a></li>
+	            
+	            
+	            
+			    <#list productlist as product>
+				    	---<li><a href="#">${product.name}</a></li>---
+		        </#list>
+        
+        
+        
+        
+	            <!-- <li><a href="#">KwicValuate</a></li> -->
 	          </ul>
           </#if>
           

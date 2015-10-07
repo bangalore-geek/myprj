@@ -22,6 +22,7 @@ import com.defysope.navigation.Menu;
 import com.defysope.service.ApplicationUtils;
 import com.defysope.service.AssesmentService;
 import com.defysope.service.PublicManager;
+import com.defysope.service.UserService;
 import com.defysope.service.impl.Navigation;
 
 @Controller
@@ -39,6 +40,9 @@ public class AttendTestController {
 	@Autowired
 	private PublicManager manager;
 	
+	@Autowired
+	private UserService userService;
+	
 	@Menu(title = "Attend Test", url = "/kv/attend-test", accessCode = "ROLE_DF_ATTEND_TEST", order = 7, visible = true)
 	@RequestMapping(value = "/kv/attend-test", method = RequestMethod.GET)
 	@Secured("ROLE_DF_ATTEND_TEST")
@@ -46,6 +50,7 @@ public class AttendTestController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
+		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
 		return new ModelAndView("/kv/attend-test", model); 
 	}
 	
