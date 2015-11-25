@@ -16,6 +16,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -195,6 +196,23 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public DefysopeLogger logginInjector() {
 		return new DefysopeLogger();
+	}
+	
+	@Bean
+	public JavaMailSenderImpl javaMailSenderImpl(){
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		//Set gmail email id
+		mailSender.setUsername("hellotoall87@gmail.com");
+		//Set gmail email password
+		mailSender.setPassword("luckydoll");
+		Properties prop = mailSender.getJavaMailProperties();
+		prop.put("mail.transport.protocol", "smtp");
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.debug", "true");
+		return mailSender;
 	}
 
 	/*

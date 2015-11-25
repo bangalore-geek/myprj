@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.defysope.dao.kv.AssesmentDAO;
-import com.defysope.model.kv.AssesmentType;
 import com.defysope.model.kv.Candidate;
 import com.defysope.model.kv.Course;
 import com.defysope.model.kv.Trainee;
@@ -23,11 +22,6 @@ public class AssesmentServiceImpl implements AssesmentService {
 	@Override
 	public List<Course> getCoursesForCompany(int cmpId) {
 		return assesmentDAO.getCoursesForCompany(cmpId);
-	}
-
-	@Override
-	public List<AssesmentType> getAssesmentType() {
-		return assesmentDAO.getAssesmentType();
 	}
 
 	@Override

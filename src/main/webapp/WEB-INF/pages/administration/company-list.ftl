@@ -53,10 +53,12 @@
 												<label for="reason" class="col-sm-2 control-label">Reason</label>
 												<div class="col-sm-10">
 													<textarea class="form-control" id="reason"></textarea>
-												</div><br><br><br>	
+												</div>	
 												<div>
-													<button type="button" class="btn btn-primary" ng-click="approveCompany(group)">Approved it</button>
-													<button type="button" class="btn btn-primary" ng-click="rejectCompany(group)">Reject it</button>
+												<br><br><br>
+													<button type="button" class="btn btn-primary" ng-click="approveCompany(group, '${statics["com.defysope.model.kv.CompanyLicenceDetails"].STATUS_ACTIVE}')">Approved it</button>
+													<button type="button" class="btn btn-primary" ng-click="approveCompany(group, '${statics["com.defysope.model.kv.CompanyLicenceDetails"].STATUS_REJECT}')">Reject it</button>
+													<button type="button" class="btn btn-primary" ng-click="approveCompany(group, '${statics["com.defysope.model.kv.CompanyLicenceDetails"].STATUS_ONHOLD}')">On Hold</button>
 												</div>
 											</div>
 											<div class="modal-footer">

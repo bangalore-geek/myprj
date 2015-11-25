@@ -5,15 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +33,9 @@ import com.defysope.service.ApplicationUtils;
 import com.defysope.service.PublicManager;
 import com.defysope.service.UserService;
 import com.defysope.service.impl.Navigation;
+
+import freemarker.ext.beans.BeansWrapper;
+import freemarker.template.TemplateHashModel;
 
 @Controller
 public class RegisterCompanyController {
@@ -42,6 +51,9 @@ public class RegisterCompanyController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	ApplicationContext applicationContext;
 	
 													
 	// ============================= loading product list ===============
@@ -79,6 +91,27 @@ public class RegisterCompanyController {
 			
 			manager.saveObject(licenceDetails); 
 		}
+		
+		// email related code
+		BeansWrapper wrapper = new BeansWrapper();
+		TemplateHashModel statics = wrapper.getStaticModels();
+		
+		model.put("statics", statics);
+
+		JavaMailSenderImpl mailSender = applicationContext.getBean(JavaMailSenderImpl.class);
+		   MimeMessage mimeMessage = mailSender.createMimeMessage();
+	      	   MimeMessageHelper mailMsg = new MimeMessageHelper(mimeMessage);
+	      	   try {
+	      		   /*mailMsg.setFrom("hellotoall87@gmail.com");*/
+		      	   mailMsg.setTo("yogeshniclucky@gmail.com");
+		      	   mailMsg.setSubject("Company regestration successfully.....");
+		      	   mailMsg.setText("Hello World!");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		   mailSender.send(mimeMessage);
 		return model;
 	}
 	
@@ -90,6 +123,7 @@ public class RegisterCompanyController {
 		model.put("user", utils.getLoggedInUser());
 		model.put("menus", navigation.displayMenuList());
 		model.put("productlist", userService.getProductList(utils.getLoggedInUser().getCmpId()));
+
 		return new ModelAndView("administration/company-list", model);
 	}
 	
@@ -106,26 +140,33 @@ public class RegisterCompanyController {
 	@RequestMapping(value = "/administration/approve/company", method = RequestMethod.POST)
 	@Secured("ROLE_DF_APPROVE_COMPANY")
 	@ResponseBody
-	public Object approveCompany(HttpServletRequest request, @RequestBody Company thisCompany) {
-		// approving company 
-		thisCompany.setApprovedBy(utils.getLoggedInUser().getId());
-		thisCompany.setApprovedOn(new Timestamp(System.currentTimeMillis()));
-		thisCompany.setApproved(true);
+	public Object approveCompany(HttpServletRequest request, @RequestBody Company thisCompany, @RequestParam String status) {
 		
-		// creating user for company
-		
-		manager.saveObject(thisCompany);
-		User user = new User();
-		user.setUserName(thisCompany.getContactEmailId());
-		user.setPassword(utils.encryptPassword("sa"));
-		user.setBriefcasePassword(utils.encryptPassword("sa"));
-		user.setUserType(User.STUDENT);
-		user.setCmpId(thisCompany.getCmpId());
-		user.setName(thisCompany.getContactName());
-		user.setEmail(thisCompany.getContactEmailId());
-		manager.saveObject(user);
-		
-		userService.saveUserInfo(user, Constant.ROLE_COMPANY_ADMIN);
+		if (CompanyLicenceDetails.STATUS_ACTIVE.equals(status)) {
+			// approving company 
+			thisCompany.setApprovedBy(utils.getLoggedInUser().getId());
+			thisCompany.setApprovedOn(new Timestamp(System.currentTimeMillis()));
+			thisCompany.setApproved(true);
+			
+			// creating user for company
+			manager.saveObject(thisCompany);
+			User user = new User();
+			user.setUserName(thisCompany.getContactEmailId());
+			user.setPassword(utils.encryptPassword("sa"));
+			user.setBriefcasePassword(utils.encryptPassword("sa"));
+			user.setUserType(User.STUDENT);
+			user.setCmpId(thisCompany.getCmpId());
+			user.setName(thisCompany.getContactName());
+			user.setEmail(thisCompany.getContactEmailId());
+			manager.saveObject(user);
+			
+			userService.saveUserInfo(user, Constant.ROLE_COMPANY_ADMIN);
+		} else if (CompanyLicenceDetails.STATUS_ONHOLD.equals(status)) {
+			
+		} else if (CompanyLicenceDetails.STATUS_REJECT.equals(status)){
+			
+		}
+
 		
 		// saving in CompanyLicenceDetails
 		

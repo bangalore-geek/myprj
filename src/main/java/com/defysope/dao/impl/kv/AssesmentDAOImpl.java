@@ -39,12 +39,6 @@ public class AssesmentDAOImpl implements AssesmentDAO {
 	}
 
 	@Override
-	public List<AssesmentType> getAssesmentType() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AssesmentType.class);
-		return (List<AssesmentType>) criteria.list();
-	}
-
-	@Override
 	public List<Training> getTrainings(int cmpId, int courseId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Training.class);
 		if (cmpId > 0) {

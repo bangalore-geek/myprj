@@ -16,6 +16,8 @@ public class CompanyLicenceDetails {
 	
 	public static final String STATUS_ACTIVE = "active";
 	public static final String STATUS_INACTIVE = "inactive";
+	public static final String STATUS_REJECT = "reject";
+	public static final String STATUS_ONHOLD = "onhold";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cy_kv_company_licence_details_cid_gen")
